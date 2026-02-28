@@ -1,5 +1,8 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "biomejs.biome",
+  "files.associations": {
+    "*.module.css": "css"
+  },
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit",
