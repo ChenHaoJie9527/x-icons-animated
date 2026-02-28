@@ -12,8 +12,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-	title: "x-icons",
-	description: "x-icons-animated 是一个基于xicon svg图标库开发的动画图标库",
+	title: "x-icons-animated",
+	description: "x-icons-animated is an animated icon library based on the xicon svg icon library",
 };
 
 export default function RootLayout({
