@@ -32,7 +32,7 @@ export default function Home() {
 					width={180}
 				/>
 				<ol>
-					<li className="mt-4">
+					<li className="mt-16">
 						Get started by editing <code>apps/web/app/page.tsx</code>
 					</li>
 					<li>Save and see your changes instantly.</li>
