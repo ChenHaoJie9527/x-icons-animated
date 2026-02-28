@@ -1,3 +1,4 @@
+import { cn } from "@x-icons/utils/cn";
 import type { ButtonHTMLAttributes } from "react";
 
 type Variant = "primary" | "secondary" | "ghost";
@@ -30,15 +31,15 @@ export function Button({
 }: ButtonProps) {
 	return (
 		<button
-			className={[
+			className={cn(
 				"inline-flex items-center justify-center gap-2 rounded-lg border font-medium",
 				"cursor-pointer select-none transition-colors",
 				"focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2",
 				"disabled:cursor-not-allowed disabled:opacity-50",
 				variantStyles[variant],
 				sizeStyles[size],
-				className,
-			].join(" ")}
+				className
+			)}
 			disabled={disabled}
 			{...props}
 		>
