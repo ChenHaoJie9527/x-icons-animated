@@ -13,7 +13,8 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
 	title: "x-icons-animated",
-	description: "x-icons-animated is an animated icon library based on the xicon svg icon library",
+	description:
+		"x-icons-animated is an animated icon library based on the xicon svg icon library",
 };
 
 export default function RootLayout({

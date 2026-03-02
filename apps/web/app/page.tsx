@@ -1,6 +1,7 @@
 // import { Button } from "@repo/ui/button";
+
+import { Button } from "@x-icons/ui/button";
 import Image, { type ImageProps } from "next/image";
-import {Button} from "@x-icons/ui/button"
 import styles from "./page.module.css";
 
 type Props = Omit<ImageProps, "src"> & {
@@ -64,7 +65,7 @@ export default function Home() {
 						Read our docs
 					</a>
 				</div>
-				<Button variant="primary" className={styles.secondary}>
+				<Button className={styles.secondary} variant="primary">
 					Open alert
 				</Button>
 			</main>
