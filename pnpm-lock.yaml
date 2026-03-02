@@ -112,6 +112,9 @@ importers:
       '@types/react':
         specifier: 19.2.2
         version: 19.2.2
+      '@x-icons/icons':
+        specifier: workspace:*
+        version: link:../icons
       '@x-icons/tailwind-config':
         specifier: workspace:*
         version: link:../tailwind-config

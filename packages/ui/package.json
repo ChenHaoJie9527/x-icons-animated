@@ -13,6 +13,7 @@
     "@types/react": "19.2.2",
     "@x-icons/tailwind-config": "workspace:*",
     "@x-icons/typescript-config": "workspace:*",
+    "@x-icons/icons": "workspace:*",
     "tailwindcss": "^4.1.5",
     "typescript": "5.9.2"
   },

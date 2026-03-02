@@ -5,7 +5,7 @@
  */
 
 import { useAnimation } from "motion/react";
-import type { Ref, MouseEvent, MouseEventHandler } from "react";
+import type { MouseEvent, MouseEventHandler, Ref } from "react";
 import { useCallback, useImperativeHandle, useRef } from "react";
 
 export interface IconAnimationHandle {
@@ -35,7 +35,11 @@ export function useIconHoverAnimation({
 	ref,
 	onMouseEnter,
 	onMouseLeave,
-}: UseIconHoverAnimationParams) {
+}: UseIconHoverAnimationParams): {
+	controls: ReturnType<typeof useAnimation>;
+	handleMouseEnter: (e: MouseEvent<HTMLDivElement>) => void;
+	handleMouseLeave: (e: MouseEvent<HTMLDivElement>) => void;
+} {
 	const controls = useAnimation();
 	const isControlledRef = useRef(false);
 	useImperativeHandle(ref, () => {

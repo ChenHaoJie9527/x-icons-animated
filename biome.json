@@ -19,6 +19,12 @@
       "a11y": {
         "noNoninteractiveElementInteractions": "off",
         "noStaticElementInteractions": "off"
+      },
+      "style": {
+        "useConsistentTypeDefinitions": "off"
+      },
+      "nursery": {
+        "useSortedClasses": "off"
       }
     }
   },

@@ -6,7 +6,8 @@
   "exports": {
     "./icons/*": "./src/icons/*.tsx",
     "./registry": "./src/registry.ts",
-    "./actions/*": "./src/actions/*.ts"
+    "./actions/*": "./src/actions/*.ts",
+    "./types": "./src/types.ts"
   },
   "scripts": {
     "check-types": "tsc --noEmit"

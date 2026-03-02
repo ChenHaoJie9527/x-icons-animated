@@ -1,12 +1,12 @@
 "use client";
 
+import { cn } from "@x-icons/utils/cn";
 import { motion } from "motion/react";
 import type { HTMLAttributes, Ref } from "react";
-import { cn } from "@x-icons/utils/cn";
 
 import {
-	useIconHoverAnimation,
 	type IconAnimationHandle,
+	useIconHoverAnimation,
 } from "../hooks/use-icon-hover-animation";
 
 export interface HomeIconHandle extends IconAnimationHandle {}
