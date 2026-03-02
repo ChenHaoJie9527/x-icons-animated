@@ -79,6 +79,9 @@ importers:
       '@x-icons/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
+      '@x-icons/utils':
+        specifier: workspace:*
+        version: link:../utils
       motion:
         specifier: ^12.0.0
         version: 12.34.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
