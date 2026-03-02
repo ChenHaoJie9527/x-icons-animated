@@ -1,6 +1,8 @@
-// import { Button } from "@repo/ui/button";
+"use client";
 
 import { Button } from "@x-icons/ui/button";
+import { IconList } from "@x-icons/ui/icon-list";
+import { getIcons } from "@x-icons/icons/actions/get-icons";
 import Image, { type ImageProps } from "next/image";
 import styles from "./page.module.css";
 
@@ -68,6 +70,7 @@ export default function Home() {
 				<Button className={styles.secondary} variant="primary">
 					Open alert
 				</Button>
+				<IconList icons={getIcons()} />
 			</main>
 			<footer className={styles.footer}>
 				<a

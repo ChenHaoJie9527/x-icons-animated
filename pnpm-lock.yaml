@@ -26,6 +26,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@x-icons/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@x-icons/ui':
         specifier: workspace:*
         version: link:../../packages/ui
