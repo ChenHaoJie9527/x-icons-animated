@@ -1,3 +1,156 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "@toolwind/corner-shape";
+
+/* 暗色模式变体 */
+@custom-variant dark (&:is(.dark *));
+
+/* Theme token 映射 */
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-surface: var(--surface);
+	--color-surface-hover: var(--surface-hover);
+	--color-border: var(--border);
+	--color-border-hover: var(--border-hover);
+	--color-primary: var(--primary);
+	--color-primary-hover: var(--primary-hover);
+	--color-muted: var(--muted);
+	--color-subtle: var(--subtle);
+
+	/* 圆角系统 */
+	--radius-lg: var(--radius);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-xs: calc(var(--radius) - 6px);
+	--radius-2xs: calc(var(--radius) - 8px);
+}
+
+/* 亮色模式（默认） */
+:root {
+	/* 基础色 */
+	--background: #ffffff;
+	--foreground: #0a0a0a;
+	--surface: #f5f5f5;
+	--surface-hover: #ebebeb;
+
+	/* 边框 */
+	--border: rgba(0, 0, 0, 0.08);
+	--border-hover: rgba(0, 0, 0, 0.15);
+
+	/* 主色 - 橙色 */
+	--primary: #ff6b35;
+	--primary-hover: #ff5722;
+
+	/* 文字层级 */
+	--muted: rgba(0, 0, 0, 0.45);
+	--subtle: rgba(0, 0, 0, 0.25);
+
+	/* 圆角 */
+	--radius: 0.25rem;
+
+	/* Scrollbar */
+	--scrollbar-thumb: rgba(0, 0, 0, 0.15);
+	--scrollbar-thumb-hover: rgba(0, 0, 0, 0.25);
+
+	/* Selection */
+	--selection-bg: rgba(255, 107, 53, 0.2);
+}
+
+/* 暗色模式 */
+.dark {
+	/* 基础色 */
+	--background: #000000;
+	--foreground: #ffffff;
+	--surface: #0a0a0a;
+	--surface-hover: #1a1a1a;
+
+	/* 边框 */
+	--border: rgba(255, 255, 255, 0.08);
+	--border-hover: rgba(255, 255, 255, 0.15);
+
+	/* 主色 - 橙色（暗色模式下稍微降低饱和度） */
+	--primary: #ff7a50;
+	--primary-hover: #ff8f6b;
+
+	/* 文字层级 */
+	--muted: rgba(255, 255, 255, 0.45);
+	--subtle: rgba(255, 255, 255, 0.25);
+
+	/* Scrollbar */
+	--scrollbar-thumb: rgba(255, 255, 255, 0.1);
+	--scrollbar-thumb-hover: rgba(255, 255, 255, 0.18);
+
+	/* Selection */
+	--selection-bg: rgba(255, 122, 80, 0.2);
+}
+
+@layer base {
+	* {
+		scrollbar-color: var(--scrollbar-thumb) transparent;
+		scrollbar-width: thin;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	html[data-base-ui-scroll-locked] {
+		scroll-behavior: auto;
+	}
+
+	body {
+		overscroll-behavior: none;
+		color: var(--foreground);
+		background-color: var(--background);
+	}
+
+	::selection {
+		color: var(--foreground);
+		background: var(--selection-bg);
+	}
+
+	::-webkit-scrollbar {
+		width: 3px;
+		height: 3px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: var(--scrollbar-thumb);
+		border-radius: 2px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: var(--scrollbar-thumb-hover);
+	}
+
+	kbd {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 1.25rem;
+		height: 1.25rem;
+		padding: 0 0.25rem;
+		font-family: inherit;
+		font-size: 0.75rem;
+		line-height: 1;
+		color: var(--muted);
+		text-transform: uppercase;
+		cursor: pointer;
+		user-select: none;
+		background: var(--surface);
+		border: 1px solid var(--border);
+		border-radius: 0.25rem;
+		transition: transform 0.1s;
+	}
+
+	kbd:active {
+		transform: scale(0.95);
+	}
+}

@@ -6,26 +6,3 @@ body {
 	height: 100%;
 	overflow-x: hidden;
 }
-
-body {
-	color: #fff;
-	background: #000;
-}
-
-::selection {
-	background: rgba(255, 255, 255, 0.12);
-}
-
-::-webkit-scrollbar {
-	width: 3px;
-	height: 3px;
-}
-
-::-webkit-scrollbar-track {
-	background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-	background: rgba(255, 255, 255, 0.1);
-	border-radius: 2px;
-}

@@ -52,5 +52,8 @@
   },
   "[mdx]": {
     "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[postcss]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
   }
 }

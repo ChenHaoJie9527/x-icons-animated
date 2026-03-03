@@ -13,7 +13,7 @@ export default function Home() {
 	const [search, setSearch] = useState("");
 
 	return (
-		<div className="flex flex-col h-full bg-black text-white">
+		<div className="flex flex-col h-full bg-[var(--background)] text-[var(--foreground)]">
 			<AppHeader
 				onSearchChange={setSearch}
 				searchValue={search}

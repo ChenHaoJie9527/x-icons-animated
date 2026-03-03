@@ -1,5 +1,7 @@
 "use client";
 
+import { ThemeToggle } from "./theme-toggle";
+
 interface HeaderProps {
 	searchValue: string;
 	onSearchChange: (value: string) => void;
@@ -12,12 +14,12 @@ export function AppHeader({
 	totalIcons,
 }: HeaderProps) {
 	return (
-		<header className="flex items-center h-14 px-6 border-b border-white/[0.08] shrink-0 gap-8">
+		<header className="flex items-center h-14 px-6 border-b border-[var(--border)] shrink-0 gap-8">
 			<div className="flex items-center gap-3 shrink-0">
-				<span className="text-[15px] font-bold tracking-tight text-white leading-none">
+				<span className="text-[15px] font-bold tracking-tight text-[var(--foreground)] leading-none">
 					x-icons
 				</span>
-				<span className="text-[10px] font-(family-name:--font-geist-mono) text-white/30 border border-white/10 px-2 py-1 rounded tracking-widest uppercase leading-none">
+				<span className="text-[10px] font-(family-name:--font-geist-mono) text-[var(--primary)] border border-[var(--primary)] px-2 py-1 rounded tracking-widest uppercase leading-none">
 					animated
 				</span>
 			</div>
@@ -25,7 +27,7 @@ export function AppHeader({
 			<div className="flex-1 max-w-xs relative">
 				<svg
 					aria-hidden
-					className="absolute left-3 top-1/2 -translate-y-1/2 size-[14px] text-white/20 pointer-events-none"
+					className="absolute left-3 top-1/2 -translate-y-1/2 size-[14px] text-[var(--subtle)] pointer-events-none"
 					fill="none"
 					stroke="currentColor"
 					strokeLinecap="round"
@@ -38,7 +40,7 @@ export function AppHeader({
 				</svg>
 				<input
 					aria-label="Search icons"
-					className="w-full bg-white/[0.03] border border-white/[0.08] rounded pl-9 pr-4 py-2 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-white/25 focus:bg-white/5 transition-all font-(family-name:--font-geist-mono)"
+					className="w-full bg-[var(--surface)] border border-[var(--border)] rounded pl-9 pr-4 py-2 text-sm text-[var(--foreground)] placeholder:text-[var(--subtle)] focus:outline-none focus:border-[var(--border-hover)] focus:bg-[var(--surface-hover)] transition-all font-(family-name:--font-geist-mono)"
 					onChange={(e) => onSearchChange(e.target.value)}
 					placeholder="Search icons..."
 					type="text"
@@ -47,12 +49,13 @@ export function AppHeader({
 			</div>
 
 			<div className="ml-auto flex items-center gap-5">
-				<span className="text-xs font-(family-name:--font-geist-mono) text-white/25 tabular-nums">
+				<span className="text-xs font-(family-name:--font-geist-mono) text-[var(--muted)] tabular-nums">
 					{totalIcons} {totalIcons === 1 ? "icon" : "icons"}
 				</span>
-				<div className="w-px h-4 bg-white/[0.08]" />
+				<div className="w-px h-4 bg-[var(--border)]" />
+				<ThemeToggle />
 				<a
-					className="text-sm text-white/40 hover:text-white transition-colors"
+					className="text-sm text-[var(--muted)] hover:text-[var(--primary)] transition-colors"
 					href="https://github.com"
 					rel="noopener noreferrer"
 					target="_blank"
