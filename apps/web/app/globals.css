@@ -1,5 +1,15 @@
 @import "@x-icons/tailwind-config";
 
+/* Base UI 配置：让 Portal 组件（Dialog/Popover）始终在最上层 */
+.root {
+	isolation: isolate;
+}
+
+/* iOS 26+ Safari 支持：让 Backdrop 能覆盖整个视口 */
+body {
+	position: relative;
+}
+
 html,
 body {
 	max-width: 100vw;
