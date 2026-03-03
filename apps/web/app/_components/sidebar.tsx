@@ -15,8 +15,8 @@ export function AppSidebar({ totalIcons, searchValue }: SidebarProps) {
 	const isSearching = searchValue.trim().length > 0;
 
 	return (
-		<aside className="w-60 border-r border-[var(--border)] shrink-0 overflow-y-auto flex flex-col bg-[var(--background)]">
-			<div className="p-5 flex flex-col gap-6 flex-1">
+		<div className="flex flex-col h-full">
+			<div className="p-5 flex flex-col gap-6 flex-1 overflow-y-auto">
 				<section>
 					<p className="text-[11px] font-(family-name:--font-geist-mono) text-[var(--subtle)] uppercase tracking-[0.12em] mb-3">
 						Browse
@@ -68,11 +68,11 @@ export function AppSidebar({ totalIcons, searchValue }: SidebarProps) {
 				)}
 			</div>
 
-			<div className="p-5 border-t border-[var(--border)]">
+			<div className="p-5 border-t border-[var(--border)] shrink-0">
 				<p className="text-xs font-(family-name:--font-geist-mono) text-[var(--subtle)]">
 					MIT License · Open Source
 				</p>
 			</div>
-		</aside>
+		</div>
 	);
 }

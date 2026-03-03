@@ -28,8 +28,8 @@ export const viewport: Viewport = {
 	initialScale: 1,
 	userScalable: false,
 	maximumScale: 1,
-	minimumScale: 1
-}
+	minimumScale: 1,
+};
 
 export default function RootLayout({
 	children,
@@ -42,7 +42,7 @@ export default function RootLayout({
 		 */
 		<html className="h-full" lang="en" suppressHydrationWarning>
 			<body
-				className={`root ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+				className={`root ${geistSans.variable} ${geistMono.variable} h-full antialiased bg-background`}
 			>
 				{children}
 			</body>

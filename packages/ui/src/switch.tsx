@@ -30,7 +30,7 @@ export function Switch({
 				)}
 				disabled={disabled}
 				onCheckedChange={(isChecked) => {
-					onCheckedChange(isChecked)
+					onCheckedChange(isChecked);
 				}}
 			>
 				<BaseSwitch.Thumb
