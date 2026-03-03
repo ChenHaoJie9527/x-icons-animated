@@ -5,16 +5,18 @@ import "./globals.css";
 const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",
 	variable: "--font-geist-sans",
+	display: "swap",
 });
 const geistMono = localFont({
 	src: "./fonts/GeistMonoVF.woff",
 	variable: "--font-geist-mono",
+	display: "swap",
 });
 
 export const metadata: Metadata = {
-	title: "x-icons-animated",
+	title: "x-icons — Animated Icon Library",
 	description:
-		"x-icons-animated is an animated icon library based on the xicon svg icon library",
+		"An open-source collection of smooth animated icons. Free to use, MIT licensed.",
 };
 
 export default function RootLayout({
@@ -23,8 +25,10 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body className={`${geistSans.variable} ${geistMono.variable}`}>
+		<html className="h-full" lang="en">
+			<body
+				className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+			>
 				{children}
 			</body>
 		</html>
