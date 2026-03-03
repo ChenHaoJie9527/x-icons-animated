@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -19,13 +19,28 @@ export const metadata: Metadata = {
 		"An open-source collection of smooth animated icons. Free to use, MIT licensed.",
 };
 
+/**
+ * 设置 viewport 配置
+ * 让页面在移动端和桌面端都能正常显示
+ */
+export const viewport: Viewport = {
+	width: "device-width",
+	initialScale: 1,
+	userScalable: false,
+	maximumScale: 1,
+	minimumScale: 1
+}
+
 export default function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
 	return (
-		<html className="h-full" lang="en">
+		/**
+		 * 禁用 hydration 警告
+		 */
+		<html className="h-full" lang="en" suppressHydrationWarning>
 			<body
 				className={`root ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
 			>
