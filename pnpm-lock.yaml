@@ -26,12 +26,15 @@ importers:
 
   apps/web:
     dependencies:
+      '@base-ui/react':
+        specifier: ^1.2.0
+        version: 1.2.0(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@x-icons/icons':
         specifier: workspace:*
         version: link:../../packages/icons
-      '@x-icons/ui':
+      '@x-icons/utils':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../packages/utils
       next:
         specifier: 16.1.5
         version: 16.1.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -106,37 +109,6 @@ importers:
         version: 4.2.1
 
   packages/typescript-config: {}
-
-  packages/ui:
-    dependencies:
-      '@base-ui/react':
-        specifier: ^1.2.0
-        version: 1.2.0(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@x-icons/utils':
-        specifier: workspace:^
-        version: link:../utils
-      react:
-        specifier: ^19.0.0
-        version: 19.2.0
-    devDependencies:
-      '@types/react':
-        specifier: 19.2.2
-        version: 19.2.2
-      '@x-icons/icons':
-        specifier: workspace:*
-        version: link:../icons
-      '@x-icons/tailwind-config':
-        specifier: workspace:*
-        version: link:../tailwind-config
-      '@x-icons/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      tailwindcss:
-        specifier: ^4.1.5
-        version: 4.2.1
-      typescript:
-        specifier: 5.9.2
-        version: 5.9.2
 
   packages/utils:
     dependencies:

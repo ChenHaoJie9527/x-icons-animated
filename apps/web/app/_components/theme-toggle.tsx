@@ -1,8 +1,8 @@
 "use client";
 
-import { Switch } from "@x-icons/ui/switch";
-import { Tooltip } from "@x-icons/ui/tooltip";
 import { useEffect, useState } from "react";
+import { Switch } from "./switch";
+import { Tooltip } from "./tooltip";
 
 export function ThemeToggle() {
 	const [isDark, setIsDark] = useState(false);

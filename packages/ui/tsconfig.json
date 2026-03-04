@@ -1,8 +1,0 @@
-{
-  "extends": "@x-icons/typescript-config/react-library.json",
-  "compilerOptions": {
-    "rootDir": "src",
-    "noEmit": true
-  },
-  "include": ["src"]
-}
