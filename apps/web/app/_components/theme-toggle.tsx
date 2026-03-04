@@ -1,7 +1,8 @@
 "use client";
 
+import { Button } from "@base-ui/react";
+import { cn } from "@x-icons/utils/cn";
 import { useEffect, useState } from "react";
-import { Switch } from "./switch";
 import { Tooltip } from "./tooltip";
 
 export function ThemeToggle() {
@@ -36,36 +37,45 @@ export function ThemeToggle() {
 			side="bottom"
 		>
 			<div className="flex items-center gap-2">
-				{!isDark && (
-					<svg
-						aria-hidden
-						className="size-4 text-muted"
-						fill="none"
-						stroke="currentColor"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						strokeWidth={1.5}
-						viewBox="0 0 24 24"
-					>
-						<circle cx={12} cy={12} r={4} />
-						<path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-					</svg>
-				)}
-				<Switch checked={isDark} onCheckedChange={toggleTheme} />
-				{isDark && (
-					<svg
-						aria-hidden
-						className="size-4 text-muted"
-						fill="none"
-						stroke="currentColor"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						strokeWidth={1.5}
-						viewBox="0 0 24 24"
-					>
-						<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-					</svg>
-				)}
+				<Button
+					className={cn(
+						"size-9 rounded bg-surface flex items-center justify-center border",
+						isDark ? "border-primary" : "border-border"
+					)}
+					onClick={() => toggleTheme(!isDark)}
+				>
+					{isDark ? (
+						<svg
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+							className="size-4"
+						>
+							<path
+								d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+					) : (
+						<svg
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+							className="size-4"
+						>
+							<path
+								d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+					)}
+				</Button>
 			</div>
 		</Tooltip>
 	);

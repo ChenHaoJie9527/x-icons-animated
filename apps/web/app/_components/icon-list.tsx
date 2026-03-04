@@ -102,11 +102,7 @@ const IconItem = ({ icon, Icon, onCopy, copied }: IconItemProps) => {
 				ref={animatedRef}
 			/>
 			<p className="text-xs font-(family-name:--font-geist-mono) text-subtle group-hover:text-muted transition-colors duration-150 truncate w-full text-center leading-none">
-				{copied ? (
-					<span className="text-primary">copied</span>
-				) : (
-					icon.name
-				)}
+				{copied ? <span className="text-primary">copied</span> : icon.name}
 			</p>
 		</button>
 	);

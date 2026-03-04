@@ -1,7 +1,7 @@
 import type { IconMeta } from "@x-icons/icons/types";
-import { IconList } from "./icon-list";
 // import { SearchBar } from "./search-bar";
 import { Header } from "./header";
+import { IconList } from "./icon-list";
 
 type Icon = Pick<IconMeta, "name" | "keywords">;
 
