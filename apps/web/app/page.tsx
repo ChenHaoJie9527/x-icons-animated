@@ -1,13 +1,8 @@
 "use client";
 
 import { getIcons } from "@x-icons/icons/actions/get-icons";
-import { Footer } from "@x-icons/ui/footer";
-import { Header } from "@x-icons/ui/header";
-import { IconList } from "@x-icons/ui/icon-list";
-import { Main } from "@x-icons/ui/main";
-import { Sidebar } from "@x-icons/ui/sidebar";
+// import { IconList } from "@x-icons/ui/icon-list";
 import { useState } from "react";
-import { AppSidebar } from "./_components/sidebar";
 import { ThemeToggle } from "./_components/theme-toggle";
 
 const icons = getIcons();
@@ -16,23 +11,23 @@ export default function Home() {
 	const [search, setSearch] = useState("");
 
 	return (
-		<div className="flex flex-col min-h-screen bg-background">
-			<Header>
-				{/* Logo 和标识 */}
-				<div className="flex items-center gap-3 shrink-0">
-					<span className="text-[15px] font-bold tracking-tight text-foreground leading-none">
+		<section className="layout">
+			<header className="header flex items-center gap-8 h-14 py-3">
+				{/* Logo */}
+				<div className="flex items-center gap-2 shrink-0">
+					<span className="text-xl font-semibold text-foreground">
 						x-icons
 					</span>
-					<span className="text-[10px] font-(family-name:--font-geist-mono) text-primary border border-primary px-2 py-1 rounded tracking-widest uppercase leading-none">
+					<span className="px-2 py-0.5 text-xs bg-primary text-background rounded-full">
 						animated
 					</span>
 				</div>
 
-				{/* 搜索框 */}
-				<div className="flex-1 max-w-md relative">
+				{/* Search */}
+				<div className="relative flex-1 max-w-lg">
 					<svg
 						aria-hidden
-						className="absolute left-3 top-1/2 -translate-y-1/2 size-[14px] text-subtle pointer-events-none"
+						className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted pointer-events-none"
 						fill="none"
 						stroke="currentColor"
 						strokeLinecap="round"
@@ -45,7 +40,7 @@ export default function Home() {
 					</svg>
 					<input
 						aria-label="Search icons"
-						className="w-full bg-surface border border-border rounded pl-9 pr-4 py-2 text-sm text-foreground placeholder:text-subtle focus:outline-none focus:border-border-hover focus:bg-surface-hover transition-all font-(family-name:--font-geist-mono)"
+						className="w-full h-10 pl-11 pr-4 text-sm bg-surface border border-border rounded-lg text-foreground placeholder:text-muted outline-none focus:border-primary transition-colors"
 						onChange={(e) => setSearch(e.target.value)}
 						placeholder="Search icons..."
 						type="text"
@@ -53,15 +48,15 @@ export default function Home() {
 					/>
 				</div>
 
-				{/* 右侧操作区 */}
-				<div className="ml-auto flex items-center gap-5">
-					<span className="text-xs font-(family-name:--font-geist-mono) text-muted tabular-nums hidden sm:inline">
+				{/* Actions */}
+				<div className="flex items-center gap-4 shrink-0">
+					<span className="text-sm text-muted md:hidden">
 						{icons.length} {icons.length === 1 ? "icon" : "icons"}
 					</span>
-					<div className="w-px h-4 bg-border hidden sm:block" />
+					<div className="w-px h-6 bg-border" />
 					<ThemeToggle />
 					<a
-						className="text-sm text-muted hover:text-primary transition-colors hidden md:inline"
+						className="text-sm text-foreground hover:text-primary transition-colors"
 						href="https://github.com"
 						rel="noopener noreferrer"
 						target="_blank"
@@ -69,27 +64,20 @@ export default function Home() {
 						GitHub
 					</a>
 				</div>
-			</Header>
+			</header>
 
-			<Main>
-				<div className="flex min-h-0">
-					<Sidebar>
-						<AppSidebar searchValue={search} totalIcons={icons.length} />
-					</Sidebar>
-					<div className="flex-1 overflow-auto">
-						<IconList icons={icons} searchValue={search} />
-					</div>
+			<main className="main">
+				{/* <IconList icons={icons} searchValue={search} /> */}
+			</main>
+
+			<footer className="footer">
+				<div className="flex items-center justify-between py-4">
+					<span className="text-sm text-muted">
+						© 2025 x-icons — MIT License
+					</span>
+					<span className="text-sm text-muted">crafted with motion</span>
 				</div>
-			</Main>
-
-			<Footer>
-				<span className="text-xs font-(family-name:--font-geist-mono) text-muted">
-					© 2025 x-icons — MIT License
-				</span>
-				<span className="text-xs font-(family-name:--font-geist-mono) text-subtle hidden sm:inline">
-					crafted with motion
-				</span>
-			</Footer>
-		</div>
+			</footer>
+		</section>
 	);
 }

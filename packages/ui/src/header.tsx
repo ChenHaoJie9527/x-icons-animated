@@ -9,7 +9,7 @@ export function Header({ children, className }: HeaderProps) {
 	return (
 		<header
 			className={cn(
-				"sticky top-0 z-40 w-full border-b border-border bg-(--background)/95 backdrop-blur",
+				"sticky top-0 z-40 w-full  bg-(--background)/95 backdrop-blur",
 				className
 			)}
 		>

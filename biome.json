@@ -18,7 +18,8 @@
       "recommended": true,
       "a11y": {
         "noNoninteractiveElementInteractions": "off",
-        "noStaticElementInteractions": "off"
+        "noStaticElementInteractions": "off",
+        "noSvgWithoutTitle": "off"
       },
       "style": {
         "useConsistentTypeDefinitions": "off"
