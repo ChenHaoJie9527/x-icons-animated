@@ -37,28 +37,28 @@ export const IconList = ({ icons, searchValue = "" }: IconListProps) => {
 
 	return (
 		<div className="flex flex-col h-full">
-			<div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)] shrink-0">
-				<span className="text-sm text-[var(--muted)]">
+			<div className="flex items-center justify-between px-6 py-4 border-b border-border shrink-0">
+				<span className="text-sm text-muted">
 					{searchValue.trim()
 						? `${filteredIcons.length} result${filteredIcons.length !== 1 ? "s" : ""} for "${searchValue}"`
 						: "All icons"}
 				</span>
-				<span className="text-xs font-(family-name:--font-geist-mono) text-[var(--subtle)] tabular-nums">
+				<span className="text-xs font-(family-name:--font-geist-mono) text-subtle tabular-nums">
 					{filteredIcons.length} / {icons.length}
 				</span>
 			</div>
 
 			{filteredIcons.length === 0 ? (
 				<div className="flex flex-col items-center justify-center flex-1 gap-4">
-					<div className="text-4xl text-[var(--subtle)] font-(family-name:--font-geist-mono) select-none">
+					<div className="text-4xl text-subtle font-(family-name:--font-geist-mono) select-none">
 						[ ]
 					</div>
-					<p className="text-sm font-(family-name:--font-geist-mono) text-[var(--muted)]">
+					<p className="text-sm font-(family-name:--font-geist-mono) text-muted">
 						no icons match &ldquo;{searchValue}&rdquo;
 					</p>
 				</div>
 			) : (
-				<div className="grid grid-cols-[repeat(auto-fill,minmax(128px,1fr))] gap-px bg-[var(--border)] flex-1 content-start">
+				<div className="grid grid-cols-[repeat(auto-fill,minmax(128px,1fr))] gap-px flex-1 content-start">
 					{filteredIcons.map((icon) => (
 						<IconItem
 							copied={copiedName === icon.name}
@@ -98,12 +98,12 @@ const IconItem = ({ icon, Icon, onCopy, copied }: IconItemProps) => {
 			type="button"
 		>
 			<Icon
-				className="text-[var(--muted)] group-hover:text-[var(--primary)] transition-colors duration-150 [&>svg]:size-8"
+				className="text-muted group-hover:text-primary transition-colors duration-150 [&>svg]:size-8"
 				ref={animatedRef}
 			/>
-			<p className="text-xs font-(family-name:--font-geist-mono) text-[var(--subtle)] group-hover:text-[var(--muted)] transition-colors duration-150 truncate w-full text-center leading-none">
+			<p className="text-xs font-(family-name:--font-geist-mono) text-subtle group-hover:text-muted transition-colors duration-150 truncate w-full text-center leading-none">
 				{copied ? (
-					<span className="text-[var(--primary)]">copied</span>
+					<span className="text-primary">copied</span>
 				) : (
 					icon.name
 				)}
