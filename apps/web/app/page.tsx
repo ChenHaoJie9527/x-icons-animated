@@ -11,13 +11,11 @@ export default function Home() {
 	const [search, setSearch] = useState("");
 
 	return (
-		<section className="layout">
-			<header className="header flex items-center gap-8 h-14 py-3">
+		<section className="grid w-full h-full grid-rows-[auto_1fr_auto] gap-2">
+			<header className=" flex items-center gap-8 h-14 py-3">
 				{/* Logo */}
 				<div className="flex items-center gap-2 shrink-0">
-					<span className="text-xl font-semibold text-foreground">
-						x-icons
-					</span>
+					<span className="text-xl font-semibold text-foreground">x-icons</span>
 					<span className="px-2 py-0.5 text-xs bg-primary text-background rounded-full">
 						animated
 					</span>
@@ -66,11 +64,9 @@ export default function Home() {
 				</div>
 			</header>
 
-			<main className="main">
-				{/* <IconList icons={icons} searchValue={search} /> */}
-			</main>
+			<main>{/* <IconList icons={icons} searchValue={search} /> */}</main>
 
-			<footer className="footer">
+			<footer>
 				<div className="flex items-center justify-between py-4">
 					<span className="text-sm text-muted">
 						© 2025 x-icons — MIT License

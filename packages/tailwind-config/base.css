@@ -160,8 +160,7 @@
 	}
 }
 
-.layout {
-	/* header区域高度自适应内容；main区域占据剩余空间；footer区域高度自适应内容；所有区域之间有8px的间距 */
+/* .layout {
 	grid-template:
 		"header" auto
 		"main" 1fr
@@ -183,4 +182,4 @@
 
 .footer {
 	grid-area: footer;
-}
+} */
