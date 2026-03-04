@@ -90,7 +90,7 @@ const IconItem = ({ icon, Icon, onCopy, copied }: IconItemProps) => {
 
 	return (
 		<button
-			className="group flex flex-col items-center justify-center gap-3 p-5 bg-[var(--background)] hover:bg-[var(--surface-hover)] transition-colors duration-150 cursor-pointer min-h-[128px]"
+			className="group flex flex-col items-center justify-center gap-3 p-5 bg-background hover:bg-surface-hover transition-colors duration-150 cursor-pointer min-h-[128px]"
 			onClick={() => onCopy(icon.name)}
 			onMouseEnter={() => animatedRef.current?.startAnimation()}
 			onMouseLeave={() => animatedRef.current?.stopAnimation()}
