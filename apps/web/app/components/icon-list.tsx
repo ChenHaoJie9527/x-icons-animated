@@ -1,8 +1,8 @@
 "use client";
 
-import { ICON_LIST } from "@x-icons/icons/registry";
-import type { IconAnimationHandle, IconMeta } from "@x-icons/icons/types";
 import { useDeferredValue, useMemo, useRef, useState } from "react";
+import { ICON_LIST } from "@/lib/icon-registry";
+import type { IconAnimationHandle, IconMeta } from "@/lib/icon-types";
 
 type Icon = Pick<IconMeta, "name" | "keywords">;
 

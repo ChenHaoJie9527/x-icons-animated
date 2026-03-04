@@ -7,7 +7,7 @@ import type { HTMLAttributes, Ref } from "react";
 import {
 	type IconAnimationHandle,
 	useIconHoverAnimation,
-} from "../hooks/use-icon-hover-animation";
+} from "@/hooks/use-icon-hover-animation";
 
 export interface HomeIconHandle extends IconAnimationHandle {}
 

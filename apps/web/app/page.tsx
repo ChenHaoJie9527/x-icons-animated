@@ -1,5 +1,5 @@
-import { getIcons } from "@x-icons/icons/actions/get-icons";
-import { PageContent } from "./_components/page-content";
+import { getIcons } from "@/actions/get-icons";
+import { PageContent } from "@/components/page-content";
 
 const icons = getIcons();
 

@@ -1,11 +1,7 @@
-import { HomeIcon } from "./icons/home";
-import { SunIcon } from "./icons/sun";
-
-interface IconMeta {
-	name: string;
-	icon: React.ElementType;
-	keywords: string[];
-}
+import { HomeIcon } from "@/icons/home";
+import { MoonIcon } from "@/icons/moon";
+import { SunIcon } from "@/icons/sun";
+import type { IconMeta } from "@/lib/icon-types";
 
 const ICON_LIST: IconMeta[] = [
 	{
@@ -17,6 +13,11 @@ const ICON_LIST: IconMeta[] = [
 		name: "sun",
 		icon: SunIcon,
 		keywords: ["sun", "light", "brightness", "day", "weather"],
+	},
+	{
+		name: "moon",
+		icon: MoonIcon,
+		keywords: ["moon", "dark", "night", "weather"],
 	},
 ].sort((a, b) => a.name.localeCompare(b.name));
 

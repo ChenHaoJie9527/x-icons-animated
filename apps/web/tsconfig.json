@@ -6,7 +6,15 @@
         "name": "next"
       }
     ],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/actions/*": ["./app/actions/*"],
+      "@/components/*": ["./app/components/*"],
+      "@/hooks/*": ["./app/hooks/*"],
+      "@/icons/*": ["./app/icons/*"],
+      "@/lib/*": ["./app/lib/*"]
+    }
   },
   "include": [
     "**/*.ts",

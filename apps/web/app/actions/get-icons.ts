@@ -1,5 +1,5 @@
-import { ICON_LIST } from "../registry";
-import type { IconMeta } from "../types";
+import { ICON_LIST } from "@/lib/icon-registry";
+import type { IconMeta } from "@/lib/icon-types";
 
 type IconInfo = Pick<IconMeta, "name" | "keywords">;
 

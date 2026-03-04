@@ -1,5 +1,5 @@
-import type { IconMeta } from "@x-icons/icons/types";
-import { ThemeToggle } from "../theme-toggle";
+import { ThemeToggle } from "@/components/theme-toggle";
+import type { IconMeta } from "@/lib/icon-types";
 
 type Icon = Pick<IconMeta, "name" | "keywords">;
 
@@ -16,8 +16,6 @@ export function Header({ icons }: HeaderProps) {
 					animated
 				</span>
 			</div>
-
-			{/* <SearchBar onChange={setSearch} value={search} /> */}
 
 			<div className="flex items-center gap-4 shrink-0">
 				<span className="text-sm text-muted md:hidden">

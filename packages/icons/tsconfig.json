@@ -1,7 +1,0 @@
-{
-  "extends": "@x-icons/typescript-config/bundler-library.json",
-  "compilerOptions": {
-    "rootDir": "src"
-  },
-  "include": ["src"]
-}

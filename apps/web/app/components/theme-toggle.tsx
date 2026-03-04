@@ -1,10 +1,11 @@
 "use client";
 
 import { Button } from "@base-ui/react";
-import { SunIcon } from "@x-icons/icons/sun";
 import { cn } from "@x-icons/utils/cn";
 import { useEffect, useState } from "react";
-import { Tooltip } from "./tooltip";
+import { Tooltip } from "@/components/tooltip";
+import { MoonIcon } from "@/icons/moon";
+import { SunIcon } from "@/icons/sun";
 
 export function ThemeToggle() {
 	const [isDark, setIsDark] = useState(false);
@@ -45,24 +46,7 @@ export function ThemeToggle() {
 					)}
 					onClick={() => toggleTheme(!isDark)}
 				>
-					{isDark ? (
-						<SunIcon />
-					) : (
-						<svg
-							fill="none"
-							stroke="currentColor"
-							stroke-width="1"
-							viewBox="0 0 24 24"
-							xmlns="http://www.w3.org/2000/svg"
-							className="size-4"
-						>
-							<path
-								d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-						</svg>
-					)}
+					{isDark ? <SunIcon /> : <MoonIcon />}
 				</Button>
 			</div>
 		</Tooltip>
