@@ -48,7 +48,7 @@
       "source": {
         "organizeImports": "on",
         "useSortedInterfaceMembers": "off",
-        "useSortedAttributes":"off"
+        "useSortedAttributes": "off"
       }
     }
   },

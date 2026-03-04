@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "exports": {
-    "./icons/*": "./src/icons/*.tsx",
+    "./*": "./src/icons/*.tsx",
     "./registry": "./src/registry.ts",
     "./actions/*": "./src/actions/*.ts",
     "./types": "./src/types.ts"
