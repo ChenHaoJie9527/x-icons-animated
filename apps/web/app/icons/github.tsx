@@ -4,8 +4,8 @@ import type { Variants } from "motion/react";
 import { motion } from "motion/react";
 import type { HTMLAttributes, Ref } from "react";
 import { useImperativeHandle } from "react";
-import type { IconAnimationHandle } from "@/hooks/use-icon-hover-animation";
 import { useIconHoverAnimation } from "@/hooks/use-icon-hover-animation";
+import type { IconAnimationHandle } from "@/lib/icon-types";
 
 export interface GithubIconHandle extends IconAnimationHandle {}
 

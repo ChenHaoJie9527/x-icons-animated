@@ -3,11 +3,7 @@
 import { useAnimation } from "motion/react";
 import type { MouseEvent, MouseEventHandler, Ref } from "react";
 import { useCallback, useImperativeHandle, useRef } from "react";
-
-export interface IconAnimationHandle {
-	startAnimation: () => void;
-	stopAnimation: () => void;
-}
+import type { IconAnimationHandle } from "@/lib/icon-types";
 
 interface UseIconHoverAnimationParams {
 	ref?: Ref<IconAnimationHandle>;
