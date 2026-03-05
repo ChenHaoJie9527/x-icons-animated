@@ -98,10 +98,10 @@ const IconItem = ({ icon, Icon, onCopy, copied }: IconItemProps) => {
 			type="button"
 		>
 			<Icon
-				className="text-muted group-hover:text-primary transition-colors duration-150 [&>svg]:size-8"
+				className="text-muted group-hover:text-primary transition-colors duration-150"
 				ref={animatedRef}
 			/>
-			<p className="text-xs font-(family-name:--font-geist-mono) text-subtle group-hover:text-muted transition-colors duration-150 truncate w-full text-center leading-none">
+			<p className="text-xs font-(family-name:--font-geist-mono) text-subtle group-hover:text-primary transition-colors duration-150 truncate w-full text-center leading-none">
 				{copied ? <span className="text-primary">copied</span> : icon.name}
 			</p>
 		</button>

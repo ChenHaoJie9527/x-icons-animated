@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@base-ui/react";
 import { cn } from "@x-icons/utils/cn";
 import { useEffect, useState } from "react";
 import { Tooltip } from "@/components/tooltip";
@@ -38,17 +37,23 @@ export function ThemeToggle() {
 			content={isDark ? "Switch to light mode" : "Switch to dark mode"}
 			side="bottom"
 		>
-			<div className="flex items-center gap-2">
-				<Button
+			{isDark ? (
+				<SunIcon
 					className={cn(
-						"size-9 rounded bg-surface flex items-center justify-center border",
+						"size-9 rounded bg-surface flex items-center justify-center border hover:text-primary",
 						isDark ? "border-primary" : "border-border"
 					)}
 					onClick={() => toggleTheme(!isDark)}
-				>
-					{isDark ? <SunIcon /> : <MoonIcon />}
-				</Button>
-			</div>
+				/>
+			) : (
+				<MoonIcon
+					className={cn(
+						"size-9 rounded bg-surface flex items-center justify-center border hover:text-primary",
+						isDark ? "border-primary" : "border-border"
+					)}
+					onClick={() => toggleTheme(!isDark)}
+				/>
+			)}
 		</Tooltip>
 	);
 }

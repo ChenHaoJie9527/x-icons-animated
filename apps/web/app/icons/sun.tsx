@@ -34,6 +34,7 @@ const CIRCLE_VARIANTS: Variants = {
 		scale: [0.8, 1],
 		transition: {
 			duration: 0.4,
+			ease: "easeInOut",
 		},
 	},
 };
@@ -99,7 +100,8 @@ const SunIcon = ({
 				stroke-width="1"
 				viewBox="0 0 24 24"
 				xmlns="http://www.w3.org/2000/svg"
-				className="size-4"
+				width={size}
+				height={size}
 			>
 				<motion.circle
 					animate={controls}
