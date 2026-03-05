@@ -16,7 +16,7 @@ interface SunIconProps extends HTMLAttributes<HTMLDivElement> {
 
 /**
  * @description 定义一个圆圈的动画变量
- * @example 
+ * @example
  * 初始状态：透明度1，缩放1
  * 动画状态：透明度0，缩放0.8
  * 动画时间：0.3秒
@@ -96,7 +96,7 @@ const SunIcon = ({
 			<svg
 				fill="none"
 				stroke="currentColor"
-				stroke-width="1.5"
+				stroke-width="1"
 				viewBox="0 0 24 24"
 				xmlns="http://www.w3.org/2000/svg"
 				className="size-4"
