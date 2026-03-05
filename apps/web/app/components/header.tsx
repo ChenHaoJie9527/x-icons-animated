@@ -1,7 +1,7 @@
-import { ThemeToggle } from "@/components/theme-toggle";
-import type { IconMeta } from "@/lib/icon-types";
 import { Button } from "@base-ui/react";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { GithubIcon } from "@/icons/github";
+import type { IconMeta } from "@/lib/icon-types";
 
 type Icon = Pick<IconMeta, "name" | "keywords">;
 

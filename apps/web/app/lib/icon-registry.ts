@@ -1,7 +1,7 @@
+import { GithubIcon } from "@/icons/github";
 import { HomeIcon } from "@/icons/home";
 import { MoonIcon } from "@/icons/moon";
 import { SunIcon } from "@/icons/sun";
-import { GithubIcon } from "@/icons/github";
 import type { IconMeta } from "@/lib/icon-types";
 
 const ICON_LIST: IconMeta[] = [
@@ -23,7 +23,13 @@ const ICON_LIST: IconMeta[] = [
 	{
 		name: "github",
 		icon: GithubIcon,
-		keywords: ["github", "repository", "code", "version control", "open source"],
+		keywords: [
+			"github",
+			"repository",
+			"code",
+			"version control",
+			"open source",
+		],
 	},
 ].sort((a, b) => a.name.localeCompare(b.name));
 

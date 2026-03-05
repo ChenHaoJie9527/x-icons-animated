@@ -97,7 +97,7 @@ const SunIcon = ({
 			<svg
 				fill="none"
 				stroke="currentColor"
-				stroke-width="1"
+				strokeWidth="1"
 				viewBox="0 0 24 24"
 				xmlns="http://www.w3.org/2000/svg"
 				width={size}
@@ -116,8 +116,8 @@ const SunIcon = ({
 					animate={controls}
 					d="M12 3v2.25"
 					initial="normal"
-					stroke-linecap="round"
-					stroke-linejoin="round"
+					strokeLinecap="round"
+					strokeLinejoin="round"
 					variants={createRayVariants(0)}
 				/>
 				{/* 右上 */}
@@ -125,8 +125,8 @@ const SunIcon = ({
 					animate={controls}
 					d="M17.636 5.636l-1.591 1.591"
 					initial="normal"
-					stroke-linecap="round"
-					stroke-linejoin="round"
+					strokeLinecap="round"
+					strokeLinejoin="round"
 					variants={createRayVariants(0.05)}
 				/>
 				{/* 右侧 */}
@@ -134,8 +134,8 @@ const SunIcon = ({
 					animate={controls}
 					d="M21 12h-2.25"
 					initial="normal"
-					stroke-linecap="round"
-					stroke-linejoin="round"
+					strokeLinecap="round"
+					strokeLinejoin="round"
 					variants={createRayVariants(0.1)}
 				/>
 				{/* 右下 */}
@@ -143,8 +143,8 @@ const SunIcon = ({
 					animate={controls}
 					d="M17.636 18.364l-1.591-1.591"
 					initial="normal"
-					stroke-linecap="round"
-					stroke-linejoin="round"
+					strokeLinecap="round"
+					strokeLinejoin="round"
 					variants={createRayVariants(0.15)}
 				/>
 				{/* 底部 */}
@@ -152,8 +152,8 @@ const SunIcon = ({
 					animate={controls}
 					d="M12 18.75V21"
 					initial="normal"
-					stroke-linecap="round"
-					stroke-linejoin="round"
+					strokeLinecap="round"
+					strokeLinejoin="round"
 					variants={createRayVariants(0.2)}
 				/>
 				{/* 左下 */}
@@ -161,8 +161,8 @@ const SunIcon = ({
 					animate={controls}
 					d="M6.364 18.364l1.591-1.591"
 					initial="normal"
-					stroke-linecap="round"
-					stroke-linejoin="round"
+					strokeLinecap="round"
+					strokeLinejoin="round"
 					variants={createRayVariants(0.25)}
 				/>
 				{/* 左侧 */}
@@ -170,8 +170,8 @@ const SunIcon = ({
 					animate={controls}
 					d="M3 12h2.25"
 					initial="normal"
-					stroke-linecap="round"
-					stroke-linejoin="round"
+					strokeLinecap="round"
+					strokeLinejoin="round"
 					variants={createRayVariants(0.3)}
 				/>
 				{/* 左上 */}
@@ -179,8 +179,8 @@ const SunIcon = ({
 					animate={controls}
 					d="M6.364 5.636l1.591 1.591"
 					initial="normal"
-					stroke-linecap="round"
-					stroke-linejoin="round"
+					strokeLinecap="round"
+					strokeLinejoin="round"
 					variants={createRayVariants(0.35)}
 				/>
 			</svg>
