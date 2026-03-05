@@ -27,16 +27,16 @@ export function Tooltip({
 						<BaseTooltip.Popup
 							className={cn(
 								"z-50 px-3 py-1.5 text-xs rounded",
-								"bg-[var(--surface)] text-[var(--foreground)]",
-								"border border-[var(--border)]",
+								" bg-surface text-foreground",
+								"border border-border",
 								"shadow-lg",
 								"animate-in fade-in-0 zoom-in-95 duration-200"
 							)}
 						>
 							<BaseTooltip.Arrow
 								className={cn(
-									"fill-[var(--surface)]",
-									"[&>path:first-child]:stroke-[var(--border)]"
+									"fill-surface",
+									"[&>path:first-child]:stroke-border"
 								)}
 							/>
 							{content}
