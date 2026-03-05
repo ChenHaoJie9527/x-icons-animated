@@ -1,5 +1,7 @@
 import { ThemeToggle } from "@/components/theme-toggle";
 import type { IconMeta } from "@/lib/icon-types";
+import { Button } from "@base-ui/react";
+import { GithubIcon } from "@/icons/github";
 
 type Icon = Pick<IconMeta, "name" | "keywords">;
 
@@ -22,14 +24,9 @@ export function Header({ icons }: HeaderProps) {
 					{icons.length} {icons.length === 1 ? "icon" : "icons"}
 				</span>
 				<ThemeToggle />
-				<a
-					className="text-sm text-foreground hover:text-primary transition-colors"
-					href="https://github.com"
-					rel="noopener noreferrer"
-					target="_blank"
-				>
-					GitHub
-				</a>
+				<Button className="text-sm text-foreground hover:text-primary transition-colors border-border border bg-surface  rounded size-9 flex items-center justify-center">
+					<GithubIcon />
+				</Button>
 			</div>
 		</header>
 	);
