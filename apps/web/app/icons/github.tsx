@@ -16,7 +16,7 @@ interface GithubIconProps extends HTMLAttributes<HTMLDivElement> {
 
 const BRANCH_VARIANTS: Variants = {
 	normal: {
-        rotate: 0,
+		rotate: 0,
 		transition: {
 			duration: 0.3,
 		},
