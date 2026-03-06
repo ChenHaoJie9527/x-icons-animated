@@ -36,7 +36,7 @@ const PATH_VARIANTS: Variants = {
 };
 
 const MoonIcon = ({
-	size = 24,
+	size = 32,
 	color = "currentColor",
 	className,
 	onMouseEnter,

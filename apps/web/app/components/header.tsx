@@ -35,7 +35,7 @@ export function Header({ icons }: HeaderProps) {
 				</span>
 				<ThemeToggle />
 				<Button className="text-sm text-foreground hover:text-primary transition-colors border-border border bg-surface  rounded size-9 flex items-center justify-center">
-					<GithubIcon />
+					<GithubIcon size={24} />
 				</Button>
 			</motion.div>
 		</header>

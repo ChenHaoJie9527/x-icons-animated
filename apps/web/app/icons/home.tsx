@@ -31,7 +31,7 @@ const HOME_VARIANTS: Variants = {
 };
 
 function HomeIcon({
-	size = 28,
+	size = 32,
 	color = "currentColor",
 	className,
 	onMouseEnter,

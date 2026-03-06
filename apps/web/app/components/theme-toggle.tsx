@@ -44,6 +44,7 @@ export function ThemeToggle() {
 						isDark ? "border-primary" : "border-border"
 					)}
 					onClick={() => toggleTheme(!isDark)}
+					size={24}
 				/>
 			) : (
 				<MoonIcon
@@ -52,6 +53,7 @@ export function ThemeToggle() {
 						isDark ? "border-primary" : "border-border"
 					)}
 					onClick={() => toggleTheme(!isDark)}
+					size={24}
 				/>
 			)}
 		</Tooltip>

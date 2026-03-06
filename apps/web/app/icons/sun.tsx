@@ -63,7 +63,7 @@ const createRayVariants = (delay: number): Variants => ({
 });
 
 const SunIcon = ({
-	size = 24,
+	size = 32,
 	color = "currentColor",
 	className,
 	onMouseEnter,

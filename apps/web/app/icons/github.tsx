@@ -32,7 +32,7 @@ const BRANCH_VARIANTS: Variants = {
 };
 
 const GithubIcon = ({
-	size = 24,
+	size = 32,
 	color = "currentColor",
 	className,
 	onMouseEnter,
@@ -67,8 +67,8 @@ const GithubIcon = ({
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 24 24"
-				width="24"
-				height="24"
+				width={size}
+				height={size}
 			>
 				<motion.path
 					d="M9 19c-4.3 1.4-4.3-2.5-6-3"
