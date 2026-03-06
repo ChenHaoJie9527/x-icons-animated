@@ -17,6 +17,8 @@
 	--color-surface-hover: var(--surface-hover);
 	--color-border: var(--border);
 	--color-border-hover: var(--border-hover);
+	--color-icon-item-border: var(--icon-item-border);
+	--color-icon-item-bg: var(--icon-item-bg);
 	--color-primary: var(--primary);
 	--color-primary-hover: var(--primary-hover);
 	--color-muted: var(--muted);
@@ -41,6 +43,10 @@
 	/* 边框 */
 	--border: rgba(0, 0, 0, 0.08);
 	--border-hover: rgba(0, 0, 0, 0.15);
+
+	/* Icon item 卡片 */
+	--icon-item-border: #e6e6e6;
+	--icon-item-bg: #fbfcfb;
 
 	/* 主色 - 橙色 */
 	--primary: #ff6b35;
@@ -72,6 +78,10 @@
 	/* 边框 */
 	--border: rgba(255, 255, 255, 0.08);
 	--border-hover: rgba(255, 255, 255, 0.15);
+
+	/* Icon item 卡片 */
+	--icon-item-border: rgba(255, 255, 255, 0.12);
+	--icon-item-bg: #141414;
 
 	/* 主色 - 橙色（暗色模式下稍微降低饱和度） */
 	--primary: #ff7a50;

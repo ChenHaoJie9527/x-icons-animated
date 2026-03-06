@@ -14,7 +14,7 @@ export function StoryTimeline({
 	onSearchChange,
 }: StoryTimelineProps) {
 	return (
-		<div className="w-full max-w-4xl mx-auto px-6 py-16 md:py-20">
+		<div className="w-full max-w-4xl mx-auto px-6 py-16 md:py-16">
 			<div className="text-center space-y-6">
 				<motion.h1
 					className="text-4xl md:text-5xl font-bold text-foreground leading-tight"

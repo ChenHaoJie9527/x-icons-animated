@@ -1,10 +1,10 @@
 "use client";
 
+import { motion } from "motion/react";
 import { useDeferredValue, useMemo, useRef, useState } from "react";
+import { PAGE_ANIMATIONS } from "@/lib/animation-timeline";
 import { ICON_LIST } from "@/lib/icon-registry";
 import type { IconAnimationHandle, IconMeta } from "@/lib/icon-types";
-import { PAGE_ANIMATIONS } from "@/lib/animation-timeline";
-import { motion } from "motion/react";
 
 type Icon = Pick<IconMeta, "name" | "keywords">;
 
@@ -42,15 +42,16 @@ export const IconList = ({ icons, searchValue = "" }: IconListProps) => {
 			className="flex flex-col h-full"
 			{...PAGE_ANIMATIONS.heroIconsContent}
 		>
-			<div className="flex items-center justify-between px-6 py-4 border-b border-border shrink-0">
-				<span className="text-sm text-muted">
+			<div className=" py-4 shrink-0 space-y-1">
+				<p className="text-xl text-foreground font-black">
 					{searchValue.trim()
 						? `${filteredIcons.length} result${filteredIcons.length !== 1 ? "s" : ""} for "${searchValue}"`
 						: "All icons"}
-				</span>
-				<span className="text-xs font-(family-name:--font-geist-mono) text-subtle tabular-nums">
-					{filteredIcons.length} / {icons.length}
-				</span>
+				</p>
+				<p className="text-sm text-muted mb-2 leading-relaxed">
+					Explore 5103 <span className="text-primary">All icons</span> in SVG,
+					React, Icon Font and more. Ideal for apps and websites.
+				</p>
 			</div>
 
 			{filteredIcons.length === 0 ? (
@@ -63,7 +64,7 @@ export const IconList = ({ icons, searchValue = "" }: IconListProps) => {
 					</p>
 				</div>
 			) : (
-				<div className="grid grid-cols-[repeat(auto-fill,minmax(128px,1fr))] gap-px flex-1 content-start">
+				<div className="grid grid-cols-[repeat(auto-fill,minmax(96px,1fr))] gap-2 flex-1 content-start">
 					{filteredIcons.map((icon) => (
 						<IconItem
 							copied={copiedName === icon.name}
@@ -95,7 +96,7 @@ const IconItem = ({ icon, Icon, onCopy, copied }: IconItemProps) => {
 
 	return (
 		<button
-			className="group flex flex-col items-center justify-center gap-3 p-5 bg-background hover:bg-surface-hover transition-colors duration-150 cursor-pointer min-h-[128px]"
+			className="group flex flex-col items-center justify-center gap-3 border-[0.5px] rounded-xl size-24 border-icon-item-border bg-icon-item-bg hover:border-primary transition-colors duration-150 cursor-pointer"
 			onClick={() => onCopy(icon.name)}
 			onMouseEnter={() => animatedRef.current?.startAnimation()}
 			onMouseLeave={() => animatedRef.current?.stopAnimation()}
