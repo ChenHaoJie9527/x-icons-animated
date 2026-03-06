@@ -3,6 +3,8 @@
 import { useDeferredValue, useMemo, useRef, useState } from "react";
 import { ICON_LIST } from "@/lib/icon-registry";
 import type { IconAnimationHandle, IconMeta } from "@/lib/icon-types";
+import { PAGE_ANIMATIONS } from "@/lib/animation-timeline";
+import { motion } from "motion/react";
 
 type Icon = Pick<IconMeta, "name" | "keywords">;
 
@@ -36,7 +38,10 @@ export const IconList = ({ icons, searchValue = "" }: IconListProps) => {
 	};
 
 	return (
-		<div className="flex flex-col h-full">
+		<motion.div
+			className="flex flex-col h-full"
+			{...PAGE_ANIMATIONS.heroIconsContent}
+		>
 			<div className="flex items-center justify-between px-6 py-4 border-b border-border shrink-0">
 				<span className="text-sm text-muted">
 					{searchValue.trim()
@@ -70,7 +75,7 @@ export const IconList = ({ icons, searchValue = "" }: IconListProps) => {
 					))}
 				</div>
 			)}
-		</div>
+		</motion.div>
 	);
 };
 

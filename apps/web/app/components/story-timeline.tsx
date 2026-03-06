@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
-import { PAGE_ANIMATIONS } from "@/lib/animation-timeline";
 import Link from "next/link";
+import { PAGE_ANIMATIONS } from "@/lib/animation-timeline";
 
 interface StoryTimelineProps {
 	searchValue?: string;
@@ -14,7 +14,7 @@ export function StoryTimeline({
 	onSearchChange,
 }: StoryTimelineProps) {
 	return (
-		<div className="w-full max-w-4xl mx-auto px-6 py-16 md:py-24">
+		<div className="w-full max-w-4xl mx-auto px-6 py-16 md:py-20">
 			<div className="text-center space-y-6">
 				<motion.h1
 					className="text-4xl md:text-5xl font-bold text-foreground leading-tight"
@@ -77,16 +77,7 @@ export function StoryTimeline({
 					>
 						Vue
 					</Link>
-					,{" "}
-					<Link
-						href="https://nextjs.org"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="text-[#8b5cf6] hover:underline"
-					>
-						Next.js
-					</Link>{" "}
-					and other mainstream frameworks, ready to use out of the box.
+					, and other mainstream frameworks, ready to use out of the box.
 				</motion.p>
 
 				<motion.div
@@ -109,7 +100,7 @@ export function StoryTimeline({
 						</svg>
 						<input
 							aria-label="Search icons"
-							className="w-full h-14 pl-14 pr-6 text-base bg-surface border-2 border-border rounded-xl text-foreground placeholder:text-muted outline-none focus:border-primary transition-colors shadow-sm"
+							className="w-full h-14 pl-14 pr-6 text-base bg-surface border border-border rounded-xl text-foreground placeholder:text-muted outline-none focus:border-primary transition-colors"
 							onChange={(e) => onSearchChange?.(e.target.value)}
 							placeholder="Search 316 icons..."
 							type="text"
@@ -123,24 +114,24 @@ export function StoryTimeline({
 					{...PAGE_ANIMATIONS.heroFooter}
 				>
 					<p>
-						MIT 开源协议 · 欢迎使用、分享与贡献 · Inspired by{" "}
-						<a
+						MIT License · Use freely, share and contribute · Inspired by{" "}
+						<Link
 							href="https://heroicons.com"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-muted hover:text-primary transition-colors"
 						>
 							Heroicons
-						</a>{" "}
+						</Link>{" "}
 						&{" "}
-						<a
+						<Link
 							href="https://www.xicons.org"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-muted hover:text-primary transition-colors"
 						>
 							xicons
-						</a>
+						</Link>
 					</p>
 				</motion.div>
 			</div>
