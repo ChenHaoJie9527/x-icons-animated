@@ -27,7 +27,7 @@ const ARROW_DOWN_VARIANTS: Variants = {
 		transition: {
 			times: [0, 0.4, 1],
 			duration: 0.3,
-			delay: 0.3,
+            delay: 0.2
 		},
 	},
 };
@@ -37,12 +37,12 @@ const ARROW_DOWN_VARIANTS: Variants = {
  */
 const CIRCLE_VARIANTS: Variants = {
 	normal: {
-		opacity: 1,
+		scale: 1,
 		pathLength: 1,
 		pathOffset: 0,
 	},
 	animate: {
-		opacity: [0, 1],
+		scale: [1, 1.1, 1],
 		pathLength: [0, 1],
 		pathOffset: [1, 0],
 		transition: {
