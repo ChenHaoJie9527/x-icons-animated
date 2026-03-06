@@ -27,7 +27,7 @@ const ARROW_DOWN_VARIANTS: Variants = {
 		transition: {
 			times: [0, 0.4, 1],
 			duration: 0.3,
-            delay: 0.2
+			delay: 0.3,
 		},
 	},
 };

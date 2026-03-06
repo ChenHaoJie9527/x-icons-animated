@@ -1,4 +1,5 @@
 import { ArrowDownCircleIcon } from "@/icons/arrow-down-circle";
+import { CheckMarkBadge1Icon } from "@/icons/check-mark-badge-1";
 import { GithubIcon } from "@/icons/github";
 import { HomeIcon } from "@/icons/home";
 import { MoonIcon } from "@/icons/moon";
@@ -36,6 +37,11 @@ const ICON_LIST: IconMeta[] = [
 		name: "arrow-down-circle",
 		icon: ArrowDownCircleIcon,
 		keywords: ["arrow", "down", "circle", "navigation"],
+	},
+	{
+		name: "check-mark-badge-1",
+		icon: CheckMarkBadge1Icon,
+		keywords: ["check", "mark", "badge", "1"],
 	},
 ].sort((a, b) => a.name.localeCompare(b.name));
 
