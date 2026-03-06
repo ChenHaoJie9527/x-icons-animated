@@ -1,8 +1,8 @@
+import { ArrowDownCircleIcon } from "@/icons/arrow-down-circle";
 import { GithubIcon } from "@/icons/github";
 import { HomeIcon } from "@/icons/home";
 import { MoonIcon } from "@/icons/moon";
 import { SunIcon } from "@/icons/sun";
-import { ArrowDownCircleIcon } from "@/icons/arrow-down-circle";
 import type { IconMeta } from "@/lib/icon-types";
 
 const ICON_LIST: IconMeta[] = [
