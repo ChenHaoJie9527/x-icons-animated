@@ -7,6 +7,8 @@
     "dev": "next dev --port 8888",
     "build": "next build",
     "start": "next start",
+    "test": "vitest run",
+    "test:watch": "vitest --watch",
     "check-types": "next typegen && tsc --noEmit",
     "icons:sync": "node ./scripts/sync-icon-registry.mjs",
     "icons:watch": "node ./scripts/sync-icon-registry.mjs --watch"

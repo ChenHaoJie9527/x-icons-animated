@@ -3,19 +3,23 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev",
+    "dev": "turbo run dev test:watch icons:watch --filter=web --parallel --continue",
     "lint": "ultracite check",
     "lint:fix": "ultracite fix",
+    "test": "turbo run test --filter=web",
+    "test:web": "turbo run test --filter=web",
+    "test:web:watch": "turbo run test:watch --filter=web",
     "check-types": "turbo run check-types",
     "icons:sync": "turbo run icons:sync --filter=web",
-    "icons:watch": "turbo watch icons:sync --filter=web"
+    "icons:watch": "turbo run icons:watch --filter=web"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.0",
     "lint-staged": "^16.2.7",
     "turbo": "^2.8.11",
     "typescript": "5.9.2",
-    "ultracite": "7.2.4"
+    "ultracite": "7.2.4",
+    "vitest": "^3.2.4"
   },
   "packageManager": "pnpm@9.0.0",
   "engines": {
