@@ -1,6 +1,7 @@
 import { ArrowDownIcon } from "@/icons/arrow-down";
 import { ArrowDownCircleIcon } from "@/icons/arrow-down-circle";
 import { ArrowDownLeftIcon } from "@/icons/arrow-down-left";
+import { ArrowDownRightIcon } from "@/icons/arrow-down-right";
 import { ArrowLeftIcon } from "@/icons/arrow-left";
 import { ArrowLogDownIcon } from "@/icons/arrow-log-down";
 import { CheckMarkBadge1Icon } from "@/icons/check-mark-badge-1";
@@ -25,6 +26,11 @@ const ICON_LIST: IconMeta[] = [
 		name: "arrow-down-left",
 		icon: ArrowDownLeftIcon,
 		keywords: ["arrow", "down", "left"],
+	},
+	{
+		name: "arrow-down-right",
+		icon: ArrowDownRightIcon,
+		keywords: ["arrow", "down", "right"],
 	},
 	{
 		name: "arrow-left",
