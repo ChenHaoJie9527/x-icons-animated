@@ -7,7 +7,9 @@
     "dev": "next dev --port 8888",
     "build": "next build",
     "start": "next start",
-    "check-types": "next typegen && tsc --noEmit"
+    "check-types": "next typegen && tsc --noEmit",
+    "icons:sync": "node ./scripts/sync-icon-registry.mjs",
+    "icons:watch": "node ./scripts/sync-icon-registry.mjs --watch"
   },
   "dependencies": {
     "@base-ui/react": "^1.2.0",
