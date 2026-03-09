@@ -1,3 +1,4 @@
+import { ArrowDownIcon } from "@/icons/arrow-down";
 import { ArrowDownCircleIcon } from "@/icons/arrow-down-circle";
 import { ArrowLeftIcon } from "@/icons/arrow-left";
 import { ArrowLogDownIcon } from "@/icons/arrow-log-down";
@@ -9,6 +10,11 @@ import { SunIcon } from "@/icons/sun";
 import type { IconMeta } from "@/lib/icon-types";
 
 const ICON_LIST: IconMeta[] = [
+	{
+		name: "arrow-down",
+		icon: ArrowDownIcon,
+		keywords: ["arrow", "down"],
+	},
 	{
 		name: "arrow-down-circle",
 		icon: ArrowDownCircleIcon,
