@@ -1,5 +1,6 @@
 import { ArrowDownIcon } from "@/icons/arrow-down";
 import { ArrowDownCircleIcon } from "@/icons/arrow-down-circle";
+import { ArrowDownLeftIcon } from "@/icons/arrow-down-left";
 import { ArrowLeftIcon } from "@/icons/arrow-left";
 import { ArrowLogDownIcon } from "@/icons/arrow-log-down";
 import { CheckMarkBadge1Icon } from "@/icons/check-mark-badge-1";
@@ -18,7 +19,12 @@ const ICON_LIST: IconMeta[] = [
 	{
 		name: "arrow-down-circle",
 		icon: ArrowDownCircleIcon,
-		keywords: ["arrow", "down", "circle", "navigation"],
+		keywords: ["arrow", "down", "circle"],
+	},
+	{
+		name: "arrow-down-left",
+		icon: ArrowDownLeftIcon,
+		keywords: ["arrow", "down", "left"],
 	},
 	{
 		name: "arrow-left",
@@ -38,17 +44,17 @@ const ICON_LIST: IconMeta[] = [
 	{
 		name: "github",
 		icon: GithubIcon,
-		keywords: ["github", "repository", "code", "version control", "open source"],
+		keywords: ["github"],
 	},
 	{
 		name: "home",
 		icon: HomeIcon,
-		keywords: ["home", "house", "building", "location", "address"],
+		keywords: ["home"],
 	},
 	{
 		name: "moon",
 		icon: MoonIcon,
-		keywords: ["moon", "dark", "night", "weather"],
+		keywords: ["moon"],
 	},
 	{
 		name: "sun",
