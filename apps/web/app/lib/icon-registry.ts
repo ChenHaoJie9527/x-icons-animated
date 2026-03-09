@@ -26,7 +26,13 @@ const ICON_LIST: IconMeta[] = [
 	{
 		name: "github",
 		icon: GithubIcon,
-		keywords: ["github", "repository", "code", "version control", "open source"],
+		keywords: [
+			"github",
+			"repository",
+			"code",
+			"version control",
+			"open source",
+		],
 	},
 	{
 		name: "home",

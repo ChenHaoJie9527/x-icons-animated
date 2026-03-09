@@ -1,7 +1,7 @@
 import { watch } from "node:fs";
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 // 读取当前文件的绝对路径
 const __filename = fileURLToPath(import.meta.url);
@@ -93,25 +93,44 @@ const createRegistryFile = (iconNames, keywordMap) => {
 	].join("\n");
 };
 
+// 定义函数: 判断目录项是否为文件
+const isFileEntry = (entry) => {
+	if (!entry || typeof entry !== "object") {
+		return false;
+	}
+
+	const hasFileCheck = typeof entry.isFile === "function";
+	return hasFileCheck ? entry.isFile() : false;
+};
+
 // 定义函数: 同步icon-registry.ts文件
-const syncRegistry = async () => {
-	const iconFiles = await readdir(iconsDir, { withFileTypes: true });
+const syncRegistry = async (options = {}) => {
+	const targetIconsDir = options.iconsDir ?? iconsDir;
+	const targetRegistryPath = options.registryPath ?? registryPath;
+	const readDirectory = options.readdir ?? readdir;
+	const readRegistry = options.readFile ?? readFile;
+	const writeRegistry = options.writeFile ?? writeFile;
+	const log = options.log ?? console.log;
+
+	const iconFiles = await readDirectory(targetIconsDir, {
+		withFileTypes: true,
+	});
 	const iconNames = iconFiles
-		.filter((file) => file.isFile() && file.name.endsWith(".tsx"))
+		.filter((file) => isFileEntry(file) && file.name.endsWith(".tsx"))
 		.map((file) => file.name.replace(TSX_FILE_EXTENSION_REGEX, ""))
 		.sort((a, b) => a.localeCompare(b));
 
-	const previousRegistry = await readFile(registryPath, "utf8");
+	const previousRegistry = await readRegistry(targetRegistryPath, "utf8");
 	const keywordMap = parseExistingKeywordMap(previousRegistry);
 	const nextRegistry = createRegistryFile(iconNames, keywordMap);
 
 	if (nextRegistry !== previousRegistry) {
-		await writeFile(registryPath, nextRegistry, "utf8");
-		console.log(`Updated ${path.relative(process.cwd(), registryPath)}`);
+		await writeRegistry(targetRegistryPath, nextRegistry, "utf8");
+		log(`Updated ${path.relative(process.cwd(), targetRegistryPath)}`);
 		return true;
 	}
 
-	console.log("icon-registry.ts is already up to date.");
+	log("icon-registry.ts is already up to date.");
 	return false;
 };
 
@@ -188,8 +207,22 @@ const main = async () => {
 	await syncRegistry();
 };
 
-main().catch((error) => {
-	console.error("Failed to sync icon registry.");
-	console.error(error);
-	process.exitCode = 1;
-});
+const isDirectExecution =
+	typeof process.argv[1] === "string" &&
+	import.meta.url === pathToFileURL(process.argv[1]).href;
+
+if (isDirectExecution) {
+	main().catch((error) => {
+		console.error("Failed to sync icon registry.");
+		console.error(error);
+		process.exitCode = 1;
+	});
+}
+
+export {
+	createRegistryFile,
+	parseExistingKeywordMap,
+	syncRegistry,
+	toExportName,
+	toPascalCase,
+};
