@@ -6,6 +6,7 @@ import { ArrowLeftIcon } from "@/icons/arrow-left";
 import { ArrowLogDownIcon } from "@/icons/arrow-log-down";
 import { ArrowRightIcon } from "@/icons/arrow-right";
 import { CheckMarkBadge1Icon } from "@/icons/check-mark-badge-1";
+import { CopyPathIcon } from "@/icons/copy-path";
 import { GithubIcon } from "@/icons/github";
 import { HomeIcon } from "@/icons/home";
 import { MoonIcon } from "@/icons/moon";
@@ -52,6 +53,11 @@ const ICON_LIST: IconMeta[] = [
 		name: "check-mark-badge-1",
 		icon: CheckMarkBadge1Icon,
 		keywords: ["check", "mark", "badge", "1"],
+	},
+	{
+		name: "copy-path",
+		icon: CopyPathIcon,
+		keywords: ["copy", "path"],
 	},
 	{
 		name: "github",
