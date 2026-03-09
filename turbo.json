@@ -14,6 +14,10 @@
     "check-types": {
       "dependsOn": ["^check-types"]
     },
+    "icons:sync": {
+      "cache": false,
+      "inputs": ["app/icons/**/*.tsx", "scripts/sync-icon-registry.mjs"]
+    },
     "dev": {
       "cache": false,
       "persistent": true
