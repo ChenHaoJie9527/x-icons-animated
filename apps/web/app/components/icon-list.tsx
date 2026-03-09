@@ -39,7 +39,7 @@ export const IconList = ({ icons, searchValue = "" }: IconListProps) => {
 
 	return (
 		<motion.div
-			className="flex flex-col h-full"
+			className="flex flex-col "
 			{...PAGE_ANIMATIONS.heroIconsContent}
 		>
 			<div className=" py-4 shrink-0 space-y-1">

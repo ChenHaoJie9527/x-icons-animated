@@ -11,7 +11,7 @@ interface PageContentProps {
 
 export function PageContent({ icons }: PageContentProps) {
 	return (
-		<section className="grid w-full h-full grid-rows-[auto_1fr_auto] gap-2">
+		<section className="grid w-full  grid-rows-[auto_1fr_auto] gap-2">
 			<Header icons={icons} />
 
 			<main className="container mx-auto">

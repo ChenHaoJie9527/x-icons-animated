@@ -1,11 +1,11 @@
 "use client";
 import { cn } from "@x-icons/utils/cn";
+import type { Variants } from "motion/react";
+import { motion } from "motion/react";
 import type { HTMLAttributes, Ref } from "react";
 import { useImperativeHandle } from "react";
 import { useIconHoverAnimation } from "@/hooks/use-icon-hover-animation";
 import type { IconAnimationHandle } from "@/lib/icon-types";
-import type { Variants } from "motion/react";
-import { motion } from "motion/react";
 
 export interface ArrowDownLeftIconHandle extends IconAnimationHandle {}
 interface ArrowDownLeftIconProps extends HTMLAttributes<HTMLDivElement> {
