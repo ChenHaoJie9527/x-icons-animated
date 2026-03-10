@@ -8,5 +8,5 @@
 html,
 body {
 	position: relative;
-	overflow-x: hidden;
+	overflow: visible;
 }
