@@ -1,4 +1,5 @@
 import { AcademicCapIcon } from "@/icons/academic-cap";
+import { AdjustmentsHorizontalIcon } from "@/icons/adjustments-horizontal";
 import { ArrowDownIcon } from "@/icons/arrow-down";
 import { ArrowDownCircleIcon } from "@/icons/arrow-down-circle";
 import { ArrowDownLeftIcon } from "@/icons/arrow-down-left";
@@ -19,6 +20,11 @@ const ICON_LIST: IconMeta[] = [
 		name: "academic-cap",
 		icon: AcademicCapIcon,
 		keywords: ["academic", "cap"],
+	},
+	{
+		name: "adjustments-horizontal",
+		icon: AdjustmentsHorizontalIcon,
+		keywords: ["adjustments", "horizontal"],
 	},
 	{
 		name: "arrow-down",
