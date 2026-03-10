@@ -1,3 +1,4 @@
+import { AcademicCapIcon } from "@/icons/academic-cap";
 import { ArrowDownIcon } from "@/icons/arrow-down";
 import { ArrowDownCircleIcon } from "@/icons/arrow-down-circle";
 import { ArrowDownLeftIcon } from "@/icons/arrow-down-left";
@@ -14,6 +15,11 @@ import { SunIcon } from "@/icons/sun";
 import type { IconMeta } from "@/lib/icon-types";
 
 const ICON_LIST: IconMeta[] = [
+	{
+		name: "academic-cap",
+		icon: AcademicCapIcon,
+		keywords: ["academic", "cap"],
+	},
 	{
 		name: "arrow-down",
 		icon: ArrowDownIcon,
