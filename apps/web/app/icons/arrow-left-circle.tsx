@@ -40,7 +40,7 @@ const ARROW_LEFT_CIRCLE_VARIANTS_PATH_2: Variants = {
 		transition: {
 			duration: 0.3,
 			delay: 0.3,
-            times: [0, 0.4, 1],
+			times: [0, 0.4, 1],
 		},
 	},
 };

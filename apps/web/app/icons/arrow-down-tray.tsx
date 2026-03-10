@@ -1,11 +1,11 @@
 "use client";
-import type { HTMLAttributes, Ref } from "react";
-import { useIconHoverAnimation } from "@/hooks/use-icon-hover-animation";
-import type { IconAnimationHandle } from "@/lib/icon-types";
-import { useImperativeHandle } from "react";
 import { cn } from "@x-icons/utils/cn";
 import type { Variants } from "motion/react";
 import { motion } from "motion/react";
+import type { HTMLAttributes, Ref } from "react";
+import { useImperativeHandle } from "react";
+import { useIconHoverAnimation } from "@/hooks/use-icon-hover-animation";
+import type { IconAnimationHandle } from "@/lib/icon-types";
 
 export interface ArrowDownTrayIconHandle extends IconAnimationHandle {}
 
@@ -17,17 +17,17 @@ interface ArrowDownTrayIconProps extends HTMLAttributes<HTMLDivElement> {
 const ARROW_DOWN_TRAY_VARIANTS_PATH_1: Variants = {
 	normal: {
 		y: 0,
-        opacity: 1,
-        scale: 1,
+		opacity: 1,
+		scale: 1,
 	},
 	animate: {
 		y: [-2, 0],
-        opacity: [0, 1],
-        scale: [0.8, 1],
+		opacity: [0, 1],
+		scale: [0.8, 1],
 		transition: {
 			duration: 0.3,
 			ease: "easeInOut",
-            delay: 0.3
+			delay: 0.3,
 		},
 	},
 };

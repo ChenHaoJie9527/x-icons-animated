@@ -2,6 +2,7 @@ import { Header } from "@/components/header";
 import { IconList } from "@/components/icon-list";
 import { StoryTimeline } from "@/components/story-timeline";
 import type { IconMeta } from "@/lib/icon-types";
+import { Tabs } from "./tabs";
 
 type Icon = Pick<IconMeta, "name" | "keywords">;
 
@@ -16,6 +17,7 @@ export function PageContent({ icons }: PageContentProps) {
 
 			<main className="container mx-auto">
 				<StoryTimeline />
+				<Tabs />
 				<IconList icons={icons} />
 			</main>
 
