@@ -8,15 +8,14 @@ import { useImperativeHandle } from "react";
 import { useIconHoverAnimation } from "@/hooks/use-icon-hover-animation";
 import type { IconAnimationHandle } from "@/lib/icon-types";
 
-export interface AdjustmentsHorizontalIconHandle extends IconAnimationHandle {}
+export interface AdjustmentsVerticalIconHandle extends IconAnimationHandle {}
 
-interface AdjustmentsHorizontalIconProps
-	extends HTMLAttributes<HTMLDivElement> {
+interface AdjustmentsVerticalIconProps extends HTMLAttributes<HTMLDivElement> {
 	size?: number;
-	ref?: Ref<AdjustmentsHorizontalIconHandle>;
+	ref?: Ref<AdjustmentsVerticalIconHandle>;
 }
 
-const ADJUSTMENTS_HORIZONTAL_VARIANTS_PATH_1: Variants = {
+const ADJUSTMENTS_VERTICAL_VARIANTS_PATH_1: Variants = {
 	normal: {
 		pathLength: 1,
 		pathOffset: 0,
@@ -31,7 +30,7 @@ const ADJUSTMENTS_HORIZONTAL_VARIANTS_PATH_1: Variants = {
 	},
 };
 
-const ADJUSTMENTS_HORIZONTAL_VARIANTS_PATH_2: Variants = {
+const ADJUSTMENTS_VERTICAL_VARIANTS_PATH_2: Variants = {
 	normal: {
 		pathLength: 1,
 		pathOffset: 0,
@@ -46,7 +45,7 @@ const ADJUSTMENTS_HORIZONTAL_VARIANTS_PATH_2: Variants = {
 	},
 };
 
-const ADJUSTMENTS_HORIZONTAL_VARIANTS_PATH_3: Variants = {
+const ADJUSTMENTS_VERTICAL_VARIANTS_PATH_3: Variants = {
 	normal: {
 		pathLength: 1,
 		pathOffset: 0,
@@ -61,14 +60,14 @@ const ADJUSTMENTS_HORIZONTAL_VARIANTS_PATH_3: Variants = {
 	},
 };
 
-const AdjustmentsHorizontalIcon = ({
+const AdjustmentsVerticalIcon = ({
 	size = 32,
 	className,
 	onMouseEnter,
 	onMouseLeave,
 	ref,
 	...props
-}: AdjustmentsHorizontalIconProps) => {
+}: AdjustmentsVerticalIconProps) => {
 	const { controls, handleMouseEnter, handleMouseLeave } =
 		useIconHoverAnimation({
 			ref,
@@ -104,28 +103,28 @@ const AdjustmentsHorizontalIcon = ({
 				<motion.path
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5"
+					d="M6 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5"
 					animate={controls}
-					variants={ADJUSTMENTS_HORIZONTAL_VARIANTS_PATH_1}
+					variants={ADJUSTMENTS_VERTICAL_VARIANTS_PATH_1}
 				/>
 				<motion.path
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					d="M16.5 12h3.75M16.5 12a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0M3.75 12h9.75"
+					d="M12 7.5V3.75m0 3.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 9.75V10.5"
 					animate={controls}
-					variants={ADJUSTMENTS_HORIZONTAL_VARIANTS_PATH_2}
+					variants={ADJUSTMENTS_VERTICAL_VARIANTS_PATH_2}
 				/>
 				<motion.path
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					d="M10.5 18h9.75M10.5 18a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0M3.75 18H7.5"
+					d="M18 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5"
 					animate={controls}
-					variants={ADJUSTMENTS_HORIZONTAL_VARIANTS_PATH_3}
+					variants={ADJUSTMENTS_VERTICAL_VARIANTS_PATH_3}
 				/>
 			</svg>
 		</div>
 	);
 };
 
-AdjustmentsHorizontalIcon.displayName = "AdjustmentsHorizontalIcon";
-export { AdjustmentsHorizontalIcon };
+AdjustmentsVerticalIcon.displayName = "AdjustmentsVerticalIcon";
+export { AdjustmentsVerticalIcon };
