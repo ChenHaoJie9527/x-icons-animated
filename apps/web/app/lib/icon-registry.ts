@@ -2,6 +2,7 @@ import { AcademicCapIcon } from "@/icons/academic-cap";
 import { AdjustmentsHorizontalIcon } from "@/icons/adjustments-horizontal";
 import { AdjustmentsVerticalIcon } from "@/icons/adjustments-vertical";
 import { ArchiveBoxArrowDownIcon } from "@/icons/archive-box-arrow-down";
+import { ArchiveBoxXMarkIcon } from "@/icons/archive-box-x-mark";
 import { ArrowDownIcon } from "@/icons/arrow-down";
 import { ArrowDownCircleIcon } from "@/icons/arrow-down-circle";
 import { ArrowDownLeftIcon } from "@/icons/arrow-down-left";
@@ -37,6 +38,11 @@ const ICON_LIST: IconMeta[] = [
 		name: "archive-box-arrow-down",
 		icon: ArchiveBoxArrowDownIcon,
 		keywords: ["archive", "box", "arrow", "down"],
+	},
+	{
+		name: "archive-box-x-mark",
+		icon: ArchiveBoxXMarkIcon,
+		keywords: ["archive", "box", "x", "mark"],
 	},
 	{
 		name: "arrow-down",
