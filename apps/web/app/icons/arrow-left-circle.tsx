@@ -1,71 +1,60 @@
 "use client";
 import { cn } from "@x-icons/utils/cn";
-import { motion, type Variants } from "motion/react";
+import type { Variants } from "motion/react";
+import { motion } from "motion/react";
 import type { HTMLAttributes, Ref } from "react";
 import { useImperativeHandle } from "react";
 import { useIconHoverAnimation } from "@/hooks/use-icon-hover-animation";
 import type { IconAnimationHandle } from "@/lib/icon-types";
 
-export interface ArrowDownCircleIconHandle extends IconAnimationHandle {}
+export interface ArrowLeftCircleIconHandle extends IconAnimationHandle {}
 
-interface ArrowDownCircleIconProps extends HTMLAttributes<HTMLDivElement> {
+interface ArrowLeftCircleIconProps extends HTMLAttributes<HTMLDivElement> {
 	size?: number;
-	ref?: Ref<ArrowDownCircleIconHandle>;
+	ref?: Ref<ArrowLeftCircleIconHandle>;
 }
 
-/**
- * 箭头 Y 轴位移动画
- */
-const ARROW_DOWN_VARIANTS: Variants = {
+const ARROW_LEFT_CIRCLE_VARIANTS_PATH_1: Variants = {
 	normal: {
-		y: 0,
-		opacity: 1,
-	},
-	animate: {
-		y: [-2, 2, 0],
-		opacity: [0, 1],
-		transition: {
-			times: [0, 0.4, 1],
-			duration: 0.3,
-			delay: 0.3,
-		},
-	},
-};
-
-/**
- * 路径圆圈动画变量
- */
-const CIRCLE_VARIANTS: Variants = {
-	normal: {
-		scale: 1,
 		pathLength: 1,
 		pathOffset: 0,
 	},
 	animate: {
-		scale: [1, 1.1, 1],
 		pathLength: [0, 1],
 		pathOffset: [1, 0],
 		transition: {
-			duration: 0.4,
+			duration: 0.3,
 			ease: "easeInOut",
 		},
 	},
 };
-const ArrowDownCircleIcon = ({
+
+const ARROW_LEFT_CIRCLE_VARIANTS_PATH_2: Variants = {
+	normal: {
+		x: 0,
+		opacity: 1,
+	},
+	animate: {
+		x: [3, -3, 0],
+		opacity: [0, 1],
+		transition: {
+			duration: 0.3,
+			delay: 0.3,
+            times: [0, 0.4, 1],
+		},
+	},
+};
+
+const ArrowLeftCircleIcon = ({
 	size = 32,
-	color = "currentColor",
 	className,
 	onMouseEnter,
 	onMouseLeave,
 	ref,
 	...props
-}: ArrowDownCircleIconProps) => {
+}: ArrowLeftCircleIconProps) => {
 	const { controls, handleMouseEnter, handleMouseLeave } =
-		useIconHoverAnimation({
-			ref,
-			onMouseEnter,
-			onMouseLeave,
-		});
+		useIconHoverAnimation({ ref, onMouseEnter, onMouseLeave });
 	useImperativeHandle(ref, () => {
 		return {
 			startAnimation() {
@@ -94,21 +83,22 @@ const ArrowDownCircleIcon = ({
 			>
 				<motion.path
 					animate={controls}
+					variants={ARROW_LEFT_CIRCLE_VARIANTS_PATH_1}
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5"
-					variants={ARROW_DOWN_VARIANTS}
+					d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
 				/>
 				<motion.path
 					animate={controls}
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					variants={CIRCLE_VARIANTS}
-					d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+					d="m11.25 9-3 3m0 0 3 3m-3-3h7.5"
+					variants={ARROW_LEFT_CIRCLE_VARIANTS_PATH_2}
 				/>
 			</svg>
 		</div>
 	);
 };
 
-export { ArrowDownCircleIcon };
+ArrowLeftCircleIcon.displayName = "ArrowLeftCircleIcon";
+export { ArrowLeftCircleIcon };

@@ -9,6 +9,7 @@ import { ArrowDownLeftIcon } from "@/icons/arrow-down-left";
 import { ArrowDownRightIcon } from "@/icons/arrow-down-right";
 import { ArrowDownTrayIcon } from "@/icons/arrow-down-tray";
 import { ArrowLeftIcon } from "@/icons/arrow-left";
+import { ArrowLeftCircleIcon } from "@/icons/arrow-left-circle";
 import { ArrowLogDownIcon } from "@/icons/arrow-log-down";
 import { ArrowRightIcon } from "@/icons/arrow-right";
 import { CheckMarkBadge1Icon } from "@/icons/check-mark-badge-1";
@@ -74,6 +75,11 @@ const ICON_LIST: IconMeta[] = [
 		name: "arrow-left",
 		icon: ArrowLeftIcon,
 		keywords: ["arrow", "left"],
+	},
+	{
+		name: "arrow-left-circle",
+		icon: ArrowLeftCircleIcon,
+		keywords: ["arrow", "left", "circle"],
 	},
 	{
 		name: "arrow-log-down",
