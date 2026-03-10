@@ -20,16 +20,21 @@ const registryPath = path.join(appDir, "lib", "icon-registry.ts");
 
 // 定义正则表达式: 用于匹配TSX文件
 const TSX_FILE_EXTENSION_REGEX = /\.tsx$/u;
+const PATH_SEPARATOR_REGEX = /\\/g;
 
 // 定义正则表达式: 用于匹配icon-registry.ts文件中的icon条目
 const ENTRY_REGEX =
-	/name:\s*"([^"]+)"[\s\S]*?keywords:\s*\[((?:[\s\S]*?))\][\s\S]*?\}/g;
+	/\{[\s\S]*?name:\s*"([^"]+)"[\s\S]*?keywords:\s*\[((?:[\s\S]*?))\][\s\S]*?\}/g;
+
+// 定义正则表达式: 用于匹配icon-registry.ts文件中的来源字段
+const SOURCE_REGEX = /source:\s*"([^"]+)"/u;
 
 // 定义正则表达式: 用于匹配icon-registry.ts文件中的关键词
 const KEYWORD_REGEX = /"([^"]+)"/g;
 
 // 定义常量: 用于设置watch模式的防抖时间
 const WATCH_DEBOUNCE_MS = 120;
+const DEFAULT_ICON_SOURCE = "heroicons";
 
 // 定义函数: 将icon名称转换为PascalCase格式
 const toPascalCase = (value) => {
@@ -42,39 +47,104 @@ const toPascalCase = (value) => {
 
 // 定义函数: 将icon名称转换为导出名称
 const toExportName = (iconName) => `${toPascalCase(iconName)}Icon`;
+const toRegistryKey = (source, iconName) => `${source}:${iconName}`;
+const toImportAlias = (source, iconName) =>
+	`${toPascalCase(source)}${toExportName(iconName)}`;
+const toPosixPath = (value) => value.replace(PATH_SEPARATOR_REGEX, "/");
 
 // 定义函数: 解析已有的关键词映射
 const parseExistingKeywordMap = (content) => {
-	const map = new Map();
+	const scopedKeywordMap = new Map();
+	const legacyKeywordMap = new Map();
 
 	for (const match of content.matchAll(ENTRY_REGEX)) {
+		const entryText = match[0];
 		const iconName = match[1];
 		const keywordsBlock = match[2];
+		const sourceMatch = entryText.match(SOURCE_REGEX);
+		const source = sourceMatch?.[1] ?? DEFAULT_ICON_SOURCE;
 		const keywordMatches = [...keywordsBlock.matchAll(KEYWORD_REGEX)];
-		map.set(
-			iconName,
-			keywordMatches.map((keywordMatch) => keywordMatch[1])
-		);
+		const keywords = keywordMatches.map((keywordMatch) => keywordMatch[1]);
+		scopedKeywordMap.set(toRegistryKey(source, iconName), keywords);
+		if (!legacyKeywordMap.has(iconName)) {
+			legacyKeywordMap.set(iconName, keywords);
+		}
 	}
 
-	return map;
+	return { legacyKeywordMap, scopedKeywordMap };
+};
+
+// 定义函数: 递归读取icon文件条目
+const collectIconEntries = async (
+	targetIconsDir,
+	readDirectory,
+	rootIconsDir = targetIconsDir
+) => {
+	const entries = await readDirectory(targetIconsDir, { withFileTypes: true });
+	const iconEntries = [];
+	const sortedEntries = [...entries].sort((a, b) =>
+		a.name.localeCompare(b.name)
+	);
+
+	for (const entry of sortedEntries) {
+		const absolutePath = path.join(targetIconsDir, entry.name);
+		if (isFileEntry(entry) && entry.name.endsWith(".tsx")) {
+			const relativeWithoutExtension = path
+				.relative(rootIconsDir, absolutePath)
+				.replace(TSX_FILE_EXTENSION_REGEX, "");
+			const importPath = toPosixPath(relativeWithoutExtension);
+			const pathParts = importPath.split("/").filter(Boolean);
+			const iconName = pathParts.at(-1);
+			const source = pathParts.length > 1 ? pathParts[0] : DEFAULT_ICON_SOURCE;
+
+			iconEntries.push({
+				iconName,
+				importPath,
+				source,
+			});
+			continue;
+		}
+
+		const hasDirectoryCheck = typeof entry.isDirectory === "function";
+		if (hasDirectoryCheck && entry.isDirectory()) {
+			const nestedEntries = await collectIconEntries(
+				absolutePath,
+				readDirectory,
+				rootIconsDir
+			);
+			iconEntries.push(...nestedEntries);
+		}
+	}
+
+	return iconEntries.sort((a, b) => {
+		const sourceCompare = a.source.localeCompare(b.source);
+		if (sourceCompare !== 0) {
+			return sourceCompare;
+		}
+		return a.iconName.localeCompare(b.iconName);
+	});
 };
 
 // 定义函数: 创建icon-registry.ts文件
-const createRegistryFile = (iconNames, keywordMap) => {
-	const importLines = iconNames.map((iconName) => {
-		return `import { ${toExportName(iconName)} } from "@/icons/${iconName}";`;
+const createRegistryFile = (iconEntries, keywordMaps) => {
+	const { legacyKeywordMap, scopedKeywordMap } = keywordMaps;
+	const importLines = iconEntries.map(({ iconName, importPath, source }) => {
+		return `import { ${toExportName(iconName)} as ${toImportAlias(source, iconName)} } from "@/icons/${importPath}";`;
 	});
 
-	const iconEntries = iconNames.map((iconName) => {
+	const registryEntries = iconEntries.map(({ iconName, source }) => {
+		const scopedKeywordKey = toRegistryKey(source, iconName);
 		const keywords =
-			keywordMap.get(iconName) ?? iconName.split("-").filter(Boolean);
+			scopedKeywordMap.get(scopedKeywordKey) ??
+			legacyKeywordMap.get(iconName) ??
+			iconName.split("-").filter(Boolean);
 		const keywordCode = keywords.map((keyword) => `"${keyword}"`).join(", ");
 
 		return [
 			"\t{",
 			`\t\tname: "${iconName}",`,
-			`\t\ticon: ${toExportName(iconName)},`,
+			`\t\ticon: ${toImportAlias(source, iconName)},`,
+			`\t\tsource: "${source}" as const,`,
 			`\t\tkeywords: [${keywordCode}],`,
 			"\t},",
 		].join("\n");
@@ -85,8 +155,14 @@ const createRegistryFile = (iconNames, keywordMap) => {
 		'import type { IconMeta } from "@/lib/icon-types";',
 		"",
 		"const ICON_LIST: IconMeta[] = [",
-		...iconEntries,
-		"].sort((a, b) => a.name.localeCompare(b.name));",
+		...registryEntries,
+		"].sort((a, b) => {",
+		"\tconst nameCompare = a.name.localeCompare(b.name);",
+		"\tif (nameCompare !== 0) {",
+		"\t\treturn nameCompare;",
+		"\t}",
+		"\treturn a.source.localeCompare(b.source);",
+		"});",
 		"",
 		"export { ICON_LIST };",
 		"",
@@ -112,17 +188,11 @@ const syncRegistry = async (options = {}) => {
 	const writeRegistry = options.writeFile ?? writeFile;
 	const log = options.log ?? console.log;
 
-	const iconFiles = await readDirectory(targetIconsDir, {
-		withFileTypes: true,
-	});
-	const iconNames = iconFiles
-		.filter((file) => isFileEntry(file) && file.name.endsWith(".tsx"))
-		.map((file) => file.name.replace(TSX_FILE_EXTENSION_REGEX, ""))
-		.sort((a, b) => a.localeCompare(b));
+	const iconEntries = await collectIconEntries(targetIconsDir, readDirectory);
 
 	const previousRegistry = await readRegistry(targetRegistryPath, "utf8");
-	const keywordMap = parseExistingKeywordMap(previousRegistry);
-	const nextRegistry = createRegistryFile(iconNames, keywordMap);
+	const keywordMaps = parseExistingKeywordMap(previousRegistry);
+	const nextRegistry = createRegistryFile(iconEntries, keywordMaps);
 
 	if (nextRegistry !== previousRegistry) {
 		await writeRegistry(targetRegistryPath, nextRegistry, "utf8");
@@ -173,18 +243,23 @@ const runWatchMode = async () => {
 		}, WATCH_DEBOUNCE_MS);
 	};
 
-	const watcher = watch(
-		iconsDir,
-		{ persistent: true },
-		(_eventType, fileName) => {
-			const normalizedName = fileName?.toString() ?? "";
-			if (!normalizedName.endsWith(".tsx")) {
-				return;
-			}
-
-			queueSync();
+	const onWatchEvent = (_eventType, fileName) => {
+		const normalizedName = fileName?.toString() ?? "";
+		if (!normalizedName.endsWith(".tsx")) {
+			return;
 		}
-	);
+		queueSync();
+	};
+	let watcher;
+	try {
+		watcher = watch(
+			iconsDir,
+			{ persistent: true, recursive: true },
+			onWatchEvent
+		);
+	} catch {
+		watcher = watch(iconsDir, { persistent: true }, onWatchEvent);
+	}
 
 	process.on("SIGINT", () => {
 		watcher.close();
@@ -220,6 +295,7 @@ if (isDirectExecution) {
 }
 
 export {
+	collectIconEntries,
 	createRegistryFile,
 	parseExistingKeywordMap,
 	syncRegistry,

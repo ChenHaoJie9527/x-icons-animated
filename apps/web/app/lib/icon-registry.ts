@@ -1,132 +1,166 @@
-import { AcademicCapIcon } from "@/icons/academic-cap";
-import { AdjustmentsHorizontalIcon } from "@/icons/adjustments-horizontal";
-import { AdjustmentsVerticalIcon } from "@/icons/adjustments-vertical";
-import { ArchiveBoxArrowDownIcon } from "@/icons/archive-box-arrow-down";
-import { ArchiveBoxXMarkIcon } from "@/icons/archive-box-x-mark";
-import { ArrowDownIcon } from "@/icons/arrow-down";
-import { ArrowDownCircleIcon } from "@/icons/arrow-down-circle";
-import { ArrowDownLeftIcon } from "@/icons/arrow-down-left";
-import { ArrowDownRightIcon } from "@/icons/arrow-down-right";
-import { ArrowDownTrayIcon } from "@/icons/arrow-down-tray";
-import { ArrowLeftIcon } from "@/icons/arrow-left";
-import { ArrowLeftCircleIcon } from "@/icons/arrow-left-circle";
-import { ArrowLogDownIcon } from "@/icons/arrow-log-down";
-import { ArrowRightIcon } from "@/icons/arrow-right";
-import { ArrowRightCircleIcon } from "@/icons/arrow-right-circle";
-import { CheckMarkBadge1Icon } from "@/icons/check-mark-badge-1";
-import { CopyPathIcon } from "@/icons/copy-path";
-import { GithubIcon } from "@/icons/github";
-import { HomeIcon } from "@/icons/home";
-import { MoonIcon } from "@/icons/moon";
-import { SunIcon } from "@/icons/sun";
+import { AcademicCapIcon as HeroiconsAcademicCapIcon } from "@/icons/academic-cap";
+import { AdjustmentsHorizontalIcon as HeroiconsAdjustmentsHorizontalIcon } from "@/icons/adjustments-horizontal";
+import { AdjustmentsVerticalIcon as HeroiconsAdjustmentsVerticalIcon } from "@/icons/adjustments-vertical";
+import { ArchiveBoxArrowDownIcon as HeroiconsArchiveBoxArrowDownIcon } from "@/icons/archive-box-arrow-down";
+import { ArchiveBoxXMarkIcon as HeroiconsArchiveBoxXMarkIcon } from "@/icons/archive-box-x-mark";
+import { ArrowDownIcon as HeroiconsArrowDownIcon } from "@/icons/arrow-down";
+import { ArrowDownCircleIcon as HeroiconsArrowDownCircleIcon } from "@/icons/arrow-down-circle";
+import { ArrowDownLeftIcon as HeroiconsArrowDownLeftIcon } from "@/icons/arrow-down-left";
+import { ArrowDownRightIcon as HeroiconsArrowDownRightIcon } from "@/icons/arrow-down-right";
+import { ArrowDownTrayIcon as HeroiconsArrowDownTrayIcon } from "@/icons/arrow-down-tray";
+import { ArrowLeftIcon as HeroiconsArrowLeftIcon } from "@/icons/arrow-left";
+import { ArrowLeftCircleIcon as HeroiconsArrowLeftCircleIcon } from "@/icons/arrow-left-circle";
+import { ArrowLogDownIcon as HeroiconsArrowLogDownIcon } from "@/icons/arrow-log-down";
+import { ArrowRightIcon as HeroiconsArrowRightIcon } from "@/icons/arrow-right";
+import { ArrowRightCircleIcon as HeroiconsArrowRightCircleIcon } from "@/icons/arrow-right-circle";
+import { CheckMarkBadge1Icon as HeroiconsCheckMarkBadge1Icon } from "@/icons/check-mark-badge-1";
+import { CopyPathIcon as HeroiconsCopyPathIcon } from "@/icons/copy-path";
+import { GithubIcon as HeroiconsGithubIcon } from "@/icons/github";
+import { HomeIcon as HeroiconsHomeIcon } from "@/icons/home";
+import { MoonIcon as HeroiconsMoonIcon } from "@/icons/moon";
+import { SunIcon as HeroiconsSunIcon } from "@/icons/sun";
+import { BellRingIcon as LucideBellRingIcon } from "@/icons/lucide/bell-ring";
 import type { IconMeta } from "@/lib/icon-types";
 
 const ICON_LIST: IconMeta[] = [
 	{
 		name: "academic-cap",
-		icon: AcademicCapIcon,
+		icon: HeroiconsAcademicCapIcon,
+		source: "heroicons" as const,
 		keywords: ["academic", "cap"],
 	},
 	{
 		name: "adjustments-horizontal",
-		icon: AdjustmentsHorizontalIcon,
+		icon: HeroiconsAdjustmentsHorizontalIcon,
+		source: "heroicons" as const,
 		keywords: ["adjustments", "horizontal"],
 	},
 	{
 		name: "adjustments-vertical",
-		icon: AdjustmentsVerticalIcon,
+		icon: HeroiconsAdjustmentsVerticalIcon,
+		source: "heroicons" as const,
 		keywords: ["adjustments", "vertical"],
 	},
 	{
 		name: "archive-box-arrow-down",
-		icon: ArchiveBoxArrowDownIcon,
+		icon: HeroiconsArchiveBoxArrowDownIcon,
+		source: "heroicons" as const,
 		keywords: ["archive", "box", "arrow", "down"],
 	},
 	{
 		name: "archive-box-x-mark",
-		icon: ArchiveBoxXMarkIcon,
+		icon: HeroiconsArchiveBoxXMarkIcon,
+		source: "heroicons" as const,
 		keywords: ["archive", "box", "x", "mark"],
 	},
 	{
 		name: "arrow-down",
-		icon: ArrowDownIcon,
+		icon: HeroiconsArrowDownIcon,
+		source: "heroicons" as const,
 		keywords: ["arrow", "down"],
 	},
 	{
 		name: "arrow-down-circle",
-		icon: ArrowDownCircleIcon,
+		icon: HeroiconsArrowDownCircleIcon,
+		source: "heroicons" as const,
 		keywords: ["arrow", "down", "circle"],
 	},
 	{
 		name: "arrow-down-left",
-		icon: ArrowDownLeftIcon,
+		icon: HeroiconsArrowDownLeftIcon,
+		source: "heroicons" as const,
 		keywords: ["arrow", "down", "left"],
 	},
 	{
 		name: "arrow-down-right",
-		icon: ArrowDownRightIcon,
+		icon: HeroiconsArrowDownRightIcon,
+		source: "heroicons" as const,
 		keywords: ["arrow", "down", "right"],
 	},
 	{
 		name: "arrow-down-tray",
-		icon: ArrowDownTrayIcon,
+		icon: HeroiconsArrowDownTrayIcon,
+		source: "heroicons" as const,
 		keywords: ["arrow", "down", "tray"],
 	},
 	{
 		name: "arrow-left",
-		icon: ArrowLeftIcon,
+		icon: HeroiconsArrowLeftIcon,
+		source: "heroicons" as const,
 		keywords: ["arrow", "left"],
 	},
 	{
 		name: "arrow-left-circle",
-		icon: ArrowLeftCircleIcon,
+		icon: HeroiconsArrowLeftCircleIcon,
+		source: "heroicons" as const,
 		keywords: ["arrow", "left", "circle"],
 	},
 	{
 		name: "arrow-log-down",
-		icon: ArrowLogDownIcon,
+		icon: HeroiconsArrowLogDownIcon,
+		source: "heroicons" as const,
 		keywords: ["arrow", "log", "down"],
 	},
 	{
 		name: "arrow-right",
-		icon: ArrowRightIcon,
+		icon: HeroiconsArrowRightIcon,
+		source: "heroicons" as const,
 		keywords: ["arrow", "right"],
 	},
 	{
 		name: "arrow-right-circle",
-		icon: ArrowRightCircleIcon,
+		icon: HeroiconsArrowRightCircleIcon,
+		source: "heroicons" as const,
 		keywords: ["arrow", "right", "circle"],
 	},
 	{
 		name: "check-mark-badge-1",
-		icon: CheckMarkBadge1Icon,
+		icon: HeroiconsCheckMarkBadge1Icon,
+		source: "heroicons" as const,
 		keywords: ["check", "mark", "badge", "1"],
 	},
 	{
 		name: "copy-path",
-		icon: CopyPathIcon,
+		icon: HeroiconsCopyPathIcon,
+		source: "heroicons" as const,
 		keywords: ["copy", "path"],
 	},
 	{
 		name: "github",
-		icon: GithubIcon,
+		icon: HeroiconsGithubIcon,
+		source: "heroicons" as const,
 		keywords: ["github"],
 	},
 	{
 		name: "home",
-		icon: HomeIcon,
+		icon: HeroiconsHomeIcon,
+		source: "heroicons" as const,
 		keywords: ["home"],
 	},
 	{
 		name: "moon",
-		icon: MoonIcon,
+		icon: HeroiconsMoonIcon,
+		source: "heroicons" as const,
 		keywords: ["moon"],
 	},
 	{
 		name: "sun",
-		icon: SunIcon,
+		icon: HeroiconsSunIcon,
+		source: "heroicons" as const,
 		keywords: ["sun"],
 	},
-].sort((a, b) => a.name.localeCompare(b.name));
+	{
+		name: "bell-ring",
+		icon: LucideBellRingIcon,
+		source: "lucide" as const,
+		keywords: ["bell", "ring"],
+	},
+].sort((a, b) => {
+	const nameCompare = a.name.localeCompare(b.name);
+	if (nameCompare !== 0) {
+		return nameCompare;
+	}
+	return a.source.localeCompare(b.source);
+});
 
 export { ICON_LIST };

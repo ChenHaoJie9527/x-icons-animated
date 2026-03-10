@@ -43,11 +43,6 @@ export const IconList = ({ icons, searchValue = "" }: IconListProps) => {
 			{...PAGE_ANIMATIONS.heroIconsContent}
 		>
 			<div className=" py-4 shrink-0 space-y-1">
-				<p className="text-xl text-foreground font-black">
-					{searchValue.trim()
-						? `${filteredIcons.length} result${filteredIcons.length !== 1 ? "s" : ""} for "${searchValue}"`
-						: "All icons"}
-				</p>
 				<p className="text-sm text-muted mb-2 leading-relaxed">
 					Explore 5103 <span className="text-primary">All icons</span> in SVG,
 					React, Icon Font and more. Ideal for apps and websites.

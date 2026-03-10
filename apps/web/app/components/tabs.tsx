@@ -2,10 +2,7 @@
 
 import { Tabs as BaseTabs } from "@base-ui/react";
 import { cn } from "@x-icons/utils/cn";
-
-import { PAGE_ANIMATIONS } from "@/lib/animation-timeline";
 import { motion } from "motion/react";
-
 import {
 	useCallback,
 	useEffect,
@@ -13,9 +10,10 @@ import {
 	useRef,
 	useState,
 } from "react";
+import { PAGE_ANIMATIONS } from "@/lib/animation-timeline";
 
 const TAB_ITEMS = [
-    { label: "All", value: "all" },
+	{ label: "All", value: "all" },
 	{ label: "Heroicons", value: "heroicons" },
 	{ label: "Lucide", value: "lucide" },
 	{ label: "Phosphor", value: "phosphor" },
