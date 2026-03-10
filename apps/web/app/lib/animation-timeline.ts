@@ -220,5 +220,6 @@ export const PAGE_ANIMATIONS = {
 	heroDescription: pageTimeline.fadeInUp(0.6),
 	heroSearch: pageTimeline.fadeInUp(0.75),
 	heroFooter: pageTimeline.fadeInUp(0.9),
-	heroIconsContent: pageTimeline.fadeInUp(1.05),
+	tabs: pageTimeline.fadeInUp(1.05),
+	heroIconsContent: pageTimeline.fadeInUp(1.2),
 };

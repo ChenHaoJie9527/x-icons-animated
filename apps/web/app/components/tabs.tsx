@@ -2,6 +2,10 @@
 
 import { Tabs as BaseTabs } from "@base-ui/react";
 import { cn } from "@x-icons/utils/cn";
+
+import { PAGE_ANIMATIONS } from "@/lib/animation-timeline";
+import { motion } from "motion/react";
+
 import {
 	useCallback,
 	useEffect,
@@ -57,44 +61,46 @@ const Tabs = () => {
 	}, [updateIndicator]);
 
 	return (
-		<BaseTabs.Root
-			defaultValue="heroicons"
-			onValueChange={(value) => setActiveTab(value as TabValue)}
-			value={activeTab}
-		>
-			<BaseTabs.List
-				className={cn("relative inline-flex items-center gap-1 rounded-full")}
-				ref={listRef}
+		<motion.div {...PAGE_ANIMATIONS.tabs}>
+			<BaseTabs.Root
+				defaultValue="heroicons"
+				onValueChange={(value) => setActiveTab(value as TabValue)}
+				value={activeTab}
 			>
-				<div
-					aria-hidden="true"
-					className={cn(
-						"pointer-events-none absolute bottom-1 top-1 rounded-full bg-primary transition-[left,width] duration-300 ease-in-out"
-					)}
-					style={{
-						left: `${indicatorStyle.left}px`,
-						width: `${indicatorStyle.width}px`,
-					}}
-				/>
-				{TAB_ITEMS.map((tab) => (
-					<BaseTabs.Tab
+				<BaseTabs.List
+					className={cn("relative inline-flex items-center gap-1 rounded-full")}
+					ref={listRef}
+				>
+					<div
+						aria-hidden="true"
 						className={cn(
-							"relative z-10 cursor-pointer rounded-full px-2 py-3 text-sm font-semibold transition-colors duration-200 ",
-							activeTab === tab.value
-								? "text-slate-900"
-								: "text-slate-500 hover:text-slate-700"
+							"pointer-events-none absolute bottom-1 top-1 rounded-full bg-primary transition-[left,width] duration-300 ease-in-out"
 						)}
-						key={tab.value}
-						ref={(element) => {
-							tabRefs.current[tab.value] = element;
+						style={{
+							left: `${indicatorStyle.left}px`,
+							width: `${indicatorStyle.width}px`,
 						}}
-						value={tab.value}
-					>
-						{tab.label}
-					</BaseTabs.Tab>
-				))}
-			</BaseTabs.List>
-		</BaseTabs.Root>
+					/>
+					{TAB_ITEMS.map((tab) => (
+						<BaseTabs.Tab
+							className={cn(
+								"relative z-10 cursor-pointer rounded-full px-2 py-3 text-sm font-semibold transition-colors duration-200 ",
+								activeTab === tab.value
+									? "text-slate-900"
+									: "text-slate-500 hover:text-slate-700"
+							)}
+							key={tab.value}
+							ref={(element) => {
+								tabRefs.current[tab.value] = element;
+							}}
+							value={tab.value}
+						>
+							{tab.label}
+						</BaseTabs.Tab>
+					))}
+				</BaseTabs.List>
+			</BaseTabs.Root>
+		</motion.div>
 	);
 };
 
