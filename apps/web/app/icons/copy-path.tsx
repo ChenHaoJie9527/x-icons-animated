@@ -18,16 +18,15 @@ const COPY_PATH_VARIANTS: Variants = {
 		rotate: 0,
 		transition: {
 			duration: 0.2,
+		},
+	},
+	animate: {
+		rotate: 360,
+		transition: {
+			duration: 1.2,
 			ease: "easeInOut",
 		},
 	},
-    animate: {
-        rotate: 360,
-        transition: {
-            duration: 1.2,
-            ease: "linear",
-        }
-    }
 };
 
 const CopyPathIcon = ({
@@ -65,7 +64,7 @@ const CopyPathIcon = ({
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
 				viewBox="0 0 24 24"
-				strokeWidth={1.5}
+				strokeWidth={1}
 				stroke="currentColor"
 				width={size}
 				height={size}
