@@ -15,6 +15,7 @@ import {
 } from "react";
 
 const TAB_ITEMS = [
+    { label: "All", value: "all" },
 	{ label: "Heroicons", value: "heroicons" },
 	{ label: "Lucide", value: "lucide" },
 	{ label: "Phosphor", value: "phosphor" },
@@ -26,6 +27,7 @@ const Tabs = () => {
 	const [activeTab, setActiveTab] = useState<TabValue>("heroicons");
 	const listRef = useRef<HTMLDivElement | null>(null);
 	const tabRefs = useRef<Record<TabValue, HTMLElement | null>>({
+		all: null,
 		heroicons: null,
 		lucide: null,
 		phosphor: null,
