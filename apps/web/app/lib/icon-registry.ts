@@ -21,6 +21,7 @@ import { MoonIcon as HeroiconsMoonIcon } from "@/icons/moon";
 import { SunIcon as HeroiconsSunIcon } from "@/icons/sun";
 import { AiChat2Icon as HugeiconsAiChat2Icon } from "@/icons/hugeicons/ai-chat-2";
 import { BellRingIcon as LucideBellRingIcon } from "@/icons/lucide/bell-ring";
+import { ArrowsInSimpleIcon as PhosphorArrowsInSimpleIcon } from "@/icons/phosphor/arrows-in-simple";
 import type { IconMeta } from "@/lib/icon-types";
 
 const ICON_LIST: IconMeta[] = [
@@ -161,6 +162,12 @@ const ICON_LIST: IconMeta[] = [
 		icon: LucideBellRingIcon,
 		source: "lucide" as const,
 		keywords: ["bell", "ring"],
+	},
+	{
+		name: "arrows-in-simple",
+		icon: PhosphorArrowsInSimpleIcon,
+		source: "phosphor" as const,
+		keywords: ["arrows", "in", "simple"],
 	},
 ].sort((a, b) => {
 	const nameCompare = a.name.localeCompare(b.name);
