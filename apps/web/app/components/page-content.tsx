@@ -1,10 +1,8 @@
 import { Header } from "@/components/header";
-import { IconList } from "@/components/icon-list";
-import { StoryTimeline } from "@/components/story-timeline";
+import { IconsBrowser } from "@/components/icons-browser";
 import type { IconMeta } from "@/lib/icon-types";
-import { Tabs } from "./tabs";
 
-type Icon = Pick<IconMeta, "name" | "keywords">;
+type Icon = Pick<IconMeta, "name" | "keywords" | "source">;
 
 interface PageContentProps {
 	icons: Icon[];
@@ -16,9 +14,7 @@ export function PageContent({ icons }: PageContentProps) {
 			<Header icons={icons} />
 
 			<main className="container mx-auto">
-				<StoryTimeline />
-				<Tabs />
-				<IconList icons={icons} />
+				<IconsBrowser icons={icons} />
 			</main>
 
 			<footer className="container mx-auto">

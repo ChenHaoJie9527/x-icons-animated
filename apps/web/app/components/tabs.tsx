@@ -7,33 +7,80 @@ import {
 	useCallback,
 	useEffect,
 	useLayoutEffect,
+	useMemo,
 	useRef,
 	useState,
 } from "react";
 import { PAGE_ANIMATIONS } from "@/lib/animation-timeline";
+import type { IconFilterSource, IconMeta, IconSource } from "@/lib/icon-types";
 
-const TAB_ITEMS = [
-	{ label: "All", value: "all" },
-	{ label: "Heroicons", value: "heroicons" },
-	{ label: "Lucide", value: "lucide" },
-	{ label: "Phosphor", value: "phosphor" },
-] as const;
+type Icon = Pick<IconMeta, "source">;
+type TabItem = { count: number; label: string; value: IconFilterSource };
 
-type TabValue = (typeof TAB_ITEMS)[number]["value"];
+const SOURCE_LABELS: Record<IconSource, string> = {
+	heroicons: "Heroicons",
+	hugeicons: "Hugeicons",
+	lucide: "Lucide",
+	phosphor: "Phosphor",
+};
+const SOURCE_ORDER: IconSource[] = [
+	"heroicons",
+	"lucide",
+	"phosphor",
+	"hugeicons",
+];
 
-const Tabs = () => {
-	const [activeTab, setActiveTab] = useState<TabValue>("heroicons");
+interface TabsProps {
+	icons: Icon[];
+	onValueChange: (value: IconFilterSource) => void;
+	value: IconFilterSource;
+}
+
+const Tabs = ({ icons, onValueChange, value }: TabsProps) => {
 	const listRef = useRef<HTMLDivElement | null>(null);
-	const tabRefs = useRef<Record<TabValue, HTMLElement | null>>({
-		all: null,
-		heroicons: null,
-		lucide: null,
-		phosphor: null,
-	});
+	const tabRefs = useRef<Partial<Record<IconFilterSource, HTMLElement | null>>>(
+		{}
+	);
 	const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+	const tabItems = useMemo<TabItem[]>(() => {
+		const sourceCounts = new Map<IconSource, number>();
+		for (const icon of icons) {
+			const currentCount = sourceCounts.get(icon.source) ?? 0;
+			sourceCounts.set(icon.source, currentCount + 1);
+		}
+
+		const orderedSources = SOURCE_ORDER.filter(
+			(source) => (sourceCounts.get(source) ?? 0) > 0
+		);
+		const dynamicSources = [...sourceCounts.keys()].filter(
+			(source) => !SOURCE_ORDER.includes(source)
+		);
+		const finalSources = [...orderedSources, ...dynamicSources];
+
+		return [
+			{
+				count: icons.length,
+				label: "All",
+				value: "all",
+			},
+			...finalSources.map((source) => ({
+				count: sourceCounts.get(source) ?? 0,
+				label: SOURCE_LABELS[source] ?? source,
+				value: source,
+			})),
+		];
+	}, [icons]);
+	const hasActiveTab = tabItems.some((tab) => tab.value === value);
+	const safeValue = hasActiveTab ? value : "all";
+
+	useEffect(() => {
+		if (!hasActiveTab && value !== "all") {
+			onValueChange("all");
+		}
+	}, [hasActiveTab, onValueChange, value]);
 
 	const updateIndicator = useCallback(() => {
-		const activeTabElement = tabRefs.current[activeTab];
+		const activeTabElement = tabRefs.current[safeValue];
 		const listElement = listRef.current;
 
 		if (!(activeTabElement && listElement)) {
@@ -47,7 +94,7 @@ const Tabs = () => {
 			left: tabRect.left - listRect.left,
 			width: tabRect.width,
 		});
-	}, [activeTab]);
+	}, [safeValue]);
 
 	useLayoutEffect(() => {
 		updateIndicator();
@@ -63,9 +110,11 @@ const Tabs = () => {
 	return (
 		<motion.div {...PAGE_ANIMATIONS.tabs}>
 			<BaseTabs.Root
-				defaultValue="heroicons"
-				onValueChange={(value) => setActiveTab(value as TabValue)}
-				value={activeTab}
+				defaultValue="all"
+				onValueChange={(nextValue) =>
+					onValueChange(nextValue as IconFilterSource)
+				}
+				value={safeValue}
 			>
 				<BaseTabs.List
 					className={cn("relative inline-flex items-center gap-1 rounded-full")}
@@ -81,11 +130,11 @@ const Tabs = () => {
 							width: `${indicatorStyle.width}px`,
 						}}
 					/>
-					{TAB_ITEMS.map((tab) => (
+					{tabItems.map((tab) => (
 						<BaseTabs.Tab
 							className={cn(
 								"relative z-10 cursor-pointer rounded-full px-2 py-3 text-sm font-semibold transition-colors duration-200 ",
-								activeTab === tab.value
+								safeValue === tab.value
 									? "text-slate-900"
 									: "text-slate-500 hover:text-slate-700"
 							)}
@@ -95,7 +144,7 @@ const Tabs = () => {
 							}}
 							value={tab.value}
 						>
-							{tab.label}
+							{tab.label} ({tab.count})
 						</BaseTabs.Tab>
 					))}
 				</BaseTabs.List>

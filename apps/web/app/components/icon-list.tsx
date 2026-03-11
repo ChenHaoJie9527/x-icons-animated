@@ -4,37 +4,52 @@ import { motion } from "motion/react";
 import { useDeferredValue, useMemo, useRef, useState } from "react";
 import { PAGE_ANIMATIONS } from "@/lib/animation-timeline";
 import { ICON_LIST } from "@/lib/icon-registry";
-import type { IconAnimationHandle, IconMeta } from "@/lib/icon-types";
+import type {
+	IconAnimationHandle,
+	IconFilterSource,
+	IconMeta,
+} from "@/lib/icon-types";
 
-type Icon = Pick<IconMeta, "name" | "keywords">;
+type Icon = Pick<IconMeta, "name" | "keywords" | "source">;
 
 type IconListProps = {
+	activeSource: IconFilterSource;
 	icons: Icon[];
 	searchValue?: string;
 };
 
-const ICON_MAP = new Map(ICON_LIST.map((item) => [item.name, item.icon]));
+const toIconId = (icon: Pick<IconMeta, "name" | "source">) =>
+	`${icon.source}:${icon.name}`;
+const ICON_MAP = new Map(ICON_LIST.map((item) => [toIconId(item), item.icon]));
 
-export const IconList = ({ icons, searchValue = "" }: IconListProps) => {
+export const IconList = ({
+	activeSource,
+	icons,
+	searchValue = "",
+}: IconListProps) => {
 	const deferredSearchValue = useDeferredValue(searchValue);
-	const [copiedName, setCopiedName] = useState<string | null>(null);
+	const [copiedId, setCopiedId] = useState<string | null>(null);
 
 	const filteredIcons = useMemo(() => {
+		const sourceFilteredIcons =
+			activeSource === "all"
+				? icons
+				: icons.filter((icon) => icon.source === activeSource);
 		const q = deferredSearchValue.trim().toLowerCase();
 		if (!q) {
-			return icons;
+			return sourceFilteredIcons;
 		}
-		return icons.filter(
+		return sourceFilteredIcons.filter(
 			(icon) =>
 				icon.name.toLowerCase().includes(q) ||
 				icon.keywords.some((kw) => kw.toLowerCase().includes(q))
 		);
-	}, [icons, deferredSearchValue]);
+	}, [activeSource, icons, deferredSearchValue]);
 
-	const handleCopy = async (name: string) => {
+	const handleCopy = async (name: string, id: string) => {
 		await navigator.clipboard.writeText(name);
-		setCopiedName(name);
-		setTimeout(() => setCopiedName(null), 1500);
+		setCopiedId(id);
+		setTimeout(() => setCopiedId(null), 1500);
 	};
 
 	return (
@@ -62,10 +77,10 @@ export const IconList = ({ icons, searchValue = "" }: IconListProps) => {
 				<div className="grid grid-cols-[repeat(auto-fill,minmax(96px,1fr))] gap-2 flex-1 content-start">
 					{filteredIcons.map((icon) => (
 						<IconItem
-							copied={copiedName === icon.name}
-							Icon={ICON_MAP.get(icon.name)}
+							copied={copiedId === toIconId(icon)}
+							Icon={ICON_MAP.get(toIconId(icon))}
 							icon={icon}
-							key={icon.name}
+							key={toIconId(icon)}
 							onCopy={handleCopy}
 						/>
 					))}
@@ -78,7 +93,7 @@ export const IconList = ({ icons, searchValue = "" }: IconListProps) => {
 interface IconItemProps {
 	icon: Icon;
 	Icon: React.ElementType | undefined;
-	onCopy: (name: string) => Promise<void>;
+	onCopy: (name: string, id: string) => Promise<void>;
 	copied: boolean;
 }
 
@@ -92,7 +107,7 @@ const IconItem = ({ icon, Icon, onCopy, copied }: IconItemProps) => {
 	return (
 		<button
 			className="group flex flex-col items-center justify-center gap-3 border-[0.5px] rounded-xl size-24 border-icon-item-border bg-icon-item-bg hover:border-primary transition-colors duration-150 cursor-pointer"
-			onClick={() => onCopy(icon.name)}
+			onClick={() => onCopy(icon.name, toIconId(icon))}
 			onMouseEnter={() => animatedRef.current?.startAnimation()}
 			onMouseLeave={() => animatedRef.current?.stopAnimation()}
 			title={`Copy "${icon.name}"`}
