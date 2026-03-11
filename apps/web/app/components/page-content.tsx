@@ -1,4 +1,3 @@
-import { Header } from "@/components/header";
 import { IconsBrowser } from "@/components/icons-browser";
 import type { IconMeta } from "@/lib/icon-types";
 
@@ -11,11 +10,7 @@ interface PageContentProps {
 export function PageContent({ icons }: PageContentProps) {
 	return (
 		<section className="grid w-full  grid-rows-[auto_1fr_auto] gap-2">
-			<Header icons={icons} />
-
-			<main className="container mx-auto">
-				<IconsBrowser icons={icons} />
-			</main>
+			<IconsBrowser icons={icons} />
 
 			<footer className="container mx-auto">
 				<div className="w-full h-px bg-border" />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Header } from "@/components/header";
 import { IconList } from "@/components/icon-list";
 import { StoryTimeline } from "@/components/story-timeline";
 import type { IconFilterSource, IconMeta } from "@/lib/icon-types";
@@ -18,20 +19,24 @@ export function IconsBrowser({ icons }: IconsBrowserProps) {
 
 	return (
 		<>
-			<StoryTimeline
+			<Header
+				icons={icons}
 				onSearchChange={setSearchValue}
 				searchValue={searchValue}
 			/>
-			<Tabs
-				icons={icons}
-				onValueChange={setActiveSource}
-				value={activeSource}
-			/>
-			<IconList
-				activeSource={activeSource}
-				icons={icons}
-				searchValue={searchValue}
-			/>
+			<main className="container mx-auto">
+				<StoryTimeline iconsCount={icons.length} />
+				<Tabs
+					icons={icons}
+					onValueChange={setActiveSource}
+					value={activeSource}
+				/>
+				<IconList
+					activeSource={activeSource}
+					icons={icons}
+					searchValue={searchValue}
+				/>
+			</main>
 		</>
 	);
 }
