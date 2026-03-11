@@ -42,6 +42,7 @@ const Tabs = ({ icons, onValueChange, value }: TabsProps) => {
 		{}
 	);
 	const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+	// 基于 icon.source 统计数量，并按预设顺序 + 动态来源生成 tabs。
 	const tabItems = useMemo<TabItem[]>(() => {
 		const sourceCounts = new Map<IconSource, number>();
 		for (const icon of icons) {
@@ -70,15 +71,18 @@ const Tabs = ({ icons, onValueChange, value }: TabsProps) => {
 			})),
 		];
 	}, [icons]);
+	// 外部 value 可能因筛选源变化而失效，safeValue 用于兜底到 all。
 	const hasActiveTab = tabItems.some((tab) => tab.value === value);
 	const safeValue = hasActiveTab ? value : "all";
 
+	// 当当前 value 不再存在于 tabItems 时，主动回退并同步给父组件。
 	useEffect(() => {
 		if (!hasActiveTab && value !== "all") {
 			onValueChange("all");
 		}
 	}, [hasActiveTab, onValueChange, value]);
 
+	// 通过 active tab 与列表容器的相对位置计算高亮指示器。
 	const updateIndicator = useCallback(() => {
 		const activeTabElement = tabRefs.current[safeValue];
 		const listElement = listRef.current;
@@ -86,20 +90,24 @@ const Tabs = ({ icons, onValueChange, value }: TabsProps) => {
 		if (!(activeTabElement && listElement)) {
 			return;
 		}
-
+		// getBoundingClientRect：获取元素相对于视口的位置和大小。
 		const tabRect = activeTabElement.getBoundingClientRect();
+		console.log(tabRect);
+		// 获取列表容器相对于视口的位置和大小。
 		const listRect = listElement.getBoundingClientRect();
-
+		console.log(listRect);
 		setIndicatorStyle({
 			left: tabRect.left - listRect.left,
 			width: tabRect.width,
 		});
 	}, [safeValue]);
 
+	// 在浏览器绘制前同步更新位置，避免初次渲染出现指示器跳动。
 	useLayoutEffect(() => {
 		updateIndicator();
 	}, [updateIndicator]);
 
+	// 监听窗口尺寸变化，保证指示器在响应式布局下持续对齐。
 	useEffect(() => {
 		window.addEventListener("resize", updateIndicator);
 		return () => {
