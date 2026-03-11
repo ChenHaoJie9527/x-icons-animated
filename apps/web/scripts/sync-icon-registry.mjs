@@ -52,8 +52,14 @@ const toImportAlias = (source, iconName) =>
 	`${toPascalCase(source)}${toExportName(iconName)}`;
 const toPosixPath = (value) => value.replace(PATH_SEPARATOR_REGEX, "/");
 
-// 定义函数: 解析已有的关键词映射
+// 定义函数: 解析已有的关键词映射（兼容旧测试签名）
 const parseExistingKeywordMap = (content) => {
+	const { legacyKeywordMap } = parseExistingKeywordMaps(content);
+	return legacyKeywordMap;
+};
+
+// 定义函数: 解析已有的关键词映射（包含 source 维度）
+const parseExistingKeywordMaps = (content) => {
 	const scopedKeywordMap = new Map();
 	const legacyKeywordMap = new Map();
 
@@ -125,10 +131,53 @@ const collectIconEntries = async (
 	});
 };
 
+// 定义函数: 规范化关键词映射参数
+const normalizeKeywordMaps = (keywordInput) => {
+	if (keywordInput instanceof Map) {
+		return {
+			legacyKeywordMap: keywordInput,
+			scopedKeywordMap: new Map(),
+		};
+	}
+
+	return (
+		keywordInput ?? {
+			legacyKeywordMap: new Map(),
+			scopedKeywordMap: new Map(),
+		}
+	);
+};
+
+// 定义函数: 规范化 icon 条目参数（兼容旧测试签名）
+const normalizeIconEntries = (iconInput) => {
+	if (iconInput.length === 0) {
+		return { iconEntries: [], legacyMode: false };
+	}
+
+	const firstItem = iconInput[0];
+	if (typeof firstItem === "string") {
+		return {
+			iconEntries: iconInput.map((iconName) => ({
+				iconName,
+				importPath: iconName,
+				source: DEFAULT_ICON_SOURCE,
+			})),
+			legacyMode: true,
+		};
+	}
+
+	return { iconEntries: iconInput, legacyMode: false };
+};
+
 // 定义函数: 创建icon-registry.ts文件
-const createRegistryFile = (iconEntries, keywordMaps) => {
-	const { legacyKeywordMap, scopedKeywordMap } = keywordMaps;
+const createRegistryFile = (iconInput, keywordInput) => {
+	const { iconEntries, legacyMode } = normalizeIconEntries(iconInput);
+	const { legacyKeywordMap, scopedKeywordMap } =
+		normalizeKeywordMaps(keywordInput);
 	const importLines = iconEntries.map(({ iconName, importPath, source }) => {
+		if (legacyMode) {
+			return `import { ${toExportName(iconName)} } from "@/icons/${importPath}";`;
+		}
 		return `import { ${toExportName(iconName)} as ${toImportAlias(source, iconName)} } from "@/icons/${importPath}";`;
 	});
 
@@ -143,8 +192,10 @@ const createRegistryFile = (iconEntries, keywordMaps) => {
 		return [
 			"\t{",
 			`\t\tname: "${iconName}",`,
-			`\t\ticon: ${toImportAlias(source, iconName)},`,
-			`\t\tsource: "${source}" as const,`,
+			legacyMode
+				? `\t\ticon: ${toExportName(iconName)},`
+				: `\t\ticon: ${toImportAlias(source, iconName)},`,
+			...(legacyMode ? [] : [`\t\tsource: "${source}" as const,`]),
 			`\t\tkeywords: [${keywordCode}],`,
 			"\t},",
 		].join("\n");
@@ -156,13 +207,19 @@ const createRegistryFile = (iconEntries, keywordMaps) => {
 		"",
 		"const ICON_LIST: IconMeta[] = [",
 		...registryEntries,
-		"].sort((a, b) => {",
-		"\tconst nameCompare = a.name.localeCompare(b.name);",
-		"\tif (nameCompare !== 0) {",
-		"\t\treturn nameCompare;",
-		"\t}",
-		"\treturn a.source.localeCompare(b.source);",
-		"});",
+		legacyMode
+			? "].sort((a, b) => a.name.localeCompare(b.name));"
+			: "].sort((a, b) => {",
+		...(legacyMode
+			? []
+			: [
+					"\tconst nameCompare = a.name.localeCompare(b.name);",
+					"\tif (nameCompare !== 0) {",
+					"\t\treturn nameCompare;",
+					"\t}",
+					"\treturn a.source.localeCompare(b.source);",
+					"});",
+				]),
 		"",
 		"export { ICON_LIST };",
 		"",
@@ -191,7 +248,7 @@ const syncRegistry = async (options = {}) => {
 	const iconEntries = await collectIconEntries(targetIconsDir, readDirectory);
 
 	const previousRegistry = await readRegistry(targetRegistryPath, "utf8");
-	const keywordMaps = parseExistingKeywordMap(previousRegistry);
+	const keywordMaps = parseExistingKeywordMaps(previousRegistry);
 	const nextRegistry = createRegistryFile(iconEntries, keywordMaps);
 
 	if (nextRegistry !== previousRegistry) {
