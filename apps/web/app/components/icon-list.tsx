@@ -29,12 +29,15 @@ export const IconList = ({
 }: IconListProps) => {
 	const deferredSearchValue = useDeferredValue(searchValue);
 	const [copiedId, setCopiedId] = useState<string | null>(null);
+	// 过滤来源的图标
+	const sourceFilteredIcons = useMemo(() => {
+		return activeSource === "all"
+			? icons
+			: icons.filter((icon) => icon.source === activeSource);
+	}, [activeSource, icons]);
 
+	// 过滤搜索的图标
 	const filteredIcons = useMemo(() => {
-		const sourceFilteredIcons =
-			activeSource === "all"
-				? icons
-				: icons.filter((icon) => icon.source === activeSource);
 		const q = deferredSearchValue.trim().toLowerCase();
 		if (!q) {
 			return sourceFilteredIcons;
@@ -44,8 +47,21 @@ export const IconList = ({
 				icon.name.toLowerCase().includes(q) ||
 				icon.keywords.some((kw) => kw.toLowerCase().includes(q))
 		);
-	}, [activeSource, icons, deferredSearchValue]);
+	}, [deferredSearchValue, sourceFilteredIcons]);
 
+	// 来源标签映射
+	const sourceLabelMap: Record<IconFilterSource, string> = {
+		all: "All icons",
+		heroicons: "Heroicons",
+		hugeicons: "Hugeicons",
+		lucide: "Lucide",
+		phosphor: "Phosphor",
+	};
+
+	// 当前来源标签
+	const currentSourceLabel = sourceLabelMap[activeSource];
+
+	// 复制图标
 	const handleCopy = async (name: string, id: string) => {
 		await navigator.clipboard.writeText(name);
 		setCopiedId(id);
@@ -59,7 +75,8 @@ export const IconList = ({
 		>
 			<div className=" py-4 shrink-0 space-y-1">
 				<p className="text-sm text-muted mb-2 leading-relaxed">
-					Explore 5103 <span className="text-primary">All icons</span> in SVG,
+					Explore {sourceFilteredIcons.length}{" "}
+					<span className="text-primary">{currentSourceLabel}</span> in SVG,
 					React, Icon Font and more. Ideal for apps and websites.
 				</p>
 			</div>
