@@ -92,10 +92,8 @@ const Tabs = ({ icons, onValueChange, value }: TabsProps) => {
 		}
 		// getBoundingClientRect：获取元素相对于视口的位置和大小。
 		const tabRect = activeTabElement.getBoundingClientRect();
-		console.log(tabRect);
 		// 获取列表容器相对于视口的位置和大小。
 		const listRect = listElement.getBoundingClientRect();
-		console.log(listRect);
 		setIndicatorStyle({
 			left: tabRect.left - listRect.left,
 			width: tabRect.width,

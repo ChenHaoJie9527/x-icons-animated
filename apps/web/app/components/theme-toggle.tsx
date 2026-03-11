@@ -3,8 +3,8 @@
 import { cn } from "@x-icons/utils/cn";
 import { useEffect, useState } from "react";
 import { Tooltip } from "@/components/tooltip";
-import { MoonIcon } from "@/icons/moon";
-import { SunIcon } from "@/icons/sun";
+import { MoonIcon } from "@/icons/heroicons/moon";
+import { SunIcon } from "@/icons/heroicons/sun";
 
 export function ThemeToggle() {
 	const [isDark, setIsDark] = useState(false);

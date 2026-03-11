@@ -3,7 +3,7 @@
 import { Button } from "@base-ui/react";
 import { motion } from "motion/react";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { GithubIcon } from "@/icons/github";
+import { GithubIcon } from "@/icons/heroicons/github";
 import { PAGE_ANIMATIONS } from "@/lib/animation-timeline";
 import type { IconMeta } from "@/lib/icon-types";
 
