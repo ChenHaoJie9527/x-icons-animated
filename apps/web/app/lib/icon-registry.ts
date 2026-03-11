@@ -17,9 +17,10 @@ import { CheckMarkBadge1Icon as HeroiconsCheckMarkBadge1Icon } from "@/icons/che
 import { CopyPathIcon as HeroiconsCopyPathIcon } from "@/icons/copy-path";
 import { GithubIcon as HeroiconsGithubIcon } from "@/icons/github";
 import { HomeIcon as HeroiconsHomeIcon } from "@/icons/home";
-import { BellRingIcon as LucideBellRingIcon } from "@/icons/lucide/bell-ring";
 import { MoonIcon as HeroiconsMoonIcon } from "@/icons/moon";
 import { SunIcon as HeroiconsSunIcon } from "@/icons/sun";
+import { AiChat2Icon as HugeiconsAiChat2Icon } from "@/icons/hugeicons/ai-chat-2";
+import { BellRingIcon as LucideBellRingIcon } from "@/icons/lucide/bell-ring";
 import type { IconMeta } from "@/lib/icon-types";
 
 const ICON_LIST: IconMeta[] = [
@@ -148,6 +149,12 @@ const ICON_LIST: IconMeta[] = [
 		icon: HeroiconsSunIcon,
 		source: "heroicons" as const,
 		keywords: ["sun"],
+	},
+	{
+		name: "ai-chat-2",
+		icon: HugeiconsAiChat2Icon,
+		source: "hugeicons" as const,
+		keywords: ["ai", "chat", "2"],
 	},
 	{
 		name: "bell-ring",

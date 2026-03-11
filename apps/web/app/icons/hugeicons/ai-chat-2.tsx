@@ -1,0 +1,132 @@
+"use client";
+import { cn } from "@x-icons/utils/cn";
+import type { Variants } from "motion/react";
+import { motion } from "motion/react";
+import type { HTMLAttributes, Ref } from "react";
+import { useImperativeHandle } from "react";
+import { useIconHoverAnimation } from "@/hooks/use-icon-hover-animation";
+import type { IconAnimationHandle } from "@/lib/icon-types";
+
+export interface AiChat2IconHandle extends IconAnimationHandle {}
+
+interface AiChat2IconProps extends HTMLAttributes<HTMLDivElement> {
+	size?: number;
+	ref?: Ref<AiChat2IconHandle>;
+}
+
+const AI_CHAT_2_VARIANTS_1: Variants = {
+	normal: {
+		opacity: 1,
+		pathLength: 1,
+		pathOffset: 0,
+	},
+	animate: {
+		opacity: [0, 1],
+		pathLength: [0, 1],
+		pathOffset: [0, 0],
+		transition: {
+			duration: 0.5,
+			ease: "easeInOut",
+		},
+	},
+};
+
+const AI_CHAT_2_VARIANTS_2: Variants = {
+	normal: {
+		opacity: 1,
+		scale: 1,
+	},
+	animate: {
+		opacity: [0, 1],
+		scale: [0.8, 1.1, 1, 1.1, 1],
+		transition: {
+			duration: 0.3,
+			ease: "easeInOut",
+			times: [0, 0.2, 0.4, 0.6, 1],
+			delay: 0.5,
+		},
+	},
+};
+
+const AI_CHAT_2_VARIANTS_3: Variants = {
+	normal: {
+		opacity: 1,
+		scale: 1,
+	},
+	animate: {
+		opacity: [0, 1],
+		scale: [0.8, 1.1, 1, 1.1, 1],
+		transition: {
+			duration: 0.3,
+			ease: "easeInOut",
+			delay: 0.6,
+			times: [0, 0.2, 0.4, 0.6, 1],
+		},
+	},
+};
+
+const AiChat2Icon = ({
+	size = 32,
+	color = "currentColor",
+	className,
+	onMouseEnter,
+	onMouseLeave,
+	ref,
+	...props
+}: AiChat2IconProps) => {
+	const { controls, handleMouseEnter, handleMouseLeave } =
+		useIconHoverAnimation({
+			ref,
+			onMouseEnter,
+			onMouseLeave,
+		});
+	useImperativeHandle(ref, () => {
+		return {
+			startAnimation() {
+				controls.start("animate");
+			},
+			stopAnimation() {
+				controls.start("normal");
+			},
+		};
+	});
+	return (
+		<div
+			className={cn(className)}
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
+			{...props}
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width={size}
+				height={size}
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				strokeWidth="1"
+				strokeLinejoin="round"
+			>
+				<motion.path
+					animate={controls}
+					d="M14.1706 20.8905C18.3536 20.6125 21.6856 17.2332 21.9598 12.9909C22.0134 12.1607 22.0134 11.3009 21.9598 10.4707C21.6856 6.22838 18.3536 2.84913 14.1706 2.57107C12.7435 2.47621 11.2536 2.47641 9.8294 2.57107C5.64639 2.84913 2.31441 6.22838 2.04024 10.4707C1.98659 11.3009 1.98659 12.1607 2.04024 12.9909C2.1401 14.536 2.82343 15.9666 3.62791 17.1746C4.09501 18.0203 3.78674 19.0758 3.30021 19.9978C2.94941 20.6626 2.77401 20.995 2.91484 21.2351C3.05568 21.4752 3.37026 21.4829 3.99943 21.4982C5.24367 21.5285 6.08268 21.1757 6.74868 20.6846C7.1264 20.4061 7.31527 20.2668 7.44544 20.2508C7.5756 20.2348 7.83177 20.3403 8.34401 20.5513C8.8044 20.7409 9.33896 20.8579 9.8294 20.8905C11.2536 20.9852 12.7435 20.9854 14.1706 20.8905Z"
+					variants={AI_CHAT_2_VARIANTS_1}
+				/>
+				<motion.path
+					animate={controls}
+					variants={AI_CHAT_2_VARIANTS_2}
+					d="M7.5 15L9.34189 9.47434C9.43631 9.19107 9.7014 9 10 9C10.2986 9 10.5637 9.19107 10.6581 9.47434L12.5 15M8.5 13H11.5"
+				/>
+				<motion.path
+					animate={controls}
+					variants={AI_CHAT_2_VARIANTS_3}
+					d="M15.5 9V15"
+				/>
+			</svg>
+		</div>
+	);
+};
+
+AiChat2Icon.displayName = "AiChat2Icon";
+
+export { AiChat2Icon };
