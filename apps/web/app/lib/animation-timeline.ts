@@ -58,7 +58,7 @@ export class AnimationTimeline {
 
 	constructor(config: AnimationTimelineConfig) {
 		this.baseTime = config.baseTime ?? 0;
-		this.defaultDuration = config.defaultDuration ?? 0.6;
+		this.defaultDuration = config.defaultDuration ?? 0.3;
 		this.defaultEase = config.defaultEase ?? "easeInOut";
 	}
 
@@ -202,7 +202,7 @@ export class AnimationTimeline {
  */
 export const pageTimeline = new AnimationTimeline({
 	baseTime: 0,
-	defaultDuration: 0.6,
+	defaultDuration: 0.3,
 	defaultEase: "easeInOut",
 });
 

@@ -48,6 +48,32 @@ describe("sync-icon-registry helpers", () => {
 		expect(keywordMap.get("github")).toEqual(["github", "code"]);
 	});
 
+	// 验证 legacy 解析入口可兼容 source 字段，避免新旧脚本接口不一致。
+	it("parses legacy keyword map from source-aware registry content", () => {
+		const registryContent = `
+		{
+			name: "arrow-left",
+			icon: HeroiconsArrowLeftIcon,
+			source: "heroicons",
+			keywords: ["arrow", "left", "navigation"],
+		},
+		{
+			name: "github",
+			icon: LucideGithubIcon,
+			source: "lucide",
+			keywords: ["github", "code"],
+		},
+		`;
+
+		const keywordMap = parseExistingKeywordMap(registryContent);
+		expect(keywordMap.get("arrow-left")).toEqual([
+			"arrow",
+			"left",
+			"navigation",
+		]);
+		expect(keywordMap.get("github")).toEqual(["github", "code"]);
+	});
+
 	// 验证生成 registry 时会优先保留旧关键词，并为新图标回退到 name 拆词关键词。
 	it("creates registry content with preserved and fallback keywords", () => {
 		const keywordMap = new Map<string, string[]>();
@@ -101,8 +127,22 @@ describe("syncRegistry", () => {
 				createFileEntry("github.tsx"),
 			]);
 		const previousRegistry = createRegistryFile(
-			["arrow-left", "github"],
-			new Map<string, string[]>()
+			[
+				{
+					iconName: "arrow-left",
+					importPath: "arrow-left",
+					source: "heroicons",
+				},
+				{
+					iconName: "github",
+					importPath: "github",
+					source: "heroicons",
+				},
+			],
+			{
+				legacyKeywordMap: new Map<string, string[]>(),
+				scopedKeywordMap: new Map<string, string[]>(),
+			}
 		);
 		const readFileMock = vi.fn().mockResolvedValue(previousRegistry);
 		const writeFileMock = vi.fn().mockResolvedValue(undefined);

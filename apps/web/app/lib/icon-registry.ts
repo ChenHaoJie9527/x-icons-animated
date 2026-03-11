@@ -17,9 +17,9 @@ import { CheckMarkBadge1Icon as HeroiconsCheckMarkBadge1Icon } from "@/icons/che
 import { CopyPathIcon as HeroiconsCopyPathIcon } from "@/icons/copy-path";
 import { GithubIcon as HeroiconsGithubIcon } from "@/icons/github";
 import { HomeIcon as HeroiconsHomeIcon } from "@/icons/home";
-import { BellRingIcon as LucideBellRingIcon } from "@/icons/lucide/bell-ring";
 import { MoonIcon as HeroiconsMoonIcon } from "@/icons/moon";
 import { SunIcon as HeroiconsSunIcon } from "@/icons/sun";
+import { BellRingIcon as LucideBellRingIcon } from "@/icons/lucide/bell-ring";
 import type { IconMeta } from "@/lib/icon-types";
 
 const ICON_LIST: IconMeta[] = [

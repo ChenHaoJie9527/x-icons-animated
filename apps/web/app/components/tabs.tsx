@@ -130,7 +130,7 @@ const Tabs = ({ icons, onValueChange, value }: TabsProps) => {
 							width: `${indicatorStyle.width}px`,
 						}}
 					/>
-					{tabItems.map((tab) => (
+					{tabItems.map((tab, index) => (
 						<BaseTabs.Tab
 							className={cn(
 								"relative z-10 cursor-pointer rounded-full px-2 py-3 text-sm font-semibold transition-colors duration-200 ",
@@ -138,7 +138,7 @@ const Tabs = ({ icons, onValueChange, value }: TabsProps) => {
 									? "text-slate-900"
 									: "text-slate-500 hover:text-slate-700"
 							)}
-							key={tab.value}
+							key={`${tab.value}-${index}`}
 							ref={(element) => {
 								tabRefs.current[tab.value] = element;
 							}}
