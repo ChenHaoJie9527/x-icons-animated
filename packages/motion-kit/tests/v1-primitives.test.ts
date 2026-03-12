@@ -1,4 +1,12 @@
-import { fade, rotate, scaleXY, translateX, translateY } from "../src/primitives";
+import type { Transition } from "motion/react";
+import {
+	fade,
+	rotate,
+	scaleXY,
+	translateX,
+	translateY,
+	withTransition,
+} from "../src/primitives";
 import { expect, it, describe } from "vitest";
 
 describe("motion-kit primitives", () => {
@@ -103,6 +111,20 @@ describe("motion-kit primitives", () => {
 					scaleX: [1, 0.9, 1.1, 1],
 					scaleY: [1, 1.1, 0.9, 1],
 				},
+			});
+		});
+	});
+
+	describe("withTransition", () => {
+		it("当提供参数时使用参数值作为目标值", () => {
+			const transition: Transition = {
+				duration: 0.8,
+				ease: "easeInOut",
+				times: [0, 0.5, 1],
+			};
+			expect(withTransition(transition)).toEqual({
+				normal: {},
+				animate: { transition },
 			});
 		});
 	});
