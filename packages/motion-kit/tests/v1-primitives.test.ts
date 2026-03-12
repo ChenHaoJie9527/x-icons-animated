@@ -2,6 +2,8 @@ import type { Transition } from "motion/react";
 import { describe, expect, it } from "vitest";
 import {
 	fade,
+	pathLength,
+	pathOffset,
 	rotate,
 	scaleXY,
 	translateX,
@@ -12,7 +14,7 @@ import {
 describe("motion-kit primitives", () => {
 	describe("fade", () => {
 		it("当未提供参数时使用默认值", () => {
-			expect(fade()).toEqual({
+			expect(fade(1, 1)).toEqual({
 				normal: {
 					opacity: 1,
 				},
@@ -29,6 +31,17 @@ describe("motion-kit primitives", () => {
 				},
 				animate: {
 					opacity: 1,
+				},
+			});
+		});
+
+		it("第二个参数为数组时使用数组中的值作为动画关键帧", () => {
+			expect(fade(1, [0, 1])).toEqual({
+				normal: {
+					opacity: 1,
+				},
+				animate: {
+					opacity: [0, 1],
 				},
 			});
 		});
@@ -125,6 +138,38 @@ describe("motion-kit primitives", () => {
 			expect(withTransition(transition)).toEqual({
 				normal: {},
 				animate: { transition },
+			});
+		});
+	});
+
+	describe("pathLength", () => {
+		it("当提供 number 时使用 number 作为目标值", () => {
+			expect(pathLength(1, 0.6)).toEqual({
+				normal: { pathLength: 1 },
+				animate: { pathLength: 0.6 },
+			});
+		});
+
+		it("当提供数组时使用数组作为关键帧", () => {
+			expect(pathLength(1, [0, 0.5, 1])).toEqual({
+				normal: { pathLength: 1 },
+				animate: { pathLength: [0, 0.5, 1] },
+			});
+		});
+	});
+
+	describe("pathOffset", () => {
+		it("当提供 number 时使用 number 作为目标值", () => {
+			expect(pathOffset(0, 0.3)).toEqual({
+				normal: { pathOffset: 0 },
+				animate: { pathOffset: 0.3 },
+			});
+		});
+
+		it("当提供数组时使用数组作为关键帧", () => {
+			expect(pathOffset(0, [0, 0.2, 0])).toEqual({
+				normal: { pathOffset: 0 },
+				animate: { pathOffset: [0, 0.2, 0] },
 			});
 		});
 	});

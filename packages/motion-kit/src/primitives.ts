@@ -17,10 +17,14 @@ const createPatch = (
  * @param to 目标透明度
  * @example
  * fade(0, 1) // { normal: { opacity: 0 }, animate: { opacity: 1 } }
+ * fade(1, [0, 1]) // { normal: { opacity: 1 }, animate: { opacity: [0, 1] } }
  * @returns DefaultMotionPatch
  */
-export const fade = (from = 1, to = 1): DefaultMotionPatch => {
-	return createPatch({ opacity: from }, { opacity: to });
+export const fade = (
+	normalOpacity: number,
+	animateOpacity: number | number[]
+): DefaultMotionPatch => {
+	return createPatch({ opacity: normalOpacity }, { opacity: animateOpacity });
 };
 
 /**
@@ -94,6 +98,45 @@ export const scaleXY = (
 	);
 };
 
+/**
+ * @description SVG 路径长度动画
+ * @param from 初始路径长度
+ * @param to 目标路径长度
+ * @example
+ * pathLength(1, 2) // { normal: { pathLength: 1 }, animate: { pathLength: 2 } }
+ * pathLength(1, [1, 2, 3]) // { normal: { pathLength: 1 }, animate: { pathLength: [1, 2, 3] } }
+ * @returns DefaultMotionPatch
+ */
+export const pathLength = (
+	from: number,
+	to: number | number[]
+): DefaultMotionPatch => {
+	return createPatch({ pathLength: from }, { pathLength: to });
+};
+
+/**
+ * @description SVG 路径偏移动画
+ * @param from 初始路径偏移
+ * @param to 目标路径偏移
+ * @example
+ * pathOffset(0, 1) // { normal: { pathOffset: 0 }, animate: { pathOffset: 1 } }
+ * pathOffset(0, [0, 1, 2]) // { normal: { pathOffset: 0 }, animate: { pathOffset: [0, 1, 2] } }
+ * @returns DefaultMotionPatch
+ */
+export const pathOffset = (
+	from: number,
+	to: number | number[]
+): DefaultMotionPatch => {
+	return createPatch({ pathOffset: from }, { pathOffset: to });
+};
+
+/**
+ * @description 过渡
+ * @param transition 过渡
+ * @example
+ * withTransition({ duration: 0.5, ease: "easeInOut" }) // { normal: {}, animate: { transition: { duration: 0.5, ease: "easeInOut" } } }
+ * @returns DefaultMotionPatch
+ */
 export const withTransition = (transition: Transition): DefaultMotionPatch => {
 	return createPatch({}, { transition });
 };

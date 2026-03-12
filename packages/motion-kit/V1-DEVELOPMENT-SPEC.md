@@ -6,7 +6,7 @@
 
 v1 范围内包含：
 
-- 纯函数动画片段：`fade`、`rotate`、`translateX`、`translateY`、`scaleXY`
+- 纯函数动画片段：`fade`、`rotate`、`translateX`、`translateY`、`scaleXY`、`pathLength`、`pathOffset`
 - 变体组合器：`composeVariants`
 - 过渡片段：`withTransition`
 - 图标控制 Hook：`useIconMotionKit`
@@ -41,11 +41,13 @@ packages/motion-kit/
 
 ### 4.1 primitives（纯函数）
 
-- `fade(from?: number, to?: number)`
+- `fade(normalOpacity?: number, animateOpacity?: number | number[])`
 - `rotate(from?: number, to: number | number[])`
 - `translateX(from?: number, to: number | number[])`
 - `translateY(from?: number, to: number | number[])`
 - `scaleXY(fromX?: number, toX: number | number[], fromY?: number, toY: number | number[])`
+- `pathLength(from: number, to: number | number[])`
+- `pathOffset(from: number, to: number | number[])`
 - `withTransition(transition: Transition)`
 
 输出统一为 `DefaultMotionPatch`，只产生 `normal` 与 `animate` 两个状态键。

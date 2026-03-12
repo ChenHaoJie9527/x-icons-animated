@@ -1,69 +1,56 @@
 "use client";
+import { composeVariants } from "@x-icons/motion-kit/compose";
+import {
+	fade,
+	pathLength,
+	pathOffset,
+	scaleXY,
+	withTransition,
+} from "@x-icons/motion-kit/primitives";
+import type { IconMotionHandle } from "@x-icons/motion-kit/use-icon-motion-kit";
+import { useIconMotionKit } from "@x-icons/motion-kit/use-icon-motion-kit";
 import { cn } from "@x-icons/utils/cn";
-import type { Variants } from "motion/react";
 import { motion } from "motion/react";
 import type { HTMLAttributes, Ref } from "react";
-import { useImperativeHandle } from "react";
-import { useIconHoverAnimation } from "@/hooks/use-icon-hover-animation";
-import type { IconAnimationHandle } from "@/lib/icon-types";
 
-export interface AiChat2IconHandle extends IconAnimationHandle {}
+export interface AiChat2IconHandle extends IconMotionHandle {}
 
 interface AiChat2IconProps extends HTMLAttributes<HTMLDivElement> {
 	size?: number;
 	ref?: Ref<AiChat2IconHandle>;
 }
 
-const AI_CHAT_2_VARIANTS_1: Variants = {
-	normal: {
-		opacity: 1,
-		pathLength: 1,
-		pathOffset: 0,
-	},
-	animate: {
-		opacity: [0, 1],
-		pathLength: [0, 1],
-		pathOffset: [0, 0],
-		transition: {
-			duration: 0.5,
-			ease: "easeInOut",
-		},
-	},
-};
+const AI_CHAT_2_VARIANTS_1 = composeVariants(
+	fade(1, [0, 1]),
+	pathLength(1, [0, 1]),
+	pathOffset(0, [0, 0]),
+	withTransition({
+		duration: 0.5,
+		ease: "easeInOut",
+	})
+);
 
-const AI_CHAT_2_VARIANTS_2: Variants = {
-	normal: {
-		opacity: 1,
-		scale: 1,
-	},
-	animate: {
-		opacity: [0, 1],
-		scale: [0.8, 1.1, 1, 1.1, 1],
-		transition: {
-			duration: 0.3,
-			ease: "easeInOut",
-			times: [0, 0.2, 0.4, 0.6, 1],
-			delay: 0.5,
-		},
-	},
-};
+const AI_CHAT_2_VARIANTS_2 = composeVariants(
+	fade(1, [0, 1]),
+	scaleXY(1, [0.8, 1.1, 1, 1.1, 1], 1, [0.8, 1.1, 1, 1.1, 1]),
+	withTransition({
+		duration: 0.3,
+		ease: "easeInOut",
+		times: [0, 0.2, 0.4, 0.6, 1],
+		delay: 0.5,
+	})
+);
 
-const AI_CHAT_2_VARIANTS_3: Variants = {
-	normal: {
-		opacity: 1,
-		scale: 1,
-	},
-	animate: {
-		opacity: [0, 1],
-		scale: [0.8, 1.1, 1, 1.1, 1],
-		transition: {
-			duration: 0.3,
-			ease: "easeInOut",
-			delay: 0.6,
-			times: [0, 0.2, 0.4, 0.6, 1],
-		},
-	},
-};
+const AI_CHAT_2_VARIANTS_3 = composeVariants(
+	fade(1, [0, 1]),
+	scaleXY(1, [0.8, 1.1, 1, 1.1, 1], 1, [0.8, 1.1, 1, 1.1, 1]),
+	withTransition({
+		duration: 0.3,
+		ease: "easeInOut",
+		delay: 0.6,
+		times: [0, 0.2, 0.4, 0.6, 1],
+	})
+);
 
 const AiChat2Icon = ({
 	size = 32,
@@ -74,22 +61,12 @@ const AiChat2Icon = ({
 	ref,
 	...props
 }: AiChat2IconProps) => {
-	const { controls, handleMouseEnter, handleMouseLeave } =
-		useIconHoverAnimation({
-			ref,
-			onMouseEnter,
-			onMouseLeave,
-		});
-	useImperativeHandle(ref, () => {
-		return {
-			startAnimation() {
-				controls.start("animate");
-			},
-			stopAnimation() {
-				controls.start("normal");
-			},
-		};
+	const { controls, handleMouseEnter, handleMouseLeave } = useIconMotionKit({
+		ref,
+		onMouseEnter,
+		onMouseLeave,
 	});
+
 	return (
 		<div
 			className={cn(className)}
@@ -103,7 +80,7 @@ const AiChat2Icon = ({
 				height={size}
 				viewBox="0 0 24 24"
 				fill="none"
-				stroke="currentColor"
+				stroke={color}
 				strokeWidth="1"
 				strokeLinejoin="round"
 			>
