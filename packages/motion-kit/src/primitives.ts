@@ -15,28 +15,31 @@ export const fade = (from = 1, to = 1): DefaultMotionPatch => {
 	return createPatch({ opacity: from }, { opacity: to });
 };
 
-export const rotate = (from = 0, to: number | number[]): DefaultMotionPatch => {
+export const rotate = (
+	from: number,
+	to: number | number[]
+): DefaultMotionPatch => {
 	return createPatch({ rotate: from }, { rotate: to });
 };
 
 export const translateX = (
-	from = 0,
+	from: number,
 	to: number | number[]
 ): DefaultMotionPatch => {
 	return createPatch({ x: from }, { x: to });
 };
 
 export const translateY = (
-	from = 0,
+	from: number,
 	to: number | number[]
 ): DefaultMotionPatch => {
 	return createPatch({ y: from }, { y: to });
 };
 
 export const scaleXY = (
-	fromX = 1,
+	fromX: number,
 	toX: number | number[],
-	fromY = 1,
+	fromY: number,
 	toY: number | number[]
 ): DefaultMotionPatch => {
 	return createPatch(
