@@ -1,4 +1,4 @@
-import { fade, rotate } from "../src/primitives";
+import { fade, rotate, translateX } from "../src/primitives";
 import { expect, it, describe } from "vitest";
 
 describe("motion-kit primitives", () => {
@@ -45,6 +45,30 @@ describe("motion-kit primitives", () => {
 				},
 				animate: {
 					rotate: [0, 45, 90],
+				},
+			});
+		});
+	});
+
+	describe("translateX", () => {
+		it("当提供参数时使用参数值作为目标值", () => {
+			expect(translateX(0, 12)).toEqual({
+				normal: {
+					x: 0,
+				},
+				animate: {
+					x: 12,
+				},
+			});
+		});
+
+		it("第二个参数为数组时使用数组中的值作为目标值", () => {
+			expect(translateX(0, [0, 12, 24])).toEqual({
+				normal: {
+					x: 0,
+				},
+				animate: {
+					x: [0, 12, 24],
 				},
 			});
 		});
