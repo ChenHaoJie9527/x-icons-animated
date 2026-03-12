@@ -8,6 +8,7 @@ export default defineConfig({
 	test: {
 		name: "motion-kit",
 		environment: "node",
+		passWithNoTests: true,
 		include: ["tests/**/*.test.ts"],
 		exclude: ["node_modules", "dist"],
 	},

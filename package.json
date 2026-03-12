@@ -3,12 +3,14 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev test:watch icons:watch --filter=web --parallel --continue",
+    "dev": "turbo run dev test:watch icons:watch --filter=web --filter=@x-icons/motion-kit --parallel --continue",
     "lint": "ultracite check",
     "lint:fix": "ultracite fix",
     "test": "turbo run test --filter=web",
     "test:web": "turbo run test --filter=web",
     "test:web:watch": "turbo run test:watch --filter=web",
+    "test:motion-kit": "turbo run test --filter=motion-kit",
+    "test:motion-kit:watch": "turbo run test:watch --filter=motion-kit",
     "check-types": "turbo run check-types",
     "icons:sync": "turbo run icons:sync --filter=web",
     "icons:watch": "turbo run icons:watch --filter=web"
