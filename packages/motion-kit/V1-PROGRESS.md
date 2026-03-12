@@ -9,7 +9,7 @@
 | M3 | 完成 `composeVariants` 组合器 | 已完成 | 支持递归对象合并 |
 | M4 | 完成 `useIconMotionKit` 控制 Hook | 已完成 | 统一 controls + hover + ref |
 | M5 | 编写 v1 开发规范文档 | 已完成 | `V1-DEVELOPMENT-SPEC.md` |
-| M6 | 包级类型检查 | 阻塞 | 当前仓库未安装 node_modules，待你本地安装后复测 |
+| M6 | 包级类型检查 | 已完成 | `pnpm --filter @x-icons/motion-kit check-types` 已通过 |
 | M7 | `web/app` 接入与手动调试 | 待开始 | 由你手动完成 |
 
 ## 本次交付清单
@@ -20,7 +20,6 @@
 - `packages/motion-kit/src/primitives.ts`
 - `packages/motion-kit/src/compose.ts`
 - `packages/motion-kit/src/use-icon-motion-kit.ts`
-- `packages/motion-kit/src/index.ts`
 - `packages/motion-kit/V1-DEVELOPMENT-SPEC.md`
 - `packages/motion-kit/V1-PROGRESS.md`
 

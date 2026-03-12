@@ -35,7 +35,6 @@ packages/motion-kit/
     primitives.ts
     compose.ts
     use-icon-motion-kit.ts
-    index.ts
 ```
 
 ## 4. API 规范（v1）
@@ -73,17 +72,25 @@ packages/motion-kit/
 ## 5. 类型与代码风格
 
 - 不使用 `any`，使用显式类型与 `unknown`。
-- 所有导出 API 必须在 `src/index.ts` 汇总导出。
+- 禁止使用 barrel 文件，统一使用子路径导出。
+- 导出仅通过 `package.json` 的 `exports` 显式维护。
 - 文件内注释只保留必要说明，不写冗余注释。
 - 保持 ASCII 文本与一致命名。
 
-## 6. 验收标准（v1 完成判定）
+## 6. 导入规范（子路径）
+
+- `composeVariants` 从 `@x-icons/motion-kit/compose` 导入。
+- primitives 从 `@x-icons/motion-kit/primitives` 导入。
+- 类型从 `@x-icons/motion-kit/types` 导入。
+- hook 从 `@x-icons/motion-kit/use-icon-motion-kit` 导入。
+
+## 7. 验收标准（v1 完成判定）
 
 - 包内 `pnpm --filter @x-icons/motion-kit check-types` 通过。
 - API 可被 `web/app` 手动引入并用于构建 `Variants`。
 - 不改动 `web/app` 现有图标文件，集成由业务侧手动完成。
 
-## 7. 后续扩展预留
+## 8. 后续扩展预留
 
 - 支持泛型状态键（如 `initial/hover/tap/exit`）
 - 增加预设动画（如 `wobble`、`bounce`）

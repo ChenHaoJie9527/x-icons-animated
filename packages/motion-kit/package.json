@@ -4,8 +4,10 @@
   "type": "module",
   "private": true,
   "exports": {
-    ".": "./src/index.ts",
-    "./*": "./src/*.ts"
+    "./compose": "./src/compose.ts",
+    "./primitives": "./src/primitives.ts",
+    "./types": "./src/types.ts",
+    "./use-icon-motion-kit": "./src/use-icon-motion-kit.ts"
   },
   "scripts": {
     "check-types": "tsc --noEmit",
