@@ -1,4 +1,5 @@
 import type { Transition } from "motion/react";
+import { describe, expect, it } from "vitest";
 import {
 	fade,
 	rotate,
@@ -7,7 +8,6 @@ import {
 	translateY,
 	withTransition,
 } from "../src/primitives";
-import { expect, it, describe } from "vitest";
 
 describe("motion-kit primitives", () => {
 	describe("fade", () => {

@@ -7,7 +7,7 @@ const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
 	test: {
 		name: "motion-kit",
-		environment: "node",
+		environment: "jsdom",
 		passWithNoTests: true,
 		include: ["tests/**/*.test.ts"],
 		exclude: ["node_modules", "dist"],
