@@ -1,11 +1,16 @@
 import type { DefaultMotionPatch, MotionTarget, MotionVariants } from "./types";
 
+type InternalTarget = Record<string, unknown>;
+
 const isPlainRecord = (value: unknown): value is Record<string, unknown> => {
 	return typeof value === "object" && value !== null && !Array.isArray(value);
 };
 
-const mergeTarget = (base: MotionTarget, patch: MotionTarget): MotionTarget => {
-	const nextTarget: MotionTarget = { ...base };
+const mergeTarget = (
+	base: InternalTarget,
+	patch: InternalTarget
+): InternalTarget => {
+	const nextTarget: InternalTarget = { ...base };
 
 	for (const key in patch) {
 		if (!Object.hasOwn(patch, key)) {
@@ -28,20 +33,20 @@ const mergeTarget = (base: MotionTarget, patch: MotionTarget): MotionTarget => {
 export const composeVariants = (
 	...patches: DefaultMotionPatch[]
 ): MotionVariants => {
-	let normal: MotionTarget = {};
-	let animate: MotionTarget = {};
+	let normal: InternalTarget = {};
+	let animate: InternalTarget = {};
 
 	for (const patch of patches) {
 		if (patch.normal) {
-			normal = mergeTarget(normal, patch.normal);
+			normal = mergeTarget(normal, patch.normal as InternalTarget);
 		}
 		if (patch.animate) {
-			animate = mergeTarget(animate, patch.animate);
+			animate = mergeTarget(animate, patch.animate as InternalTarget);
 		}
 	}
 
 	return {
-		normal,
-		animate,
+		normal: normal as MotionTarget,
+		animate: animate as MotionTarget,
 	};
 };

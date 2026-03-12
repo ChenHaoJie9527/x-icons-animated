@@ -1,10 +1,10 @@
-import type { Variants } from "motion/react";
+import type { TargetAndTransition, Variants } from "motion/react";
 
 export const DEFAULT_MOTION_STATES = ["normal", "animate"] as const;
 
 export type DefaultMotionState = (typeof DEFAULT_MOTION_STATES)[number];
 
-export type MotionTarget = Record<string, unknown>;
+export type MotionTarget = TargetAndTransition;
 
 export type MotionPatch<S extends string = DefaultMotionState> = Partial<
 	Record<S, MotionTarget>

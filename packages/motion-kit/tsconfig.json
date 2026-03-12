@@ -1,8 +1,11 @@
 {
-  "extends": "@x-icons/typescript-config/base.json",
+  "extends": "@x-icons/typescript-config/motion-kit.json",
   "compilerOptions": {
-    "rootDir": "src",
-    "noEmit": true
+    "rootDir": "."
   },
-  "include": ["src"]
+  "baseUrl": ".",
+  "paths": {
+    "@/*": ["./src/*"]
+  },
+  "include": ["src", "vitest.config.ts"]
 }

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./bundler-library.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "noEmit": true
+  }
+}
