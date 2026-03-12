@@ -32,6 +32,9 @@ importers:
       '@base-ui/react':
         specifier: ^1.2.0
         version: 1.2.0(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@x-icons/motion-kit':
+        specifier: workspace:*
+        version: link:../../packages/motion-kit
       '@x-icons/utils':
         specifier: workspace:*
         version: link:../../packages/utils

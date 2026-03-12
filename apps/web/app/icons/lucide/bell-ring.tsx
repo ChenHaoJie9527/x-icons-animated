@@ -1,58 +1,53 @@
 "use client";
 
+import { composeVariants } from "@x-icons/motion-kit/compose";
+import {
+	fade,
+	rotate,
+	translateX,
+	withTransition,
+} from "@x-icons/motion-kit/primitives";
+import type { IconMotionHandle } from "@x-icons/motion-kit/use-icon-motion-kit";
+import { useIconMotionKit } from "@x-icons/motion-kit/use-icon-motion-kit";
 import { cn } from "@x-icons/utils/cn";
 import type { Variants } from "motion/react";
 import { motion } from "motion/react";
 import type { HTMLAttributes, Ref } from "react";
-import { useImperativeHandle } from "react";
-import { useIconHoverAnimation } from "@/hooks/use-icon-hover-animation";
-import type { IconAnimationHandle } from "@/lib/icon-types";
 
 interface BellRingIconProps extends HTMLAttributes<HTMLDivElement> {
 	size?: number;
 	ref?: Ref<BellRingIconHandle>;
 }
 
-const BELL_RING_VARIANTS: Variants = {
-	normal: {
-		rotate: 0,
-		x: 0,
-		transition: {
-			duration: 0.2,
-			ease: "easeOut",
-		},
-	},
-	animate: {
-		rotate: [0, -14, 12, -10, 8, -6, 4, -2, 0],
-		x: [0, -0.6, 0.6, -0.5, 0.4, -0.3, 0.2, -0.1, 0],
-		transition: {
-			duration: 1.05,
-			ease: "easeInOut",
-			times: [0, 0.12, 0.24, 0.38, 0.54, 0.7, 0.82, 0.92, 1],
-		},
-	},
-};
+const BELL_RING_VARIANTS: Variants = composeVariants(
+	rotate(0, [0, -14, 12, -10, 8, -6, 4, -2, 0]),
+	translateX(0, [0, -0.6, 0.6, -0.5, 0.4, -0.3, 0.2, -0.1, 0]),
+	withTransition({
+		duration: 1.05,
+		ease: "easeInOut",
+		times: [0, 0.12, 0.24, 0.38, 0.54, 0.7, 0.82, 0.92, 1],
+	})
+);
 
-const RING_WAVE_VARIANTS: Variants = {
-	normal: {
-		opacity: 0.7,
-		pathLength: 1,
-		transition: {
-			duration: 0.2,
+const RING_WAVE_VARIANTS: Variants = composeVariants(
+	fade(0.7, 0.7),
+	{
+		normal: {
+			pathLength: 1,
+		},
+		animate: {
+			opacity: [0.25, 1, 0.45, 0.95, 0.6],
+			pathLength: [0.65, 1, 0.8, 1, 0.9],
 		},
 	},
-	animate: {
-		opacity: [0.25, 1, 0.45, 0.95, 0.6],
-		pathLength: [0.65, 1, 0.8, 1, 0.9],
-		transition: {
-			duration: 1.05,
-			ease: "easeInOut",
-			times: [0, 0.2, 0.45, 0.7, 1],
-		},
-	},
-};
+	withTransition({
+		duration: 1.05,
+		ease: "easeInOut",
+		times: [0, 0.2, 0.45, 0.7, 1],
+	})
+);
 
-export interface BellRingIconHandle extends IconAnimationHandle {}
+export interface BellRingIconHandle extends IconMotionHandle {}
 
 const BellRingIcon = ({
 	size = 32,
@@ -63,22 +58,12 @@ const BellRingIcon = ({
 	ref,
 	...props
 }: BellRingIconProps) => {
-	const { controls, handleMouseEnter, handleMouseLeave } =
-		useIconHoverAnimation({
-			ref,
-			onMouseEnter,
-			onMouseLeave,
-		});
-	useImperativeHandle(ref, () => {
-		return {
-			startAnimation() {
-				controls.start("animate");
-			},
-			stopAnimation() {
-				controls.start("normal");
-			},
-		};
+	const { controls, handleMouseEnter, handleMouseLeave } = useIconMotionKit({
+		ref,
+		onMouseEnter,
+		onMouseLeave,
 	});
+
 	return (
 		<div
 			className={cn(className)}
@@ -92,7 +77,7 @@ const BellRingIcon = ({
 				height={size}
 				viewBox="0 0 24 24"
 				fill="none"
-				stroke="currentColor"
+				stroke={color}
 				strokeWidth="1"
 				strokeLinecap="round"
 				strokeLinejoin="round"
