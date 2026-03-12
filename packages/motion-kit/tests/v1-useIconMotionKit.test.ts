@@ -1,7 +1,10 @@
 import { act, renderHook } from "@testing-library/react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
-import { type IconMotionHandle, useIconMotionKit } from "../src/use-icon-motion-kit";
 import { createRef, type MouseEvent } from "react";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import {
+	type IconMotionHandle,
+	useIconMotionKit,
+} from "../src/use-icon-motion-kit";
 
 const startMock = vi.fn();
 
