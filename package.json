@@ -11,6 +11,12 @@
     "test:web:watch": "turbo run test:watch --filter=web",
     "test:motion-kit": "turbo run test --filter=motion-kit",
     "test:motion-kit:watch": "turbo run test:watch --filter=motion-kit",
+    "dev:timeline-kit": "turbo run dev --filter=@x-icons/timeline-kit --continue",
+    "test:timeline-kit": "turbo run test --filter=@x-icons/timeline-kit",
+    "test:timeline-kit:watch": "turbo run test:watch --filter=@x-icons/timeline-kit --continue",
+    "test:timeline-kit:e2e": "turbo run test:e2e --filter=@x-icons/timeline-kit",
+    "build:timeline-kit": "turbo run build --filter=@x-icons/timeline-kit",
+    "check-types:timeline-kit": "turbo run check-types --filter=@x-icons/timeline-kit",
     "check-types": "turbo run check-types",
     "icons:sync": "turbo run icons:sync --filter=web",
     "icons:watch": "turbo run icons:watch --filter=web"
