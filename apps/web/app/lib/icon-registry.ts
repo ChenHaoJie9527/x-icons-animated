@@ -20,6 +20,7 @@ import { HomeIcon as HeroiconsHomeIcon } from "@/icons/heroicons/home";
 import { MoonIcon as HeroiconsMoonIcon } from "@/icons/heroicons/moon";
 import { SunIcon as HeroiconsSunIcon } from "@/icons/heroicons/sun";
 import { AiChat2Icon as HugeiconsAiChat2Icon } from "@/icons/hugeicons/ai-chat-2";
+import { Alert1Icon as HugeiconsAlert1Icon } from "@/icons/hugeicons/alert-1";
 import { NotificationOff01Icon as HugeiconsNotificationOff01Icon } from "@/icons/hugeicons/notification-off-01";
 import { BellRingIcon as LucideBellRingIcon } from "@/icons/lucide/bell-ring";
 import { ArrowsInSimpleIcon as PhosphorArrowsInSimpleIcon } from "@/icons/phosphor/arrows-in-simple";
@@ -157,6 +158,12 @@ const ICON_LIST: IconMeta[] = [
 		icon: HugeiconsAiChat2Icon,
 		source: "hugeicons" as const,
 		keywords: ["ai", "chat", "2"],
+	},
+	{
+		name: "alert-1",
+		icon: HugeiconsAlert1Icon,
+		source: "hugeicons" as const,
+		keywords: ["alert", "1"],
 	},
 	{
 		name: "notification-off-01",

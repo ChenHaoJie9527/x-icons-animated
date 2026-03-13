@@ -37,11 +37,12 @@ const BELL_SWING_VARIANTS: Variants = composeVariants(
 const SLASH_SWEEP_VARIANTS: Variants = composeVariants(
 	pathLength(1, [0, 1]),
 	pathOffset(0, [0, 0]),
-	fade(1, [0.25, 1]),
+	fade(1, [0, 1]),
 	withTransition({
 		duration: 0.65,
 		ease: "easeOut",
 		times: [0, 1],
+		delay: 0.3,
 	})
 );
 
