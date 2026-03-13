@@ -1,0 +1,20 @@
+{
+  "extends": "@x-icons/typescript-config/bundler-library.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": ".",
+    "types": ["node", "vitest/globals"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "src",
+    "tests",
+    "playground",
+    "vite.config.ts",
+    "vite.playground.config.ts",
+    "vitest.config.ts",
+    "playwright.config.ts"
+  ]
+}
