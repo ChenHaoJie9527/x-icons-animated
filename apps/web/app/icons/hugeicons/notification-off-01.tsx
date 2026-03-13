@@ -1,18 +1,21 @@
 "use client";
 
-// import { composeVariants } from "@x-icons/motion-kit/compose";
-// import {
-// 	fade,
-// 	rotate,
-// 	translateX,
-// 	withTransition,
-// } from "@x-icons/motion-kit/primitives";
+import { composeVariants } from "@x-icons/motion-kit/compose";
+import {
+	fade,
+	pathLength,
+	pathOffset,
+	rotate,
+	translateX,
+	withTransition,
+} from "@x-icons/motion-kit/primitives";
 import type { IconMotionHandle } from "@x-icons/motion-kit/use-icon-motion-kit";
 import { useIconMotionKit } from "@x-icons/motion-kit/use-icon-motion-kit";
 import { cn } from "@x-icons/utils/cn";
-import { useImperativeHandle } from "react";
+import type { Variants } from "motion/react";
 import { motion } from "motion/react";
 import type { HTMLAttributes, Ref } from "react";
+import { useImperativeHandle } from "react";
 
 export interface NotificationOff01IconHandle extends IconMotionHandle {}
 
@@ -20,6 +23,27 @@ interface NotificationOff01IconProps extends HTMLAttributes<HTMLDivElement> {
 	size?: number;
 	ref?: Ref<NotificationOff01IconHandle>;
 }
+
+const BELL_SWING_VARIANTS: Variants = composeVariants(
+	rotate(0, [0, -12, 10, -8, 6, -4, 2, 0]),
+	translateX(0, [0, -0.45, 0.45, -0.3, 0.2, -0.1, 0]),
+	withTransition({
+		duration: 1,
+		ease: "easeInOut",
+		times: [0, 0.12, 0.26, 0.42, 0.58, 0.74, 0.88, 1],
+	})
+);
+
+const SLASH_SWEEP_VARIANTS: Variants = composeVariants(
+	pathLength(1, [0, 1]),
+	pathOffset(0, [0, 0]),
+	fade(1, [0.25, 1]),
+	withTransition({
+		duration: 0.65,
+		ease: "easeOut",
+		times: [0, 1],
+	})
+);
 
 const NotificationOff01Icon = ({
 	size = 32,
@@ -52,28 +76,28 @@ const NotificationOff01Icon = ({
 			onMouseLeave={handleMouseLeave}
 			{...props}
 		>
-			<svg
+			<motion.svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 24 24"
 				width={size}
 				height={size}
-				color="currentColor"
 				fill="none"
 				stroke="currentColor"
-				stroke-width="1"
-				stroke-linecap="round"
-				stroke-linejoin="round"
+				strokeWidth="1"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				animate={controls}
+				variants={BELL_SWING_VARIANTS}
 			>
+				<path d="M18 18H3.5" />
+				<path d="M13.5 20C13.5 20.8284 12.8284 21.5 12 21.5M10.5 20C10.5 20.8284 11.1716 21.5 12 21.5M12 21.5V20" />
 				<motion.path
 					animate={controls}
-					d="M15.5 18C15.5 19.933 13.933 21.5 12 21.5C10.067 21.5 8.5 19.933 8.5 18"
+					variants={SLASH_SWEEP_VARIANTS}
+					d="M2 2L22 22"
 				/>
-				<motion.path animate={controls} d="M2 2L22 22" />
-				<motion.path
-					animate={controls}
-					d="M21 16.2311C21 15.762 20.8136 15.3121 20.4819 14.9803L19.8787 14.3771C19.3161 13.8145 19 13.0514 19 12.2558V9.5C19 5.634 15.866 2.5 12 2.5C10.4497 2.5 9.01706 3.00399 7.85707 3.85707M4.76887 18C3.79195 18 3 17.208 3 16.2311C3 15.762 3.18636 15.3121 3.51809 14.9803L4.12132 14.3771C4.68393 13.8145 5 13.0514 5 12.2558V9.5C5 8.20839 5.34981 6.99849 5.95987 5.95987L18 18H4.76887Z"
-				/>
-			</svg>
+				<path d="M5 18V9.5C5 8.20839 5.34981 6.99849 5.95987 5.95987M19 15V9.5C19 5.63401 15.866 2.5 12 2.5C10.4497 2.5 9.01706 3.00399 7.85707 3.85707" />
+			</motion.svg>
 		</div>
 	);
 };
