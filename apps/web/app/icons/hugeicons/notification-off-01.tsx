@@ -1,6 +1,6 @@
 "use client";
 
-import { composeVariants } from "@x-icons/motion-kit/compose";
+import { v } from "@x-icons/motion-kit/compose";
 import {
 	fade,
 	pathLength,
@@ -24,7 +24,7 @@ interface NotificationOff01IconProps extends HTMLAttributes<HTMLDivElement> {
 	ref?: Ref<NotificationOff01IconHandle>;
 }
 
-const BELL_SWING_VARIANTS: Variants = composeVariants(
+const BELL_SWING_VARIANTS: Variants = v(
 	rotate(0, [0, -12, 10, -8, 6, -4, 2, 0]),
 	translateX(0, [0, -0.45, 0.45, -0.3, 0.2, -0.1, 0]),
 	withTransition({
@@ -34,7 +34,7 @@ const BELL_SWING_VARIANTS: Variants = composeVariants(
 	})
 );
 
-const SLASH_SWEEP_VARIANTS: Variants = composeVariants(
+const SLASH_SWEEP_VARIANTS: Variants = v(
 	pathLength(1, [0, 1]),
 	pathOffset(0, [0, 0]),
 	fade(1, [0, 1]),

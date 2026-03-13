@@ -1,5 +1,5 @@
 "use client";
-import { composeVariants } from "@x-icons/motion-kit/compose";
+import { v } from "@x-icons/motion-kit/compose";
 import {
 	fade,
 	pathLength,
@@ -20,7 +20,7 @@ interface AiChat2IconProps extends HTMLAttributes<HTMLDivElement> {
 	ref?: Ref<AiChat2IconHandle>;
 }
 
-const AI_CHAT_2_VARIANTS_1 = composeVariants(
+const AI_CHAT_2_VARIANTS_1 = v(
 	fade(1, [0, 1]),
 	pathLength(1, [0, 1]),
 	pathOffset(0, [0, 0]),
@@ -30,9 +30,9 @@ const AI_CHAT_2_VARIANTS_1 = composeVariants(
 	})
 );
 
-const AI_CHAT_2_VARIANTS_2 = composeVariants(
+const AI_CHAT_2_VARIANTS_2 = v(
 	fade(1, [0, 1]),
-	scaleXY(1, [0.8, 1.1, 1, 1.1, 1], 1, [0.8, 1.1, 1, 1.1, 1]),
+	scaleXY(1, [0.5, 1.3, 1, 1.3, 1], 1, [0.5, 1.3, 1, 1.3, 1]),
 	withTransition({
 		duration: 0.3,
 		ease: "easeInOut",
@@ -41,9 +41,9 @@ const AI_CHAT_2_VARIANTS_2 = composeVariants(
 	})
 );
 
-const AI_CHAT_2_VARIANTS_3 = composeVariants(
+const AI_CHAT_2_VARIANTS_3 = v(
 	fade(1, [0, 1]),
-	scaleXY(1, [0.8, 1.1, 1, 1.1, 1], 1, [0.8, 1.1, 1, 1.1, 1]),
+	scaleXY(1, [0.5, 1.3, 1, 1.3, 1], 1, [0.5, 1.3, 1, 1.3, 1]),
 	withTransition({
 		duration: 0.3,
 		ease: "easeInOut",

@@ -1,6 +1,6 @@
 "use client";
 
-import { composeVariants } from "@x-icons/motion-kit/compose";
+import { v } from "@x-icons/motion-kit/compose";
 import {
 	fade,
 	rotate,
@@ -19,7 +19,7 @@ interface BellRingIconProps extends HTMLAttributes<HTMLDivElement> {
 	ref?: Ref<BellRingIconHandle>;
 }
 
-const BELL_RING_VARIANTS: Variants = composeVariants(
+const BELL_RING_VARIANTS: Variants = v(
 	rotate(0, [0, -14, 12, -10, 8, -6, 4, -2, 0]),
 	translateX(0, [0, -0.6, 0.6, -0.5, 0.4, -0.3, 0.2, -0.1, 0]),
 	withTransition({
@@ -29,7 +29,7 @@ const BELL_RING_VARIANTS: Variants = composeVariants(
 	})
 );
 
-const RING_WAVE_VARIANTS: Variants = composeVariants(
+const RING_WAVE_VARIANTS: Variants = v(
 	fade(0.7, 0.7),
 	{
 		normal: {

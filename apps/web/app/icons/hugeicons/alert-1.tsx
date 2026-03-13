@@ -1,22 +1,22 @@
 "use client";
 
-import type { IconMotionHandle } from "@x-icons/motion-kit/use-icon-motion-kit";
-import { useIconMotionKit } from "@x-icons/motion-kit/use-icon-motion-kit";
-import { composeVariants } from "@x-icons/motion-kit/compose";
+import { v } from "@x-icons/motion-kit/compose";
 import {
+	fade,
 	pathLength,
 	pathOffset,
 	withTransition,
-	fade,
 } from "@x-icons/motion-kit/primitives";
-import { motion } from "motion/react";
+import type { IconMotionHandle } from "@x-icons/motion-kit/use-icon-motion-kit";
+import { useIconMotionKit } from "@x-icons/motion-kit/use-icon-motion-kit";
 import { cn } from "@x-icons/utils/cn";
+import { motion } from "motion/react";
 import type { HTMLAttributes, Ref } from "react";
 import { useImperativeHandle } from "react";
 
 export interface Alert1IconHandle extends IconMotionHandle {}
 
-const ALERT_1_VARIANTS = composeVariants(
+const ALERT_1_VARIANTS = v(
 	pathLength(1, [0, 1]),
 	pathOffset(0, [0, 0]),
 	withTransition({
@@ -26,7 +26,7 @@ const ALERT_1_VARIANTS = composeVariants(
 	})
 );
 
-const ALERT_1_VARIANTS_2 = composeVariants(
+const ALERT_1_VARIANTS_2 = v(
 	fade(1, [0, 1]),
 	withTransition({
 		duration: 0.3,
