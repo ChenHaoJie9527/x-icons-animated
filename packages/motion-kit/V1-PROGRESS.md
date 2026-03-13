@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | M1 | 建立 `packages/motion-kit` 包结构 | 已完成 | 已创建 `package.json`、`tsconfig.json` |
 | M2 | 完成 primitives（fade/rotate/translate/scale/transition） | 已完成 | 纯函数实现 |
-| M3 | 完成 `composeVariants` 组合器 | 已完成 | 支持递归对象合并 |
+| M3 | 完成 `v` 组合器 | 已完成 | 支持递归对象合并 |
 | M4 | 完成 `useIconMotionKit` 控制 Hook | 已完成 | 统一 controls + hover + ref |
 | M5 | 编写 v1 开发规范文档 | 已完成 | `V1-DEVELOPMENT-SPEC.md` |
 | M6 | 包级类型检查 | 已完成 | `pnpm --filter @x-icons/motion-kit check-types` 已通过 |
@@ -32,6 +32,6 @@
 
 ## 风险与观察点
 
-- `composeVariants` 对同名字段采取后者覆盖策略，需确认是否符合你的预期。
+- `v` 对同名字段采取后者覆盖策略，需确认是否符合你的预期。
 - 引入 `useIconMotionKit` 后，若业务想在 hover 时附加自定义逻辑，建议先验证回调执行顺序。
 - 多个 `withTransition` 同时组合时，以最后一次为准（对象同键覆盖）。

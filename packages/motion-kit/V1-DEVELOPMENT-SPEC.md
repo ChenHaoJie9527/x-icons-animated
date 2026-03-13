@@ -7,7 +7,7 @@
 v1 范围内包含：
 
 - 纯函数动画片段：`fade`、`rotate`、`translateX`、`translateY`、`scaleXY`、`pathLength`、`pathOffset`
-- 变体组合器：`composeVariants`
+- 变体组合器：`v`
 - 过渡片段：`withTransition`
 - 图标控制 Hook：`useIconMotionKit`
 
@@ -54,7 +54,7 @@ packages/motion-kit/
 
 ### 4.2 compose
 
-- `composeVariants(...patches: DefaultMotionPatch[])`
+- `v(...patches: DefaultMotionPatch[])`
 - 组合规则：
   - 同名字段后者覆盖前者
   - 对象字段采用递归合并（用于 `transition` 等对象）
@@ -81,7 +81,7 @@ packages/motion-kit/
 
 ## 6. 导入规范（子路径）
 
-- `composeVariants` 从 `@x-icons/motion-kit/compose` 导入。
+- `v` 从 `@x-icons/motion-kit/compose` 导入。
 - primitives 从 `@x-icons/motion-kit/primitives` 导入。
 - 类型从 `@x-icons/motion-kit/types` 导入。
 - hook 从 `@x-icons/motion-kit/use-icon-motion-kit` 导入。

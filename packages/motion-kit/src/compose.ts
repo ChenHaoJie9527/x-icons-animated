@@ -30,9 +30,7 @@ const mergeTarget = (
 	return nextTarget;
 };
 
-export const composeVariants = (
-	...patches: DefaultMotionPatch[]
-): MotionVariants => {
+export const v = (...patches: DefaultMotionPatch[]): MotionVariants => {
 	let normal: InternalTarget = {};
 	let animate: InternalTarget = {};
 
@@ -50,3 +48,5 @@ export const composeVariants = (
 		animate: animate as MotionTarget,
 	};
 };
+
+export const composeVariants = v;
