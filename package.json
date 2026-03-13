@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev test:watch icons:watch --filter=web --filter=@x-icons/motion-kit --parallel --continue",
+    "dev": "turbo run dev test:watch icons:watch --filter=web --filter=@x-icons/motion-kit --filter=@x-icons/timeline-kit --parallel --continue",
     "lint": "ultracite check",
     "lint:fix": "ultracite fix",
     "test": "turbo run test --filter=web",
@@ -15,6 +15,7 @@
     "test:timeline-kit": "turbo run test --filter=@x-icons/timeline-kit",
     "test:timeline-kit:watch": "turbo run test:watch --filter=@x-icons/timeline-kit --continue",
     "test:timeline-kit:e2e": "turbo run test:e2e --filter=@x-icons/timeline-kit",
+    "test:timeline-kit:e2e:ui": "turbo run test:e2e:ui --filter=@x-icons/timeline-kit --continue",
     "build:timeline-kit": "turbo run build --filter=@x-icons/timeline-kit",
     "check-types:timeline-kit": "turbo run check-types --filter=@x-icons/timeline-kit",
     "check-types": "turbo run check-types",

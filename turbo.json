@@ -26,6 +26,10 @@
       "cache": false,
       "outputs": []
     },
+    "test:e2e:ui": {
+      "cache": false,
+      "persistent": true
+    },
     "icons:sync": {
       "cache": false,
       "inputs": ["app/icons/**/*.tsx", "scripts/sync-icon-registry.mjs"]
