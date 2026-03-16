@@ -4,6 +4,8 @@ import {
 	useIconHoverAnimation,
 	type IconAnimationTimelineHandle,
 } from "../src/hooks";
+import { TimelineRoot } from "@/timeline-root";
+import { Timeline } from "@/timeline";
 
 export interface TimelineUpHandle extends IconAnimationTimelineHandle {}
 
@@ -30,12 +32,29 @@ export const TimelineUp = ({ ref, ...props }: TimelineUpProps) => {
 	});
 	return (
 		<div
-			className="size-50 rounded-2xl border-2 border-border hover-border-theme cursor-pointer flex items-center justify-center"
+			className="size-50 rounded-2xl border-2 border-border hover-border-theme cursor-pointer"
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 			{...props}
 		>
 			up 方向淡入
+			<TimelineRoot className="space-y-2">
+				<Timeline direction="up" className="w-full px-2">
+					<div className="w-full h-6 bg-black" />
+				</Timeline>
+				<Timeline direction="up" className="w-full px-2">
+					<div className="w-full h-6 bg-black" />
+				</Timeline>
+				<Timeline direction="up" className="w-full px-2">
+					<div className="w-full h-6 bg-black" />
+				</Timeline>
+				<Timeline direction="up" className="w-full px-2">
+					<div className="w-full h-6 bg-black" />
+				</Timeline>
+				<Timeline direction="up" className="w-full px-2">
+					<div className="w-full h-6 bg-black" />
+				</Timeline>
+			</TimelineRoot>
 		</div>
 	);
 };

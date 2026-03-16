@@ -7,8 +7,10 @@ import type { TimelineDefaults, TimelineRootContextValue } from "./types";
 export const TimelineRoot = ({
 	children,
 	value,
+	className,
 }: {
 	children: ReactNode;
+	className?: string;
 	value?: Partial<TimelineDefaults>;
 }) => {
 	const defaults = useAnimationTimeline(value);
@@ -28,7 +30,7 @@ export const TimelineRoot = ({
 
 	return (
 		<TimelineRootContext value={rootContextValue}>
-			{children}
+			<div className={className}>{children}</div>
 		</TimelineRootContext>
 	);
 };

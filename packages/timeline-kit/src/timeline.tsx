@@ -14,6 +14,7 @@ export const Timeline = ({
 	distance,
 	duration,
 	ease,
+	className,
 	...componentProps
 }: TimelineProps) => {
 	const rootValue = use(TimelineRootContext);
@@ -49,6 +50,7 @@ export const Timeline = ({
 			initial={variant.initial}
 			animate={variant.animate}
 			transition={variant.transition}
+			className={className}
 		>
 			{children}
 		</Component>

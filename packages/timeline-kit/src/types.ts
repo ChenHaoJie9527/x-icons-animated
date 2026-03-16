@@ -47,6 +47,7 @@ export type TimelineRootContextValue = {
 export type TimelineProps = PropsWithChildren<
 	TimelineItemInput & {
 		as?: typeof motion.div;
+		className?: string;
 		[key: string]: unknown;
 	}
 >;
