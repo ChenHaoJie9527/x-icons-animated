@@ -1,7 +1,7 @@
 import { use, useMemo } from "react";
-import type { TimelineDefaults } from "./types";
 import { animationTimelineContext } from "./context";
-import { mergeDefaults } from "@/utils";
+import type { TimelineDefaults } from "./types";
+import { mergeDefaults } from "./utils";
 
 export const useAnimationTimeline = (
 	overrides?: Partial<TimelineDefaults>

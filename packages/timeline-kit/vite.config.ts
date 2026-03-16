@@ -9,17 +9,17 @@ const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
 	plugins: [
 		react(),
-		dts({ include: ["src/timeline.tsx"], insertTypesEntry: true }),
+		dts({ include: ["src/index.ts"], insertTypesEntry: true }),
 	],
 	resolve: {
 		// alias: {
 		// 	"@": path.resolve(currentDirectory, "src"),
 		// },
-		tsconfigPaths: true
+		tsconfigPaths: true,
 	},
 	build: {
 		lib: {
-			entry: path.resolve(currentDirectory, "src/timeline.tsx"),
+			entry: path.resolve(currentDirectory, "src/index.ts"),
 			formats: ["es"],
 			fileName: "index",
 		},
