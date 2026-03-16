@@ -11,7 +11,7 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
 	<StrictMode>
-		<AnimationTimelineProvider value={{ duration: 0.4, stagger: 0.12 }}>
+		<AnimationTimelineProvider>
 			<App />
 		</AnimationTimelineProvider>
 	</StrictMode>
