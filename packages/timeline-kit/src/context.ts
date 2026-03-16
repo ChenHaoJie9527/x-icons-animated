@@ -1,9 +1,9 @@
 import { createContext } from "react";
 import type { TimelineDefaults, TimelineRootContextValue } from "./types";
 
-export const animationTimelineContext = createContext<TimelineDefaults | null>(
+export const AnimationTimelineContext = createContext<TimelineDefaults | null>(
 	null
 );
 
-export const timelineRootContext =
+export const TimelineRootContext =
 	createContext<TimelineRootContextValue | null>(null);

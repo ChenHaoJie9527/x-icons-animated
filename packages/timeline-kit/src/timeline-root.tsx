@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useMemo, useRef } from "react";
-import { timelineRootContext } from "./context";
+import { TimelineRootContext } from "./context";
 import { useAnimationTimeline } from "./hooks";
 import type { TimelineDefaults, TimelineRootContextValue } from "./types";
 
@@ -27,8 +27,8 @@ export const TimelineRoot = ({
 	);
 
 	return (
-		<timelineRootContext.Provider value={rootContextValue}>
+		<TimelineRootContext value={rootContextValue}>
 			{children}
-		</timelineRootContext.Provider>
+		</TimelineRootContext>
 	);
 };

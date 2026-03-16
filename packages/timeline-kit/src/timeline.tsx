@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { use, useMemo, useRef } from "react";
 import { defaultTimelineOptions } from "@/constants";
-import { timelineRootContext } from "@/context";
+import { TimelineRootContext } from "@/context";
 import type { TimelineItemInput, TimelineProps } from "@/types";
 import { buildTimelineVariant } from "@/utils";
 
@@ -16,7 +16,7 @@ export const Timeline = ({
 	ease,
 	...componentProps
 }: TimelineProps) => {
-	const rootValue = use(timelineRootContext);
+	const rootValue = use(TimelineRootContext);
 	if (!rootValue) {
 		throw new Error("Timeline must be used within TimelineRoot");
 	}

@@ -1,7 +1,9 @@
+"use client";
+
 import type { ReactNode } from "react";
 import { useMemo } from "react";
 import { defaultTimelineOptions } from "./constants";
-import { animationTimelineContext } from "./context";
+import { AnimationTimelineContext } from "./context";
 import type { TimelineDefaults } from "./types";
 import { mergeDefaults } from "./utils";
 
@@ -18,8 +20,8 @@ export const AnimationTimelineProvider = ({
 	);
 
 	return (
-		<animationTimelineContext.Provider value={merged}>
+		<AnimationTimelineContext value={merged}>
 			{children}
-		</animationTimelineContext.Provider>
+		</AnimationTimelineContext>
 	);
 };
