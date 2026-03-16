@@ -1,9 +1,9 @@
 import { render, renderHook } from "@testing-library/react";
 import type { PropsWithChildren } from "react";
 import { describe, expect, it } from "vitest";
+import { useAnimationTimeline } from "@/hooks";
 import { Timeline } from "@/timeline";
 import { AnimationTimelineProvider } from "@/timeline-provider";
-import { useAnimationTimeline } from "@/hooks";
 import { TimelineRoot } from "@/timeline-root";
 import { buildTimelineVariant } from "@/utils";
 

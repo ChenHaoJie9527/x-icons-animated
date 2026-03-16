@@ -26,6 +26,9 @@
       },
       "nursery": {
         "useSortedClasses": "off"
+      },
+      "performance": {
+        "noBarrelFile": "off"
       }
     }
   },

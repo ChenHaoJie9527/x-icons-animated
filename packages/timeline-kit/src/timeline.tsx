@@ -1,9 +1,9 @@
 import { motion } from "motion/react";
 import { use, useMemo, useRef } from "react";
-import { defaultTimelineOptions } from "./constants";
-import type { TimelineItemInput, TimelineProps } from "./types";
-import { timelineRootContext } from "./context";
-import { buildTimelineVariant } from "./utils";
+import { defaultTimelineOptions } from "@/constants";
+import { timelineRootContext } from "@/context";
+import type { TimelineItemInput, TimelineProps } from "@/types";
+import { buildTimelineVariant } from "@/utils";
 
 export const Timeline = ({
 	as: Component = motion.div,

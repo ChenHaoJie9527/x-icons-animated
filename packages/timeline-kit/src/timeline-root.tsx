@@ -1,9 +1,8 @@
 import type { ReactNode } from "react";
-import { useRef, useMemo } from "react";
-import type { TimelineDefaults } from "./types";
-import { useAnimationTimeline } from "./hooks";
+import { useMemo, useRef } from "react";
 import { timelineRootContext } from "./context";
-import type { TimelineRootContextValue } from "./types";
+import { useAnimationTimeline } from "./hooks";
+import type { TimelineDefaults, TimelineRootContextValue } from "./types";
 
 export const TimelineRoot = ({
 	children,

@@ -1,5 +1,5 @@
-import type { PropsWithChildren } from "react";
 import type { motion } from "motion/react";
+import type { PropsWithChildren } from "react";
 
 export type AnimationEase = "easeIn" | "easeOut" | "easeInOut" | "linear";
 export type TimelineDirection = "up" | "down" | "left" | "right" | "none";

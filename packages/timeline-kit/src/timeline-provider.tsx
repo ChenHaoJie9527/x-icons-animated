@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
 import { useMemo } from "react";
 import { defaultTimelineOptions } from "./constants";
-import { mergeDefaults } from "./utils";
 import { animationTimelineContext } from "./context";
 import type { TimelineDefaults } from "./types";
+import { mergeDefaults } from "./utils";
 
 export const AnimationTimelineProvider = ({
 	children,

@@ -1,8 +1,8 @@
 import type {
+	AnimationVariant,
 	TimelineDefaults,
 	TimelineDirection,
 	TimelineItemInput,
-	AnimationVariant,
 } from "./types";
 
 export const mergeDefaults = (
