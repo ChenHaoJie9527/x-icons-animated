@@ -7,7 +7,7 @@ import { defineConfig } from "vite";
 const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-	root: path.resolve(currentDirectory, "playground"),
+	root: path.resolve(currentDirectory, "playground"), // 将playground目录作为根目录 在该目录里查找入口文件index.html
 	plugins: [react(), tailwindcss()],
 	resolve: {
 		alias: {

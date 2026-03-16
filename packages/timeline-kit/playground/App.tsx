@@ -1,4 +1,5 @@
-import { Timeline, TimelineRoot } from "@/timeline";
+import { Timeline } from "@/timeline";
+import { TimelineRoot } from "@/timeline-root";
 
 export const App = () => {
 	return (

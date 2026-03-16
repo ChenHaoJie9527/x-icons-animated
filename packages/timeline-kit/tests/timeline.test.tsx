@@ -1,13 +1,11 @@
 import { render, renderHook } from "@testing-library/react";
 import type { PropsWithChildren } from "react";
 import { describe, expect, it } from "vitest";
-import {
-	AnimationTimelineProvider,
-	buildTimelineVariant,
-	Timeline,
-	TimelineRoot,
-	useAnimationTimeline,
-} from "../src";
+import { Timeline } from "@/timeline";
+import { AnimationTimelineProvider } from "@/timeline-provider";
+import { useAnimationTimeline } from "@/hooks";
+import { TimelineRoot } from "@/timeline-root";
+import { buildTimelineVariant } from "@/utils";
 
 describe("timeline-kit", () => {
 	it("buildTimelineVariant 应正确计算 delay 与位移", () => {

@@ -7,15 +7,19 @@ import dts from "vite-plugin-dts";
 const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-	plugins: [react(), dts({ include: ["src"] })],
+	plugins: [
+		react(),
+		dts({ include: ["src/timeline.tsx"], insertTypesEntry: true }),
+	],
 	resolve: {
-		alias: {
-			"@": path.resolve(currentDirectory, "src"),
-		},
+		// alias: {
+		// 	"@": path.resolve(currentDirectory, "src"),
+		// },
+		tsconfigPaths: true
 	},
 	build: {
 		lib: {
-			entry: path.resolve(currentDirectory, "src/index.ts"),
+			entry: path.resolve(currentDirectory, "src/timeline.tsx"),
 			formats: ["es"],
 			fileName: "index",
 		},
