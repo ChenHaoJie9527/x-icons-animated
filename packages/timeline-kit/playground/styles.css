@@ -1,1 +1,29 @@
 @import "@x-icons/tailwind-config";
+
+:root {
+	--color-bg-global: oklch(0.98 0 75);
+	--color-text: oklch(0.27 0 0);
+	--color-hover-theme: oklch(0.65 0.19 41);
+	--color-border: oklch(0.85 0.02 75);
+	--radius: 1rem;
+
+	--radius-sm: calc(var(--radius) - 2px);
+	--radius-md: calc(var(--radius) - 4px);
+	--radius-lg: calc(var(--radius) - 6px);
+	--radius-xl: calc(var(--radius) - 8px);
+	--radius-2xl: calc(var(--radius) - 10px);
+	--radius-3xl: calc(var(--radius) - 12px);
+	--radius-4xl: calc(var(--radius) - 14px);
+}
+
+body {
+	color: var(--color-text);
+	background-color: var(--color-bg-global);
+}
+
+.hover-border-theme {
+	transition: border-color 150ms ease;
+}
+.hover-border-theme:hover {
+	border-color: var(--color-hover-theme);
+}
