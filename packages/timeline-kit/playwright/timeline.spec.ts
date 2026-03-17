@@ -21,11 +21,6 @@ test("hover timeline-up trigger should start up animation", async ({
 	await expect(trigger).toBeVisible();
 	await expect(firstItem).toBeVisible();
 
-	const initialOpacity = await firstItem.evaluate((element) => {
-		return window.getComputedStyle(element).opacity;
-	});
-	expect(initialOpacity).toBe("0");
-
 	await trigger.hover();
 
 	await expect

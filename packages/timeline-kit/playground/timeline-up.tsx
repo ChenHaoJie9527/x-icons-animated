@@ -34,14 +34,12 @@ export const TimelineUp = ({ ref, ...props }: TimelineUpProps) => {
 	return (
 		<div
 			className="size-50 rounded-2xl border-2 border-border hover-border-theme cursor-pointer"
-			// onMouseEnter={handleMouseEnter}
-			// onMouseLeave={handleMouseLeave}
 			{...props}
 		>
 			up 方向淡入
 			<TimelineRoot
 				ref={timelineControllerRef}
-				autoPlay={false}
+				autoPlay={true}
 				className="space-y-2"
 			>
 				<Timeline

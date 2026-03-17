@@ -14,7 +14,6 @@ export const App = () => {
 					<div
 						data-testid="timeline-up-trigger"
 						onMouseEnter={() => timelineUpRef.current?.start()}
-						onMouseLeave={() => timelineUpRef.current?.reset()}
 					>
 						<TimelineUp ref={timelineUpRef} data-testid="timeline-up-card" />
 					</div>
