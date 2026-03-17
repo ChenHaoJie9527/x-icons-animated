@@ -1,10 +1,11 @@
 import { render, renderHook } from "@testing-library/react";
-import type { PropsWithChildren } from "react";
+import { createRef, type PropsWithChildren } from "react";
 import { describe, expect, it } from "vitest";
 import { useAnimationTimeline } from "@/hooks";
 import { Timeline } from "@/timeline";
 import { AnimationTimelineProvider } from "@/timeline-provider";
 import { TimelineRoot } from "@/timeline-root";
+import type { TimelineController } from "@/types";
 import { buildTimelineVariant } from "@/utils";
 
 describe("timeline-kit", () => {
@@ -68,5 +69,27 @@ describe("timeline-kit", () => {
 		);
 
 		expect(getByText("hero title")).toBeTruthy();
+	});
+
+	it("TimelineRoot controller 应暴露 start/stop/reset", () => {
+		const rootRef = createRef<TimelineController>();
+
+		render(
+			<AnimationTimelineProvider>
+				<TimelineRoot ref={rootRef} autoPlay={false}>
+					<Timeline>item</Timeline>
+				</TimelineRoot>
+			</AnimationTimelineProvider>
+		);
+
+		expect(rootRef.current).toBeTruthy();
+		expect(typeof rootRef.current?.start).toBe("function");
+		expect(typeof rootRef.current?.stop).toBe("function");
+		expect(typeof rootRef.current?.reset).toBe("function");
+		expect(() => {
+			rootRef.current?.start();
+			rootRef.current?.stop();
+			rootRef.current?.reset();
+		}).not.toThrow();
 	});
 });

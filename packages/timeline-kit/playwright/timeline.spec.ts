@@ -1,12 +1,40 @@
 import { expect, test } from "@playwright/test";
 
-test("playground renders 3x3 grid layout", async ({ page }) => {
+test("playground renders timeline demo sections", async ({ page }) => {
 	await page.goto("/");
 
-	for (let index = 1; index <= 9; index += 1) {
-		await expect(page.getByTestId(`grid-cell-${index}`)).toBeVisible();
-	}
+	await expect(page.getByText("基础示例")).toBeVisible();
+	await expect(page.getByText("组合示例")).toBeVisible();
+	await expect(page.getByText("up 方向淡入")).toBeVisible();
+	await expect(page.getByText("down 方向淡入")).toBeVisible();
+	await expect(page.getByText("left 方向淡入")).toBeVisible();
+	await expect(page.getByText("right 方向淡入")).toBeVisible();
+});
 
-	await expect(page.getByText("Grid Cell 1")).toBeVisible();
-	await expect(page.getByText("Grid Cell 9")).toBeVisible();
+test("hover timeline-up trigger should start up animation", async ({
+	page,
+}) => {
+	await page.goto("/");
+
+	const trigger = page.getByTestId("timeline-up-trigger");
+	const firstItem = page.getByTestId("timeline-up-item-1");
+	await expect(trigger).toBeVisible();
+	await expect(firstItem).toBeVisible();
+
+	const initialOpacity = await firstItem.evaluate((element) => {
+		return window.getComputedStyle(element).opacity;
+	});
+	expect(initialOpacity).toBe("0");
+
+	await trigger.hover();
+
+	await expect
+		.poll(
+			async () =>
+				firstItem.evaluate(
+					(element) => window.getComputedStyle(element).opacity
+				),
+			{ timeout: 3000 }
+		)
+		.toBe("1");
 });
