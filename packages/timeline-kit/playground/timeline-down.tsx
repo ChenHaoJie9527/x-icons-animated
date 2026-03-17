@@ -39,7 +39,11 @@ export const TimelineDown = ({ ref, ...props }: TimelineDownProps) => {
 				autoPlay={true}
 				className="space-y-2"
 			>
-				<Timeline direction="down" className="w-full px-2" data-testid="timeline-down-item-2">
+				<Timeline
+					direction="down"
+					className="w-full px-2"
+					data-testid="timeline-down-item-2"
+				>
 					<div className="w-full h-6 bg-black" />
 				</Timeline>
 				<Timeline direction="down" className="w-full px-2">
