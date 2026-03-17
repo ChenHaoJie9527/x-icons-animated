@@ -36,11 +36,11 @@ export const TimelineUp = ({ ref, ...props }: TimelineUpProps) => {
 			className="size-50 rounded-2xl border-2 border-border hover-border-theme cursor-pointer"
 			{...props}
 		>
-			up 方向淡入
+			<span className="text-lg text-center w-full block">up 方向淡入</span>
 			<TimelineRoot
 				ref={timelineControllerRef}
 				autoPlay={true}
-				className="space-y-2"
+				className="space-y-2 px-5"
 			>
 				<Timeline
 					direction="up"
