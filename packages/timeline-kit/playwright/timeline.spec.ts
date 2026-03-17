@@ -33,3 +33,26 @@ test("hover timeline-up trigger should start up animation", async ({
 		)
 		.toBe("1");
 });
+
+test("hover timeline-down trigger should start down animation", async ({
+	page,
+}) => {
+	await page.goto("/");
+
+	const trigger = page.getByTestId("timeline-down-trigger");
+	const firstItem = page.getByTestId("timeline-down-item-2");
+	await expect(trigger).toBeVisible();
+	await expect(firstItem).toBeVisible();
+
+	await trigger.hover();
+
+	await expect
+		.poll(
+			async () =>
+				firstItem.evaluate(
+					(element) => window.getComputedStyle(element).opacity
+				),
+			{ timeout: 3000 }
+		)
+		.toBe("1");
+});

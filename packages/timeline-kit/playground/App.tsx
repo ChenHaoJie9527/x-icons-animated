@@ -2,9 +2,11 @@
 import { useRef } from "react";
 import { Layout } from "./layout";
 import { TimelineUp, type TimelineUpHandle } from "./timeline-up";
+import { TimelineDown, type TimelineDownHandle } from "./timeline-down";
 
 export const App = () => {
 	const timelineUpRef = useRef<TimelineUpHandle>(null);
+	const timelineDownRef = useRef<TimelineDownHandle>(null);
 
 	return (
 		<Layout>
@@ -17,8 +19,14 @@ export const App = () => {
 					>
 						<TimelineUp ref={timelineUpRef} data-testid="timeline-up-card" />
 					</div>
-					<div className="size-50 rounded-2xl border-2 border-border hover-border-theme cursor-pointer flex items-center justify-center">
-						down 方向淡入
+					<div
+						data-testid="timeline-down-trigger"
+						onMouseEnter={() => timelineDownRef.current?.start()}
+					>
+						<TimelineDown
+							ref={timelineDownRef}
+							data-testid="timeline-down-card"
+						/>
 					</div>
 					<div className="size-50 rounded-2xl border-2 border-border hover-border-theme cursor-pointer flex items-center justify-center">
 						left 方向淡入
