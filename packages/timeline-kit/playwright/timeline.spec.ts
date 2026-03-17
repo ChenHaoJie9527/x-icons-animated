@@ -56,3 +56,49 @@ test("hover timeline-down trigger should start down animation", async ({
 		)
 		.toBe("1");
 });
+
+test("hover timeline-left trigger should start left animation", async ({
+	page,
+}) => {
+	await page.goto("/");
+
+	const trigger = page.getByTestId("timeline-left-trigger");
+	const firstItem = page.getByTestId("timeline-left-item-1");
+	await expect(trigger).toBeVisible();
+	await expect(firstItem).toBeVisible();
+
+	await trigger.hover();
+
+	await expect
+		.poll(
+			async () =>
+				firstItem.evaluate(
+					(element) => window.getComputedStyle(element).opacity
+				),
+			{ timeout: 3000 }
+		)
+		.toBe("1");
+});
+
+test("hover timeline-right trigger should start right animation", async ({
+	page,
+}) => {
+	await page.goto("/");
+
+	const trigger = page.getByTestId("timeline-right-trigger");
+	const firstItem = page.getByTestId("timeline-right-item-1");
+	await expect(trigger).toBeVisible();
+	await expect(firstItem).toBeVisible();
+
+	await trigger.hover();
+
+	await expect
+		.poll(
+			async () =>
+				firstItem.evaluate(
+					(element) => window.getComputedStyle(element).opacity
+				),
+			{ timeout: 3000 }
+		)
+		.toBe("1");
+});

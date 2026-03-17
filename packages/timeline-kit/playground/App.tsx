@@ -1,12 +1,16 @@
 "use client";
 import { useRef } from "react";
 import { Layout } from "./layout";
-import { TimelineUp, type TimelineUpHandle } from "./timeline-up";
 import { TimelineDown, type TimelineDownHandle } from "./timeline-down";
+import { TimelineLeft, type TimelineLeftHandle } from "./timeline-left";
+import { TimelineRight, type TimelineRightHandle } from "./timeline-right";
+import { TimelineUp, type TimelineUpHandle } from "./timeline-up";
 
 export const App = () => {
 	const timelineUpRef = useRef<TimelineUpHandle>(null);
 	const timelineDownRef = useRef<TimelineDownHandle>(null);
+	const timelineLeftRef = useRef<TimelineLeftHandle>(null);
+	const timelineRightRef = useRef<TimelineRightHandle>(null);
 
 	return (
 		<Layout>
@@ -28,11 +32,23 @@ export const App = () => {
 							data-testid="timeline-down-card"
 						/>
 					</div>
-					<div className="size-50 rounded-2xl border-2 border-border hover-border-theme cursor-pointer flex items-center justify-center">
-						left 方向淡入
+					<div
+						data-testid="timeline-left-trigger"
+						onMouseEnter={() => timelineLeftRef.current?.start()}
+					>
+						<TimelineLeft
+							ref={timelineLeftRef}
+							data-testid="timeline-left-card"
+						/>
 					</div>
-					<div className="size-50 rounded-2xl border-2 border-border hover-border-theme cursor-pointer flex items-center justify-center">
-						right 方向淡入
+					<div
+						data-testid="timeline-right-trigger"
+						onMouseEnter={() => timelineRightRef.current?.start()}
+					>
+						<TimelineRight
+							ref={timelineRightRef}
+							data-testid="timeline-right-card"
+						/>
 					</div>
 				</div>
 			</section>
