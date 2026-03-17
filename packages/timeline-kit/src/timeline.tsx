@@ -1,8 +1,12 @@
-import { motion } from "motion/react";
-import { use, useMemo, useRef } from "react";
+import { motion, useAnimation } from "motion/react";
+import { use, useEffect, useMemo, useRef } from "react";
 import { defaultTimelineOptions } from "@/constants";
 import { TimelineRootContext } from "@/context";
-import type { TimelineItemInput, TimelineProps } from "@/types";
+import type {
+	TimelineItemController,
+	TimelineItemInput,
+	TimelineProps,
+} from "@/types";
 import { buildTimelineVariant } from "@/utils";
 
 export const Timeline = ({
@@ -26,6 +30,8 @@ export const Timeline = ({
 	if (resolvedIndexRef.current === null) {
 		resolvedIndexRef.current = rootValue.nextIndex();
 	}
+	const itemId = resolvedIndexRef.current;
+	const controls = useAnimation();
 
 	const variant = useMemo(() => {
 		const input: TimelineItemInput = {
@@ -44,12 +50,35 @@ export const Timeline = ({
 		);
 	}, [rootValue.defaults, at, index, direction, distance, duration, ease]);
 
+	const itemController = useMemo<TimelineItemController>(
+		() => ({
+			start: () =>
+				controls.start({
+					...variant.animate,
+					transition: variant.transition,
+				}),
+			stop: () => controls.stop(),
+			reset: () => controls.set(variant.initial),
+		}),
+		[controls, variant]
+	);
+
+	useEffect(() => {
+		return rootValue.registerItem(itemId, itemController);
+	}, [rootValue, itemId, itemController]);
+
+	useEffect(() => {
+		itemController.reset();
+		if (rootValue.autoPlay) {
+			itemController.start();
+		}
+	}, [itemController, rootValue.autoPlay]);
+
 	return (
 		<Component
 			{...(componentProps as Record<string, unknown>)}
 			initial={variant.initial}
-			animate={variant.animate}
-			transition={variant.transition}
+			animate={controls}
 			className={className}
 		>
 			{children}

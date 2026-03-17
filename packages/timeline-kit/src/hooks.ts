@@ -1,9 +1,9 @@
+import { useAnimation } from "motion/react";
+import type { MouseEvent, MouseEventHandler, Ref } from "react";
 import { use, useCallback, useImperativeHandle, useMemo, useRef } from "react";
-import type { Ref, MouseEventHandler, MouseEvent } from "react";
 import { AnimationTimelineContext } from "./context";
 import type { TimelineDefaults } from "./types";
 import { mergeDefaults } from "./utils";
-import { useAnimation } from "motion/react";
 
 export const useAnimationTimeline = (
 	overrides?: Partial<TimelineDefaults>

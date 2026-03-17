@@ -42,7 +42,20 @@ export type AnimationVariant = {
 export type TimelineRootContextValue = {
 	defaults: TimelineDefaults;
 	nextIndex: () => number;
+	autoPlay: boolean;
+	registerItem: (
+		itemId: number,
+		controller: TimelineItemController
+	) => () => void;
 };
+
+export type TimelineItemController = {
+	start: () => void;
+	stop: () => void;
+	reset: () => void;
+};
+
+export type TimelineController = TimelineItemController;
 
 export type TimelineProps = PropsWithChildren<
 	TimelineItemInput & {
