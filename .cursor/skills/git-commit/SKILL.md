@@ -2,9 +2,9 @@
 name: git-commit
 description: >-
   Validates and drafts git commit messages per Conventional Commits (type,
-  optional scope, imperative subject, body/footer, breaking changes). Use before
-  running `git commit`, when composing commit messages, or when the user asks
-  for commit message help.
+  optional scope, imperative subject, body/footer, breaking changes). Default
+  language for subject/body: Simplified Chinese. Use before running `git commit`,
+  when composing commit messages, or when the user asks for commit message help.
 ---
 
 # Git Commit (Conventional Commits)
@@ -43,11 +43,12 @@ Read and follow this skill **before** running `git commit` or when proposing a c
 
 ## Rules
 
-1. **Imperative mood** in the description ("add feature", not "added feature").
+1. **Imperative mood** in the description ("add feature", not "added feature"). In Chinese, prefer concise verb-led phrasing（如「添加」「修复」，避免「添加了」「已经修复」）.
 2. **No period** at the end of the subject line.
 3. **Subject ≤ 72 characters** (description portion).
 4. **Blank line** between subject and body.
 5. **Body** explains **what** and **why**, not implementation detail ("how") unless necessary for reviewers.
+6. **Language**: write the **subject and body in Simplified Chinese（简体中文）** by default. Keep `type` and optional `scope` in English as usual. Use another language only when the user explicitly asks.
 
 ## Breaking changes
 
@@ -63,5 +64,6 @@ BREAKING CHANGE: The /v1/users endpoint has been removed.
 
 - [ ] Correct `type` and optional `(scope)`
 - [ ] Subject is imperative, no trailing period, ≤ 72 chars
+- [ ] Subject/body in **Simplified Chinese** unless user overrides
 - [ ] Body separated by blank line if present
 - [ ] Breaking change marked with `!` or `BREAKING CHANGE:` footer

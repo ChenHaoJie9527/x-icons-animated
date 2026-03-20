@@ -11,6 +11,7 @@ import { ArrowDownTrayIcon as HeroiconsArrowDownTrayIcon } from "@/icons/heroico
 import { ArrowLeftIcon as HeroiconsArrowLeftIcon } from "@/icons/heroicons/arrow-left";
 import { ArrowLeftCircleIcon as HeroiconsArrowLeftCircleIcon } from "@/icons/heroicons/arrow-left-circle";
 import { ArrowLogDownIcon as HeroiconsArrowLogDownIcon } from "@/icons/heroicons/arrow-log-down";
+import { ArrowPathRoundedSquareIcon as HeroiconsArrowPathRoundedSquareIcon } from "@/icons/heroicons/arrow-path-rounded-square";
 import { ArrowRightIcon as HeroiconsArrowRightIcon } from "@/icons/heroicons/arrow-right";
 import { ArrowRightCircleIcon as HeroiconsArrowRightCircleIcon } from "@/icons/heroicons/arrow-right-circle";
 import { CheckMarkBadge1Icon as HeroiconsCheckMarkBadge1Icon } from "@/icons/heroicons/check-mark-badge-1";
@@ -105,6 +106,12 @@ const ICON_LIST: IconMeta[] = [
 		icon: HeroiconsArrowLogDownIcon,
 		source: "heroicons" as const,
 		keywords: ["arrow", "log", "down"],
+	},
+	{
+		name: "arrow-path-rounded-square",
+		icon: HeroiconsArrowPathRoundedSquareIcon,
+		source: "heroicons" as const,
+		keywords: ["arrow", "path", "rounded", "square"],
 	},
 	{
 		name: "arrow-right",
