@@ -29,6 +29,7 @@ import { AiChat2Icon as HugeiconsAiChat2Icon } from "@/icons/hugeicons/ai-chat-2
 import { Alert1Icon as HugeiconsAlert1Icon } from "@/icons/hugeicons/alert-1";
 import { BadgeAlertIcon as HugeiconsBadgeAlertIcon } from "@/icons/hugeicons/badge-alert";
 import { Cancel1Icon as HugeiconsCancel1Icon } from "@/icons/hugeicons/cancel-1";
+import { Cancel2Icon as HugeiconsCancel2Icon } from "@/icons/hugeicons/cancel-2";
 import { NotificationOff01Icon as HugeiconsNotificationOff01Icon } from "@/icons/hugeicons/notification-off-01";
 import { BellRingIcon as LucideBellRingIcon } from "@/icons/lucide/bell-ring";
 import { ArrowsInSimpleIcon as PhosphorArrowsInSimpleIcon } from "@/icons/phosphor/arrows-in-simple";
@@ -220,6 +221,12 @@ const ICON_LIST: IconMeta[] = [
 		icon: HugeiconsCancel1Icon,
 		source: "hugeicons" as const,
 		keywords: ["cancel", "1"],
+	},
+	{
+		name: "cancel-2",
+		icon: HugeiconsCancel2Icon,
+		source: "hugeicons" as const,
+		keywords: ["cancel", "2"],
 	},
 	{
 		name: "notification-off-01",

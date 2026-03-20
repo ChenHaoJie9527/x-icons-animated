@@ -9,7 +9,9 @@ import { motion } from "motion/react";
 import type { HTMLAttributes, Ref } from "react";
 import { useImperativeHandle } from "react";
 
-const CANCEL_1_VARIANTS = v(
+export interface Cancel2IconHandle extends IconMotionHandle {}
+
+const CANCEL_2_VARIANTS = v(
 	rotate(0, 240),
 	withTransition({
 		duration: 0.5,
@@ -17,14 +19,12 @@ const CANCEL_1_VARIANTS = v(
 	})
 );
 
-export interface Cancel1IconHandle extends IconMotionHandle {}
-
-interface Cancel1IconProps extends HTMLAttributes<HTMLDivElement> {
-	ref?: Ref<Cancel1IconHandle>;
+interface Cancel2IconProps extends HTMLAttributes<HTMLDivElement> {
+	ref?: Ref<Cancel2IconHandle>;
 	size?: number;
 	color?: string;
 }
-const Cancel1Icon = ({
+const Cancel2Icon = ({
 	size = 32,
 	color = "currentColor",
 	className,
@@ -32,7 +32,7 @@ const Cancel1Icon = ({
 	onMouseLeave,
 	ref,
 	...props
-}: Cancel1IconProps) => {
+}: Cancel2IconProps) => {
 	const { controls, handleMouseEnter, handleMouseLeave } = useIconMotionKit({
 		ref,
 		onMouseEnter,
@@ -69,13 +69,13 @@ const Cancel1Icon = ({
 			>
 				<motion.path
 					animate={controls}
-					variants={CANCEL_1_VARIANTS}
-					d="M18 6L6.00081 17.9992M17.9992 18L6 6.00085"
+					variants={CANCEL_2_VARIANTS}
+					d="M5.43212 18.5679C6.00828 19.144 6.94243 19.144 7.51859 18.5679L12.0003 14.0863L16.4814 18.5672C17.0573 19.1431 17.9909 19.1434 18.5672 18.5679C19.144 17.9919 19.1443 17.0573 18.5679 16.4809L14.0868 12L18.5679 7.51913C19.1438 6.94326 19.1441 6.0097 18.5686 5.43346C17.9925 4.85669 17.0578 4.85638 16.4814 5.43278L12.0003 9.91365L7.51859 5.4321C6.94243 4.85597 6.00828 4.85597 5.43212 5.4321C4.85596 6.00823 4.85596 6.94232 5.43212 7.51845L9.91387 12L5.43212 16.4816C4.85596 17.0577 4.85596 17.9918 5.43212 18.5679Z"
 				/>
 			</svg>
 		</div>
 	);
 };
 
-Cancel1Icon.displayName = "Cancel1Icon";
-export { Cancel1Icon };
+Cancel2Icon.displayName = "Cancel2Icon";
+export { Cancel2Icon };
