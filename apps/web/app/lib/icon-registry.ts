@@ -20,6 +20,7 @@ import { GithubIcon as HeroiconsGithubIcon } from "@/icons/heroicons/github";
 import { HomeIcon as HeroiconsHomeIcon } from "@/icons/heroicons/home";
 import { MoonIcon as HeroiconsMoonIcon } from "@/icons/heroicons/moon";
 import { SunIcon as HeroiconsSunIcon } from "@/icons/heroicons/sun";
+import { WifiIcon as HeroiconsWifiIcon } from "@/icons/heroicons/wifi";
 import { AiChat2Icon as HugeiconsAiChat2Icon } from "@/icons/hugeicons/ai-chat-2";
 import { Alert1Icon as HugeiconsAlert1Icon } from "@/icons/hugeicons/alert-1";
 import { BadgeAlertIcon as HugeiconsBadgeAlertIcon } from "@/icons/hugeicons/badge-alert";
@@ -160,6 +161,12 @@ const ICON_LIST: IconMeta[] = [
 		icon: HeroiconsSunIcon,
 		source: "heroicons" as const,
 		keywords: ["sun"],
+	},
+	{
+		name: "wifi",
+		icon: HeroiconsWifiIcon,
+		source: "heroicons" as const,
+		keywords: ["wifi"],
 	},
 	{
 		name: "ai-chat-2",
