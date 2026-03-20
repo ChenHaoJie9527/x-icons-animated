@@ -19,6 +19,7 @@ import { CopyPathIcon as HeroiconsCopyPathIcon } from "@/icons/heroicons/copy-pa
 import { GithubIcon as HeroiconsGithubIcon } from "@/icons/heroicons/github";
 import { HomeIcon as HeroiconsHomeIcon } from "@/icons/heroicons/home";
 import { MoonIcon as HeroiconsMoonIcon } from "@/icons/heroicons/moon";
+import { RssIcon as HeroiconsRssIcon } from "@/icons/heroicons/rss";
 import { SunIcon as HeroiconsSunIcon } from "@/icons/heroicons/sun";
 import { WifiIcon as HeroiconsWifiIcon } from "@/icons/heroicons/wifi";
 import { AiChat2Icon as HugeiconsAiChat2Icon } from "@/icons/hugeicons/ai-chat-2";
@@ -155,6 +156,12 @@ const ICON_LIST: IconMeta[] = [
 		icon: HeroiconsMoonIcon,
 		source: "heroicons" as const,
 		keywords: ["moon"],
+	},
+	{
+		name: "rss",
+		icon: HeroiconsRssIcon,
+		source: "heroicons" as const,
+		keywords: ["rss"],
 	},
 	{
 		name: "sun",
