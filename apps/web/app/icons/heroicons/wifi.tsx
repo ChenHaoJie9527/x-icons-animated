@@ -13,6 +13,7 @@ export interface WifiIconHandle extends IconMotionHandle {}
 type WifiIconProps = HTMLAttributes<HTMLDivElement> & {
 	ref?: Ref<WifiIconHandle>;
 	size?: number;
+	color?: string;
 };
 
 const WIFI_VARIANTS_1 = v(
@@ -80,7 +81,7 @@ const WifiIcon = ({
 				fill="none"
 				viewBox="0 0 24 24"
 				strokeWidth={1}
-				stroke="currentColor"
+				stroke={color}
 				width={size}
 				height={size}
 				strokeLinecap="round"
