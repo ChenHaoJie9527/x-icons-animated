@@ -23,6 +23,7 @@ import { RssIcon as HeroiconsRssIcon } from "@/icons/heroicons/rss";
 import { SunIcon as HeroiconsSunIcon } from "@/icons/heroicons/sun";
 import { WifiIcon as HeroiconsWifiIcon } from "@/icons/heroicons/wifi";
 import { Add1Icon as HugeiconsAdd1Icon } from "@/icons/hugeicons/add-1";
+import { AddCircleIcon as HugeiconsAddCircleIcon } from "@/icons/hugeicons/add-circle";
 import { AiChat2Icon as HugeiconsAiChat2Icon } from "@/icons/hugeicons/ai-chat-2";
 import { Alert1Icon as HugeiconsAlert1Icon } from "@/icons/hugeicons/alert-1";
 import { BadgeAlertIcon as HugeiconsBadgeAlertIcon } from "@/icons/hugeicons/badge-alert";
@@ -181,6 +182,12 @@ const ICON_LIST: IconMeta[] = [
 		icon: HugeiconsAdd1Icon,
 		source: "hugeicons" as const,
 		keywords: ["add", "1"],
+	},
+	{
+		name: "add-circle",
+		icon: HugeiconsAddCircleIcon,
+		source: "hugeicons" as const,
+		keywords: ["add", "circle"],
 	},
 	{
 		name: "ai-chat-2",
