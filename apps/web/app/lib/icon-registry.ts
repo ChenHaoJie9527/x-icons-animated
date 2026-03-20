@@ -24,6 +24,7 @@ import { SunIcon as HeroiconsSunIcon } from "@/icons/heroicons/sun";
 import { WifiIcon as HeroiconsWifiIcon } from "@/icons/heroicons/wifi";
 import { Add1Icon as HugeiconsAdd1Icon } from "@/icons/hugeicons/add-1";
 import { AddCircleIcon as HugeiconsAddCircleIcon } from "@/icons/hugeicons/add-circle";
+import { AddSquareIcon as HugeiconsAddSquareIcon } from "@/icons/hugeicons/add-square";
 import { AiChat2Icon as HugeiconsAiChat2Icon } from "@/icons/hugeicons/ai-chat-2";
 import { Alert1Icon as HugeiconsAlert1Icon } from "@/icons/hugeicons/alert-1";
 import { BadgeAlertIcon as HugeiconsBadgeAlertIcon } from "@/icons/hugeicons/badge-alert";
@@ -188,6 +189,12 @@ const ICON_LIST: IconMeta[] = [
 		icon: HugeiconsAddCircleIcon,
 		source: "hugeicons" as const,
 		keywords: ["add", "circle"],
+	},
+	{
+		name: "add-square",
+		icon: HugeiconsAddSquareIcon,
+		source: "hugeicons" as const,
+		keywords: ["add", "square"],
 	},
 	{
 		name: "ai-chat-2",

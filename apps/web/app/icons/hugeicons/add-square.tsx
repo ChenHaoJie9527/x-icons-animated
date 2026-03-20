@@ -14,24 +14,18 @@ import { motion } from "motion/react";
 import type { HTMLAttributes, Ref } from "react";
 import { useImperativeHandle } from "react";
 
-export interface AddCircleIconHandle extends IconMotionHandle {}
+export interface AddSquareIconHandle extends IconMotionHandle {}
 
-interface AddCircleIconProps extends HTMLAttributes<HTMLDivElement> {
-	ref?: Ref<AddCircleIconHandle>;
-	size?: number;
-	color?: string;
-}
-
-const ADD_CIRCLE_VARIANTS_1 = v(
+const ADD_SQUARE_VARIANTS_1 = v(
 	pathLength(1, [0, 1]),
-	pathOffset(0, [1, 0]),
+	pathOffset(0, [0, 0]),
 	withTransition({
 		duration: 0.3,
 		ease: "easeInOut",
 	})
 );
 
-const ADD_CIRCLE_VARIANTS_2 = v(
+const ADD_SQUARE_VARIANTS_2 = v(
 	fade(1, [0, 1]),
 	scaleXY(1, [0.5, 1.2, 1, 1.2, 1], 1, [0.5, 1.2, 1, 1.2, 1]),
 	withTransition({
@@ -41,8 +35,12 @@ const ADD_CIRCLE_VARIANTS_2 = v(
 		delay: 0.2,
 	})
 );
-
-const AddCircleIcon = ({
+interface AddSquareIconProps extends HTMLAttributes<HTMLDivElement> {
+	ref?: Ref<AddSquareIconHandle>;
+	size?: number;
+	color?: string;
+}
+const AddSquareIcon = ({
 	size = 32,
 	color = "currentColor",
 	className,
@@ -50,7 +48,7 @@ const AddCircleIcon = ({
 	onMouseLeave,
 	ref,
 	...props
-}: AddCircleIconProps) => {
+}: AddSquareIconProps) => {
 	const { controls, handleMouseEnter, handleMouseLeave } = useIconMotionKit({
 		ref,
 		onMouseEnter,
@@ -78,6 +76,7 @@ const AddCircleIcon = ({
 				viewBox="0 0 24 24"
 				width={size}
 				height={size}
+				color="currentColor"
 				fill="none"
 				stroke={color}
 				strokeWidth="1"
@@ -86,18 +85,18 @@ const AddCircleIcon = ({
 			>
 				<motion.path
 					animate={controls}
-					variants={ADD_CIRCLE_VARIANTS_1}
-					d="M22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12Z"
+					variants={ADD_SQUARE_VARIANTS_1}
+					d="M2.5 12.0001C2.5 7.52171 2.5 5.28254 3.89124 3.8913C5.28249 2.50005 7.52166 2.50005 12 2.50005C16.4783 2.50005 18.7175 2.50005 20.1088 3.8913C21.5 5.28254 21.5 7.52171 21.5 12.0001C21.5 16.4784 21.5 18.7176 20.1088 20.1088C18.7175 21.5001 16.4783 21.5001 12 21.5001C7.52166 21.5001 5.28249 21.5001 3.89124 20.1088C2.5 18.7176 2.5 16.4784 2.5 12.0001Z"
 				/>
 				<motion.path
 					animate={controls}
-					variants={ADD_CIRCLE_VARIANTS_2}
-					d="M12 8V16M16 12H8"
+					variants={ADD_SQUARE_VARIANTS_2}
+					d="M12 8.00005V16.0001M16 12.0001L8 12.0001"
 				/>
 			</svg>
 		</div>
 	);
 };
 
-AddCircleIcon.displayName = "AddCircleIcon";
-export { AddCircleIcon };
+AddSquareIcon.displayName = "AddSquareIcon";
+export { AddSquareIcon };
