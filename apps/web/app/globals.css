@@ -5,6 +5,10 @@
 	isolation: isolate;
 }
 
+html {
+	scrollbar-gutter: stable;
+}
+
 html,
 body {
 	position: relative;
